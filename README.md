@@ -1,0 +1,30 @@
+# Search Engine Xperts
+
+The supplied HTML converted to a Next.js App Router site with React and TypeScript. All original content sections and Arslan's supplied portrait are retained, with updated responsive styling, an accessible mobile menu, interactive illustrative dashboard, FAQ accordion and a validated audit request flow.
+
+## Run locally
+
+```sh
+npm install
+npm run dev
+```
+
+Open http://localhost:3000. For production, run `npm run build` then `npm start`. Run `npm run typecheck` to check TypeScript.
+
+Browser checks: `npx playwright test` (requires installed Google Chrome and a production build). Screenshots are saved under `artifacts/`.
+
+## Editing
+
+- `components/site.tsx`: page content and static section components.
+- `components/interactive.tsx`: navigation, audit form, dashboard and FAQ interactions.
+- `components/faq-data.json`: FAQ content.
+- `app/globals.css`: original design styles.
+- `app/refinements.css`: design improvements and responsive styles.
+- `app/layout.tsx`: page title and SEO metadata.
+- `public/images`: locally served assets.
+
+The audit form validates a URL and prepares an email request; it does not run an automated audit or send email from a server. Contact details use the supplied email and phone. No email service or credentials are needed. The dashboard date filters show illustrative data, not live analytics. Case-study links request the full case by email. Placeholder video controls have been replaced with a strategy image and text testimonials because no video files were supplied.
+
+Business claims, client names, case-study numbers and reviews come from the supplied HTML; verify them before publishing. Replace them directly in `components/site.tsx`.
+
+Analytics photograph: [Unsplash data analysis collection](https://unsplash.com/s/photos/data-analysis), asset `photo-1599658880436-c61792e70672`, downloaded into `public/images/analytics-workspace.jpg`. Arslan's portrait was extracted from the original embedded image.
