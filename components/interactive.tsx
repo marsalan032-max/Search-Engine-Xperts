@@ -1,19 +1,56 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import questions from './faq-data.json';
+import { services } from './services';
 
-const services = ['AI SEO', 'Local SEO', 'GMB Optimization', 'Ecommerce SEO', 'Backlinks & Digital PR', 'SEO Content Writing'];
+// True on desktop pointers (mouse/trackpad) at the width where the full nav shows.
+const canHover = () =>
+  typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (min-width: 921px)').matches;
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
+
+  // Close the Services dropdown on outside click/tap or Escape.
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!servicesRef.current?.contains(e.target as Node)) setServicesOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setServicesOpen(false); };
+    document.addEventListener('pointerdown', onPointer);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('pointerdown', onPointer);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [servicesOpen]);
+
+  const closeAll = () => { setOpen(false); setServicesOpen(false); };
+
   return <header><div className="wrap nav">
     <a href="#top" className="logo" aria-label="Search Engine Xperts home"><svg className="mk" aria-hidden="true"><use href="#mark" /></svg><div><b>Search Engine</b><b className="x">Xperts<span className="logo-dot">.</span></b></div></a>
     <button className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="navigation" onClick={() => setOpen(!open)}>{open ? '✕' : '☰'}</button>
     <nav id="navigation" className={`links ${open ? 'mobile-open' : ''}`} aria-label="Main navigation">
-      <div className="navitem"><button className="navlink" aria-expanded={servicesOpen} aria-controls="service-menu" onClick={() => setServicesOpen(!servicesOpen)} onKeyDown={e => { if(e.key === 'Escape') setServicesOpen(false); }}>Services <span aria-hidden="true">⌄</span></button>
-        {servicesOpen && <div id="service-menu" className="dropdown visible">{services.map((s,i) => <a key={s} href={`#service-${i+1}`} onClick={() => {setOpen(false);setServicesOpen(false);}}>{s}</a>)}</div>}
+      <div
+        className="navitem"
+        ref={servicesRef}
+        onMouseEnter={() => { if (canHover()) setServicesOpen(true); }}
+        onMouseLeave={() => { if (canHover()) setServicesOpen(false); }}
+      >
+        <button
+          className="navlink"
+          aria-expanded={servicesOpen}
+          aria-controls="service-menu"
+          // A mouse click while hover already opened the menu keeps it open;
+          // keyboard (detail === 0) and touch taps toggle it.
+          onClick={e => setServicesOpen(o => (e.detail > 0 && canHover()) ? true : !o)}
+        >Services <span aria-hidden="true">⌄</span></button>
+        {servicesOpen && <div id="service-menu" className="dropdown visible">
+          {services.map(s => <a key={s.id} href={`#${s.id}`} onClick={closeAll}>{s.name}</a>)}
+        </div>}
       </div>
       {[['Our process','#process'],['Results','#work'],['About Arslan','#about'],['FAQs','#faq']].map(([label,href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}
     </nav>

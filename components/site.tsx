@@ -1,4 +1,5 @@
 import { Header, AuditForm, Dashboard, FAQ } from "./interactive";
+import { services } from "./services";
 
 function BrandDefinitions() { return (<>
 <svg width="0" height="0" style={{"position": "absolute"}} aria-hidden="true"><defs>
@@ -64,30 +65,12 @@ function Services() { return (<>
 <p>From AI-driven search to content and authority — every lever that puts you in front of buyers.</p>
 </div>
 <div className="services-grid">
-<div className="svc" id="service-1"><span className="num">01</span>
-<div className="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 3l1.8 4.4L18 9.2l-4.2 1.8L12 15l-1.8-4L6 9.2l4.2-1.8z"></path><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"></path></svg></div>
-<h3>AI SEO</h3><p>Optimize for AI Overviews, ChatGPT and answer engines — so you're cited where buyers now search.</p>
-<a className="more" href="#contact">Let’s talk AI SEO →</a></div>
-<div className="svc" id="service-2"><span className="num">02</span>
-<div className="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></div>
-<h3>Local SEO</h3><p>Win the map pack and "near me" searches with location pages, citations and reviews that convert.</p>
-<a className="more" href="#contact">Let’s talk Local SEO →</a></div>
-<div className="svc" id="service-3"><span className="num">03</span>
-<div className="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 15l3-4 2.5 3L17 9"></path><circle cx="8" cy="8.5" r="1.2"></circle></svg></div>
-<h3>GMB Optimization</h3><p>A fully optimized Google Business Profile — posts, photos, Q&amp;A and reviews that earn the top spot.</p>
-<a className="more" href="#contact">Let’s talk GMB Optimization →</a></div>
-<div className="svc" id="service-4"><span className="num">04</span>
-<div className="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 7h15l-1.5 9h-12z"></path><path d="M5 7L4 3H2"></path><circle cx="9" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle></svg></div>
-<h3>Ecommerce SEO</h3><p>Product, category and technical SEO that turns high-intent searches into sales — at scale.</p>
-<a className="more" href="#contact">Let’s talk Ecommerce SEO →</a></div>
-<div className="svc" id="service-5"><span className="num">05</span>
-<div className="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M10 13a4 4 0 005.6 0l2.4-2.4a4 4 0 00-5.6-5.6L11 6.5"></path><path d="M14 11a4 4 0 00-5.6 0L6 13.4a4 4 0 005.6 5.6L13 17.5"></path></svg></div>
-<h3>Backlinks &amp; Digital PR</h3><p>Earn high-authority links and press mentions through real outreach — the trust signals Google rewards.</p>
-<a className="more" href="#contact">Let’s talk Backlinks &amp; Digital PR →</a></div>
-<div className="svc" id="service-6"><span className="num">06</span>
-<div className="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 4h14v16H5z"></path><path d="M8 8h8M8 12h8M8 16h5"></path></svg></div>
-<h3>SEO Content Writing</h3><p>Search-optimized articles and pages that rank, read well and turn visitors into customers.</p>
-<a className="more" href="#contact">Let’s talk SEO Content Writing →</a></div>
+{services.map((s, i) => (
+<div className="svc" id={s.id} key={s.id}><span className="num">{String(i + 1).padStart(2, "0")}</span>
+<div className="ic">{s.icon}</div>
+<h3>{s.name}</h3><p>{s.description}</p>
+<a className="more" href="#contact">Let’s talk {s.name} →</a></div>
+))}
 </div>
 </div>
 </section>
