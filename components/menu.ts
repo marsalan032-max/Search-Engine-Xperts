@@ -11,7 +11,7 @@ export const menu: MenuItem[] = [
   {
     label: 'Services',
     href: '#services',
-    children: services.map(s => ({ label: s.name, href: `#${s.id}` })),
+    children: services.map(s => ({ label: s.name, href: s.href ?? `#${s.id}` })),
   },
   { label: 'Projects', href: '#work' },
   {

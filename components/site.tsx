@@ -69,7 +69,9 @@ function Services() { return (<>
 <div className="svc" id={s.id} key={s.id}><span className="num">{String(i + 1).padStart(2, "0")}</span>
 <div className="ic">{s.icon}</div>
 <h3>{s.name}</h3><p>{s.description}</p>
-<a className="more" href="#contact">Let’s talk {s.name} →</a></div>
+{s.href
+  ? <a className="more" href={s.href}>Explore {s.name} services →</a>
+  : <a className="more" href="#contact">Let’s talk {s.name} →</a>}</div>
 ))}
 </div>
 </div>

@@ -9,6 +9,7 @@ export type Service = {
   id: string;          // anchor id on the home page (#service-1, …)
   name: string;        // card title and dropdown label
   description: string; // card copy
+  href?: string;       // dedicated service page, once one is published
   icon: ReactNode;
 };
 
@@ -22,6 +23,7 @@ export const services: Service[] = [
   {
     id: 'service-1',
     name: 'AI SEO',
+    href: '/ai-seo-services',
     description: "Optimize for AI Overviews, ChatGPT and answer engines — so you're cited where buyers now search.",
     icon: svg(<><path d="M12 3l1.8 4.4L18 9.2l-4.2 1.8L12 15l-1.8-4L6 9.2l4.2-1.8z" /><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" /></>),
   },

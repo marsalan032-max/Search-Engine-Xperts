@@ -22,6 +22,9 @@ Browser checks: `npx playwright test` (requires installed Google Chrome and a pr
 - `app/refinements.css`: design improvements and responsive styles.
 - `app/layout.tsx`: page title and SEO metadata.
 - `public/images`: locally served assets.
+- `public/ai-seo-services.html`: the AI SEO Services page, served at `/ai-seo-services` by the rewrite in `next.config.ts`. Its case-study screenshots live in `public/images/case-studies`.
+- `app/sitemap.ts` and `app/robots.ts`: sitemap and robots.txt. Add each new page URL to the sitemap.
+- `components/services.tsx`: give a service an `href` once it has its own page; the homepage card and Services menu then link to it.
 
 The audit form validates a URL and prepares an email request; it does not run an automated audit or send email from a server. Contact details use the supplied email and phone. No email service or credentials are needed. The dashboard date filters show illustrative data, not live analytics. Case-study links request the full case by email. Placeholder video controls have been replaced with a strategy image and text testimonials because no video files were supplied.
 
