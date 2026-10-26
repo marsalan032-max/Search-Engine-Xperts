@@ -11,7 +11,7 @@
 .post-main{min-width:0;max-width:780px}
 .post-header .eyebrow{margin-top:30px}
 .blog h1{font-size:clamp(34px,4.2vw,50px);line-height:1.12;letter-spacing:-.035em;font-weight:700;color:var(--navy);margin-top:14px}
-.dek{font-size:17px;line-height:1.8;color:var(--slate);margin-top:18px;max-width:720px}
+.dek{font-size:18px;line-height:1.8;color:var(--ink);margin-top:18px;max-width:720px}
 .byline{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
 .byline .who{display:flex;align-items:center;gap:12px}
 .byline .who img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:top;background:var(--tint)}
@@ -26,7 +26,7 @@
 .post-figure img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:14px;box-shadow:0 30px 60px -36px rgba(11,20,55,.45)}
 .post-figure figcaption{margin-top:10px;text-align:center;font-size:12px;color:var(--slate)}
 
-.takeaways{margin-top:38px;border:1px solid var(--line);border-radius:14px;background:var(--tint);padding:30px 34px}
+.takeaways{margin-top:38px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:30px 34px}
 .takeaways h2{font-size:24px;color:var(--navy);letter-spacing:-.02em}
 .takeaways ul{list-style:none;margin-top:18px;display:grid;gap:14px}
 .takeaways li{position:relative;padding-left:24px;font-size:15px;line-height:1.75;color:var(--ink)}
@@ -38,19 +38,19 @@
 .blog #faq{padding-top:46px!important}
 .post-body h2{font-size:30px;line-height:1.2;letter-spacing:-.03em;color:var(--navy);font-weight:700}
 .post-body h3{font-size:20px;color:var(--navy);font-weight:600;margin-top:34px;letter-spacing:-.01em}
-.post-body p{font-size:16px;line-height:1.85;color:var(--slate);margin-top:18px}
+.post-body p{font-size:17px;line-height:1.85;color:var(--ink);margin-top:18px}
 .post-body h3+p{margin-top:10px}
-.post-body p.post-intro{font-size:18px;color:var(--ink);margin-top:0}
+.post-body p.post-intro{font-size:18px;margin-top:0}
 .post-body strong{color:var(--ink)}
 
 .post-table{margin-top:26px;overflow-x:auto;border:1px solid var(--line);border-radius:12px}
 .post-table table{width:100%;min-width:600px;border-collapse:collapse;font-size:14px;text-align:left}
 .post-table caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.post-table thead{background:var(--tint)}
+.post-table thead{background:#fff;border-bottom:2px solid var(--line)}
 .post-table th,.post-table td{padding:15px 20px;vertical-align:top;line-height:1.6}
 .post-table thead th{font-weight:600;color:var(--navy)}
 .post-table tbody th{font-weight:500;color:var(--ink)}
-.post-table tbody td{color:var(--slate)}
+.post-table tbody td{color:var(--ink)}
 .post-table tbody tr+tr{border-top:1px solid var(--line)}
 
 .post-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
@@ -64,7 +64,7 @@
 .post-list li{position:relative;padding-left:22px;font-size:16px;line-height:1.75;color:var(--ink)}
 .post-list li:before{content:"";position:absolute;left:0;top:.68em;width:8px;height:8px;border-radius:50%;background:var(--blue)}
 
-.post-callout{margin-top:30px;border-left:4px solid var(--blue);background:var(--tint);border-radius:0 12px 12px 0;padding:22px 26px}
+.post-callout{margin-top:30px;border:1px solid var(--line);border-left:4px solid var(--blue);background:#fff;border-radius:0 12px 12px 0;padding:22px 26px}
 .post-callout .t{margin:0!important;font-size:17px!important;font-weight:600;color:var(--navy)!important}
 .post-callout p{font-size:14.5px!important;margin-top:6px!important;line-height:1.7!important}
 
@@ -105,12 +105,12 @@
 .toc-mobile .toc-head{display:none}
 
 /* ---------- author + next steps ---------- */
-.post-author{background:var(--tint);padding:64px 0}
+.post-author{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:64px 0}
 .post-author .wrap{display:grid;grid-template-columns:128px minmax(0,1fr);gap:30px;align-items:center;max-width:1000px}
 .post-author img{width:128px;height:128px;border-radius:50%;object-fit:cover;object-position:top;border:4px solid #fff;box-shadow:0 20px 40px -24px rgba(11,20,55,.5)}
 .post-author h2{font-size:28px;color:var(--navy);margin-top:6px;letter-spacing:-.02em}
 .post-author .role{font-size:14px;font-weight:600;color:var(--blue);margin-top:2px}
-.post-author p:not(.eyebrow):not(.role){font-size:14.5px;line-height:1.8;color:var(--slate);margin-top:12px}
+.post-author p:not(.eyebrow):not(.role){font-size:15.5px;line-height:1.8;color:var(--ink);margin-top:12px}
 .author-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .author-links .btn{padding:11px 18px;font-size:13px}
 
@@ -121,7 +121,7 @@
 .next-grid a:hover{transform:translateY(-4px);border-color:#cdd8f7;box-shadow:0 26px 50px -32px rgba(11,20,55,.45)}
 .next-grid .kicker,.index-card .kicker{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
 .next-grid b{font-size:18px;color:var(--navy);line-height:1.3}
-.next-grid span:not(.kicker){font-size:14px;color:var(--slate);line-height:1.65;flex:1}
+.next-grid span:not(.kicker){font-size:14.5px;color:var(--ink);line-height:1.65;flex:1}
 .next-grid i{font-style:normal;font-size:13px;font-weight:600;color:var(--blue)}
 
 /* ---------- blog index ---------- */
@@ -133,7 +133,7 @@
 .index-card img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
 .index-card>div{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}
 .index-card h2{font-size:19px;line-height:1.3;color:var(--navy)}
-.index-card p{font-size:14px;color:var(--slate);line-height:1.65}
+.index-card p{font-size:14.5px;color:var(--ink);line-height:1.65}
 .index-card small{font-size:12px;color:var(--slate)}
 
 @media(max-width:1100px){.post-grid{grid-template-columns:minmax(0,1fr) 280px;gap:40px}}
@@ -144,10 +144,13 @@
 }
 @media(max-width:560px){
   .post-wrap,.blog-index{padding-top:28px}
-  .dek{font-size:15px}.takeaways{padding:22px}.takeaways h2{font-size:21px}
-  .post-body h2{font-size:25px}.post-body h3{font-size:18px}.post-body p{font-size:15px}.post-body p.post-intro{font-size:16.5px}
+  .takeaways{padding:22px}.takeaways h2{font-size:21px}
+  .post-body h2{font-size:25px}.post-body h3{font-size:18px}.post-body p{font-size:16px}.post-body p.post-intro{font-size:17px}.dek{font-size:16px}
   .post-cards,.index-grid,.next-grid{grid-template-columns:1fr}
   .post-cta{flex-direction:column;align-items:flex-start;padding:26px 22px}.post-cta .btn{width:100%;justify-content:center}
   .post-author .wrap{grid-template-columns:1fr;text-align:left}.post-author img{width:96px;height:96px}
   .post-next h2{font-size:26px}
 }
+
+/* Whole blog sits on white; the global page tint never shows through. */
+body:has(main.blog){background:#fff}
