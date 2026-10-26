@@ -51,7 +51,7 @@ export const menu: MenuItem[] = [
     label: 'Resources',
     href: '#',
     children: [
-      { label: 'Blogs', href: '#' },
+      { label: 'Blogs', href: '/blog' },
       { label: 'Ebooks', href: '#' },
       { label: 'Guides', href: '#' },
       { label: 'Webinars', href: '#' },
