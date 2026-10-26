@@ -95,7 +95,7 @@ export function AskAI({ slug, title, suggestions }: { slug: string; title: strin
   const submit = (e: FormEvent) => { e.preventDefault(); ask(input); };
 
   return <>
-    {!open && <button className="ask-fab" onClick={() => setOpen(true)} aria-haspopup="dialog"><Sparkle /> Ask AI</button>}
+    {!open && <button className="ask-fab" onClick={() => setOpen(true)} aria-haspopup="dialog"><span className="ask-fab-icon"><Sparkle size={17} /></span>Ask AI</button>}
     {open && <div className="ask-panel" role="dialog" aria-modal="false" aria-labelledby="ask-title">
       <div className="ask-head">
         <h2 id="ask-title"><Sparkle size={16} /> Ask about this article</h2>
