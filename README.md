@@ -33,3 +33,12 @@ The audit form validates a URL and prepares an email request; it does not run an
 Business claims, client names, case-study numbers and reviews come from the supplied HTML; verify them before publishing. Replace them directly in `components/site.tsx`.
 
 Analytics photograph: [Unsplash data analysis collection](https://unsplash.com/s/photos/data-analysis), asset `photo-1599658880436-c61792e70672`, downloaded into `public/images/analytics-workspace.jpg`. Arslan's portrait was extracted from the original embedded image.
+
+## Ask AI on blog posts
+
+Each post can show an "Ask about this article" panel: readers pick a suggested question (`askSuggestions` in the post file) or type their own, and Claude answers using only that article (`app/api/ask/route.ts`, UI in `components/blog/ask-ai.tsx`).
+
+- Turn it on by adding `ANTHROPIC_API_KEY` in Vercel → Project → Settings → Environment Variables, then redeploy. Without the key the panel is hidden.
+- Optional: `ANTHROPIC_MODEL` (default `claude-haiku-5-5`).
+- Each visitor is limited to 20 questions an hour per server instance; also set a monthly spend limit on the key in the Anthropic Console.
+

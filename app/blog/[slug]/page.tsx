@@ -2,8 +2,12 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { author, formatDate, getPost, posts, siteUrl } from '../../../components/blog/posts';
 import { TableOfContents } from '../../../components/blog/toc';
+import { AskAI, AskAIButton } from '../../../components/blog/ask-ai';
 
 type Props = { params: Promise<{ slug: string }> };
+
+// The Ask AI panel appears only once ANTHROPIC_API_KEY is set (redeploy after adding it).
+const askEnabled = Boolean(process.env.ANTHROPIC_API_KEY);
 
 export const dynamicParams = false; // unknown slugs return 404
 export const generateStaticParams = () => posts.map(p => ({ slug: p.slug }));
@@ -158,6 +162,7 @@ export default async function BlogPost({ params }: Props) {
 
         <aside className="post-side">
           <TableOfContents items={post.toc} share={share} />
+          {askEnabled && post.askSuggestions && <AskAIButton>Ask AI about this article</AskAIButton>}
           <a className="pref-source" href="https://www.google.com/preferences/source?q=searchenginexperts.com" target="_blank" rel="noopener noreferrer">
             <span aria-hidden="true">G</span>Add us as a preferred source on Google <span aria-hidden="true">→</span>
           </a>
@@ -192,5 +197,7 @@ export default async function BlogPost({ params }: Props) {
         </div>
       </div>
     </section>
+
+    {askEnabled && post.askSuggestions && <AskAI slug={post.slug} title={post.title} suggestions={post.askSuggestions} />}
   </>;
 }

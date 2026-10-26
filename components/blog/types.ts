@@ -15,5 +15,6 @@ export type Post = {
   takeaways: string[];
   toc: { id: string; label: string }[];
   faqs: { question: string; answer: string }[];
+  askSuggestions?: string[]; // starter questions shown in the "Ask about this article" panel
   Body: ComponentType;
 };

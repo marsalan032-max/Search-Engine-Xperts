@@ -251,5 +251,11 @@ export const post: Post = {
     { id: 'faq', label: 'Frequently asked questions' },
   ],
   faqs,
+  askSuggestions: [
+    'Summarize this article',
+    'What should a $3,000/month retainer include?',
+    'How do I calculate my SEO budget?',
+    'What are the red flags in an SEO proposal?',
+  ],
   Body,
 };
