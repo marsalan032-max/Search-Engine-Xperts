@@ -12,7 +12,10 @@ const Chevron = () => (
   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
 );
 
-export function Header() {
+// On pages other than the homepage, pass base="/" so in-page links such as
+// "#contact" become "/#contact" and still reach the homepage sections.
+export function Header({ base = '' }: { base?: string } = {}) {
+  const to = (href: string) => (base && href.startsWith('#') && href.length > 1 ? `${base}${href}` : href);
   const [open, setOpen] = useState(false);              // mobile menu panel
   const [active, setActive] = useState<string | null>(null); // open dropdown
   const navRef = useRef<HTMLElement>(null);
@@ -35,12 +38,12 @@ export function Header() {
   const closeAll = () => { setOpen(false); setActive(null); };
 
   return <header><div className="wrap nav">
-    <a href="#top" className="logo" aria-label="Search Engine Xperts home"><svg className="mk" aria-hidden="true"><use href="#mark" /></svg><div><b>Search Engine</b><b className="x">Xperts<span className="logo-dot">.</span></b></div></a>
+    <a href={base || '#top'} className="logo" aria-label="Search Engine Xperts home"><svg className="mk" aria-hidden="true"><use href="#mark" /></svg><div><b>Search Engine</b><b className="x">Xperts<span className="logo-dot">.</span></b></div></a>
     <button className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="navigation" onClick={() => { setOpen(!open); setActive(null); }}>{open ? '✕' : '☰'}</button>
     <nav id="navigation" ref={navRef} className={`links ${open ? 'mobile-open' : ''}`} aria-label="Main navigation">
       {menu.map(item => {
         if (!item.children) {
-          return <div className="navitem" key={item.label}><a href={item.href} className="navlink" onClick={closeAll}>{item.label}</a></div>;
+          return <div className="navitem" key={item.label}><a href={to(item.href)} className="navlink" onClick={closeAll}>{item.label}</a></div>;
         }
         const isOpen = active === item.label;
         const menuId = `menu-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
@@ -59,12 +62,12 @@ export function Header() {
             onClick={e => setActive(a => (e.detail > 0 && canHover()) ? item.label : (a === item.label ? null : item.label))}
           >{item.label} <Chevron /></button>
           {isOpen && <div id={menuId} className="dropdown visible">
-            {item.children.map(c => <a key={c.label} href={c.href} onClick={closeAll}>{c.label}</a>)}
+            {item.children.map(c => <a key={c.label} href={to(c.href)} onClick={closeAll}>{c.label}</a>)}
           </div>}
         </div>;
       })}
     </nav>
-    <a href="#contact" className="btn btn-primary nav-cta">Free Consultation</a>
+    <a href={to('#contact')} className="btn btn-primary nav-cta">Free Consultation</a>
   </div></header>;
 }
 

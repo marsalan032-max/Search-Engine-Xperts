@@ -38,3 +38,19 @@ test('mobile navigation and layout', async ({ page }) => {
   await page.goto('/');
   await page.screenshot({ path: 'artifacts/mobile.png', fullPage: true });
 });
+
+test('blog post renders with site header, schema and canonical', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/blog/how-much-does-seo-cost-for-an-agency');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('How Much Does SEO Cost for an Agency?');
+  await expect(page.locator('header .nav-cta')).toHaveAttribute('href', '/#contact');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://searchenginexperts.com/blog/how-much-does-seo-cost-for-an-agency');
+  const schema = await page.locator('script[type="application/ld+json"]').textContent();
+  expect(schema).toContain('"BlogPosting"');
+  expect(schema).toContain('"FAQPage"');
+  await page.getByText('Do agencies guarantee rankings?').click();
+  await expect(page.getByText('No credible agency guarantees')).toBeVisible();
+  expect(errors).toEqual([]);
+  expect((await page.request.get('/blog/not-a-post')).status()).toBe(404);
+});
