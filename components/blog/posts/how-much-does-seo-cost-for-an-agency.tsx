@@ -252,10 +252,48 @@ export const post: Post = {
   ],
   faqs,
   askSuggestions: [
-    'Summarize this article',
-    'What should a $3,000/month retainer include?',
-    'How do I calculate my SEO budget?',
-    'What are the red flags in an SEO proposal?',
+    {
+      question: 'Summarize this article',
+      answer: `Most small and mid-sized businesses spend **$1,500–$5,000 per month** on agency SEO; competitive, national or multi-location campaigns often need $5,000–$15,000+.
+- Price differences reflect scope, team depth and content volume, so compare proposals by what is delivered, not by the line item called "SEO".
+- A real retainer covers strategy, technical fixes, content, authority building and reporting tied to leads.
+- Set the budget from the value of a customer: work out how many new clients the campaign needs to break even.
+- Packages under ~$500/month rarely fund the work needed for lasting rankings and revenue.`,
+      section: 'average-cost',
+    },
+    {
+      question: 'What should a $3,000/month retainer include?',
+      answer: `A credible monthly retainer should state quantities for each workstream:
+- **Strategy & research:** keyword and competitor tracking, quarterly roadmap updates, a prioritized backlog
+- **Technical SEO:** crawl monitoring, Core Web Vitals review, fixes for issues found that month
+- **On-page:** new and updated landing pages, title/meta refinement, internal linking
+- **Content:** 2–8 research-backed articles with briefs, editing and publishing support
+- **Authority:** digital PR or link outreach, citation and listing hygiene
+- **Reporting:** rankings, traffic, conversions and next month's plan, tied to business KPIs
+If a proposal only says "optimization" and "reports", ask for numbers.`,
+      section: 'retainer-scope',
+    },
+    {
+      question: 'How do I calculate my SEO budget?',
+      answer: `Start from your business economics, not a package price:
+- Estimate the value of a customer (e.g. $4,800/year × 2.5 years ≈ $12,000 lifetime value).
+- Use your conversion rates (e.g. 2.5% of visits enquire, 25% of enquiries sign).
+- Work backward from the retainer: at $3,000/month ($36,000/year) you need about three new clients a year to break even, roughly 640 qualified organic visits a month.
+If even an optimistic traffic scenario can't cover the retainer, SEO may not be the right channel yet.`,
+      section: 'roi-example',
+    },
+    {
+      question: 'What are the red flags in an SEO proposal?',
+      answer: `Walk away, or dig much deeper, if you see:
+- Guaranteed #1 rankings or "500 directories" bundles
+- Full-service SEO priced under ~$500/month
+- No discussion of competitors, keyword difficulty or where your wins will come from
+- Deliverable counts (X links, Y articles) with no quality standards
+- Reporting that stops at rankings and impressions, with no link to leads or revenue
+- Purchased link networks or AI-spun content at scale
+- Promises of results in month one`,
+      section: 'red-flags',
+    },
   ],
   Body,
 };

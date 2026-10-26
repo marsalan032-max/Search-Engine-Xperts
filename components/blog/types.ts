@@ -15,6 +15,8 @@ export type Post = {
   takeaways: string[];
   toc: { id: string; label: string }[];
   faqs: { question: string; answer: string }[];
-  askSuggestions?: string[]; // starter questions shown in the "Ask about this article" panel
+  // "Ask AI" panel: suggested questions with pre-written answers (plain text; "- " lines become bullets,
+  // **bold** works). `section` is the id of the part of the article the answer comes from.
+  askSuggestions?: { question: string; answer: string; section?: string }[];
   Body: ComponentType;
 };

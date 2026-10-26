@@ -54,3 +54,17 @@ test('blog post renders with site header, schema and canonical', async ({ page }
   expect(errors).toEqual([]);
   expect((await page.request.get('/blog/not-a-post')).status()).toBe(404);
 });
+
+test('Ask AI answers from the article without any external service', async ({ page }) => {
+  await page.goto('/blog/how-much-does-seo-cost-for-an-agency');
+  await page.locator('.ask-fab').click();
+  await page.getByRole('button', { name: 'What are the red flags in an SEO proposal?' }).click();
+  await expect(page.locator('.ask-msg.assistant').last()).toContainText('Guaranteed #1 rankings');
+  await page.getByRole('textbox', { name: /Ask a question/ }).fill('is 500 dollars enough');
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.ask-msg.assistant').last()).toContainText('Is $500 per month enough for SEO?');
+  await expect(page.locator('.ask-source').last()).toHaveAttribute('href', '#faq');
+  await page.getByRole('textbox', { name: /Ask a question/ }).fill('best pizza in lahore');
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.ask-msg.assistant').last()).toContainText("couldn't find that");
+});

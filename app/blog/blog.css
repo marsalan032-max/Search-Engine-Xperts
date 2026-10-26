@@ -197,3 +197,5 @@ body:has(main.blog){background:#fff}
   .ask-panel{right:0;bottom:0;width:100%;max-width:none;height:85vh;border-radius:18px 18px 0 0}
 }
 @media (prefers-reduced-motion:reduce){.ask-typing i{animation:none;opacity:.6}}
+.ask-msg.assistant a.ask-source{text-decoration:none;display:inline-block;margin-top:10px;font-size:12.5px;font-weight:600;color:var(--blue)}
+.ask-msg.assistant a.ask-source:hover{text-decoration:underline}

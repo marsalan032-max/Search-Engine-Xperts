@@ -36,9 +36,8 @@ Analytics photograph: [Unsplash data analysis collection](https://unsplash.com/s
 
 ## Ask AI on blog posts
 
-Each post can show an "Ask about this article" panel: readers pick a suggested question (`askSuggestions` in the post file) or type their own, and Claude answers using only that article (`app/api/ask/route.ts`, UI in `components/blog/ask-ai.tsx`).
+Each post can show an "Ask about this article" panel (`components/blog/ask-ai.tsx`). It runs entirely in the browser, with no AI service, API key or cost:
 
-- Turn it on by adding `ANTHROPIC_API_KEY` in Vercel → Project → Settings → Environment Variables, then redeploy. Without the key the panel is hidden.
-- Optional: `ANTHROPIC_MODEL` (default `claude-haiku-5-5`).
-- Each visitor is limited to 20 questions an hour per server instance; also set a monthly spend limit on the key in the Anthropic Console.
-
+- Suggested questions show the pre-written answers in the post file (`askSuggestions`: question, answer, and the section it links to).
+- Typed questions are matched against the article's passages, takeaways and FAQs (`components/blog/chunks.ts` splits the article; `components/blog/answer.ts` ranks passages, with a synonym list you can extend). The reply links to the matching section. If nothing matches, it suggests the free audit.
+- Add `askSuggestions` to a new post to give it the panel.
