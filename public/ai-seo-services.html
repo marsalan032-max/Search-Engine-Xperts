@@ -729,6 +729,51 @@ footer .flinks a:hover{color:#fff;}
   .nav .links .navitem:hover .dropdown:not(.visible){opacity:0;visibility:hidden;}
 }
 @media(max-width:560px){.logo b{font-size:13px;}.logo .mk{width:36px;height:36px;}.nav-cta{font-size:10px;padding:10px 12px;}.menu-toggle{margin-right:8px;font-size:17px;padding:6px 9px;}}
+
+/* ===== hero: always above the fold (shared by every service page) ===== */
+.crumb ol{padding:10px 0;}
+@media (min-width:921px){
+  .hero{display:flex;align-items:center;min-height:calc(100vh - 129px);min-height:calc(100svh - 129px);padding:clamp(20px,4vh,48px) 0;}
+  .hero > .wrap{width:100%;}
+  .hero-grid{gap:clamp(32px,4vw,56px);}
+  .hero h1{font-size:clamp(32px,min(3.1vw,5.4vh),46px);margin-top:clamp(12px,2.2vh,20px);}
+  .hero .lead{font-size:clamp(15px,2.2vh,17.5px);margin-top:clamp(10px,2vh,18px);}
+  .hero-ctas{margin-top:clamp(16px,3vh,28px);}
+  .hero-trust{margin-top:clamp(16px,3.4vh,34px);}
+  .hero-visual .float.f1{top:-52px;}
+}
+@media (min-width:921px) and (max-height:860px){
+  .hero .vt{padding:16px;}
+  .hero .vt-answer{margin-top:10px;padding:11px 14px;}
+  .hero .vt-lines{display:none;}
+  .hero .vt-answer p{margin-top:6px;font-size:12.5px;}
+  .hero .vt-cite{margin-top:8px;padding:6px 10px;}
+  .hero .vt-list-h{margin-top:12px;}
+  .hero .vt-list{gap:6px;}
+  .hero .vt-list li{padding:6px 10px;}
+  .hero .vt-i{width:26px;height:26px;}
+  .hero-visual .float.f1{top:-14px;right:-26px;transform:scale(.86);transform-origin:top right;}
+  .hero-trust .m b{font-size:21px;}
+}
+@media (min-width:921px) and (max-height:760px){
+  .hero .vt-list li:nth-child(n+4){display:none;}
+}
+@media (min-width:921px) and (max-height:700px){
+  .hero .tag{padding-top:5px;padding-bottom:5px;}
+  .hero-ctas .btn{padding:12px 20px;}
+  .hero{padding:14px 0;}
+  .hero-visual .float.f1{display:none;}
+}
+/* phones: headline, copy and both CTAs sit above the sticky bottom bar */
+@media (max-width:560px){
+  .hero{padding:22px 0 40px;}
+  .hero .tag{font-size:12px;padding:6px 13px 6px 7px;}
+  .hero h1{font-size:27px;margin-top:14px;}
+  .hero .lead{font-size:15.5px;margin-top:12px;}
+  .hero-ctas{margin-top:20px;gap:10px;}
+  .hero-ctas .btn{padding:13px 20px;font-size:14.5px;}
+  .hero-trust{margin-top:24px;gap:30px;}
+}
 </style>
 </head>
 <body>
@@ -744,7 +789,7 @@ footer .flinks a:hover{color:#fff;}
   <button type="button" class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation">☰</button>
   <nav id="navigation" class="links" aria-label="Main navigation">
     <div class="navitem"><button type="button" class="navlink" aria-expanded="false" aria-controls="menu-services">Services <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div id="menu-services" class="dropdown"><a href="/ai-seo-services" aria-current="page">AI SEO</a><a href="/#service-2">Local SEO</a><a href="/#service-3">GMB Optimization</a><a href="/#service-4">Ecommerce SEO</a><a href="/#service-5">Backlinks &amp; Digital PR</a><a href="/#service-6">SEO Content Writing</a></div></div>
+      <div id="menu-services" class="dropdown"><a href="/ai-seo-services" aria-current="page">AI SEO</a><a href="/local-seo-services">Local SEO</a><a href="/gmb-optimization-services">GMB Optimization</a><a href="/ecommerce-seo-services">Ecommerce SEO</a><a href="/backlinks-digital-pr-services">Backlinks &amp; Digital PR</a><a href="/seo-content-writing-services">SEO Content Writing</a></div></div>
     <div class="navitem"><a href="/#work" class="navlink">Projects</a></div>
     <div class="navitem"><button type="button" class="navlink" aria-expanded="false" aria-controls="menu-seo-tools">SEO Tools <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
       <div id="menu-seo-tools" class="dropdown"><a href="#">Keyword Research</a><a href="#">Technical SEO</a><a href="#">On-Page Analysis</a><a href="#">SEO Audit</a></div></div>
@@ -1375,7 +1420,7 @@ footer .flinks a:hover{color:#fff;}
 <footer><div class="wrap row">
   <a href="/" class="logo"><svg class="mk"><use href="#mark"/></svg><div><b>Search Engine</b><b class="x">Xperts</b></div></a>
   <div class="flinks">
-    <a href="/">Home</a><a href="/#services">SEO Services</a><a href="/ai-seo-services">AI SEO Services</a><a href="/#work">Projects</a><a href="/#contact">Contact</a>
+    <a href="/">Home</a><a href="/ai-seo-services">AI SEO</a><a href="/local-seo-services">Local SEO</a><a href="/gmb-optimization-services">GMB Optimization</a><a href="/ecommerce-seo-services">Ecommerce SEO</a><a href="/backlinks-digital-pr-services">Backlinks &amp; Digital PR</a><a href="/seo-content-writing-services">SEO Content Writing</a><a href="/#work">Projects</a><a href="/#contact">Contact</a>
   </div>
   <div class="fl">© 2026 Search Engine Xperts · Arslan Tariq</div>
 </div></footer>
