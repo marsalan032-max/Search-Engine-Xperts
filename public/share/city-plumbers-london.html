@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SEO Audit · City Plumbers London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#2453d6;--blue2:#eaf0fd;--ink:#111827;--muted:#5b6474;--line:#e5e7eb;--good:#15803d;--goodbg:#dcfce7;--poor:#c0262d;--poorbg:#fde4e4;--weak:#b45309;--weakbg:#fef3c7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#e9ebf0;line-height:1.5;font-size:14px}
+a{color:var(--blue)}
+.page{position:relative;max-width:880px;margin:28px auto;background:#fff;box-shadow:0 2px 14px rgba(15,23,42,.08);padding:34px 56px 70px;min-height:1120px;overflow:hidden}
+.ph{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#374151;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:30px}
+.ph span:last-child{color:var(--muted);font-weight:600}
+.pf{position:absolute;left:56px;right:56px;bottom:26px;display:flex;justify-content:space-between;font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.pf b{color:var(--ink)}
+.eyebrow{color:var(--blue);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+h1{font-size:46px;line-height:1.08;margin:12px 0 18px;letter-spacing:-.025em;font-weight:800}
+h2{font-size:30px;line-height:1.2;margin:4px 0 8px;letter-spacing:-.015em;font-weight:800}
+h3{font-size:15px;margin:24px 0 10px;font-weight:700}
+.lead{color:#374151;font-size:14px;max-width:720px;margin:0 0 4px}
+/* cover */
+.cover{display:flex;flex-direction:column}
+.cover .circles{position:absolute;right:-140px;top:-40px;width:560px;height:560px;pointer-events:none}
+.cover .body{margin-top:200px;position:relative}
+.cover .client{font-weight:700;font-size:17px;margin:0 0 8px}
+.infos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.info{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;gap:10px;font-size:12px;color:var(--muted)}
+.info b{display:block;color:var(--ink);font-size:12.5px}
+.info svg{flex:none;margin-top:2px}
+.cover .bottom{position:absolute;left:56px;right:56px;bottom:60px;border-top:2px solid var(--ink);padding-top:14px;display:grid;grid-template-columns:1fr 1fr 1fr;font-size:13px}
+.cover .bottom small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;font-weight:600}
+/* components */
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fff}
+.ring{text-align:center}.ring svg{width:110px;height:110px}.ring b{display:block;margin-top:8px;font-size:13px}.ring span{color:var(--muted);font-size:11.5px}
+.stat b{font-size:24px;display:block;letter-spacing:-.02em;font-weight:800}.stat span{color:var(--muted);font-size:11.5px}
+.red{color:var(--poor)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px;border-bottom:1px solid var(--line);font-weight:600}
+td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.good{background:var(--goodbg);color:var(--good)}.poor{background:var(--poorbg);color:var(--poor)}.weak{background:var(--weakbg);color:var(--weak)}.info-p{background:var(--blue2);color:var(--blue)}.dark{background:#f3f4f6;color:#111827}
+.changes{list-style:none;padding:0;margin:0}
+.changes li{display:flex;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.changes .n{color:var(--blue);font-weight:800;width:16px}
+.changes .ic{width:28px;height:28px;border-radius:7px;background:var(--blue2);display:flex;align-items:center;justify-content:center;flex:none}
+.changes .t{flex:1}.changes .t b{display:block;font-size:13px}.changes .t span{color:var(--muted);font-size:12px}
+.advice{background:var(--blue2);border-radius:10px;padding:16px 18px;margin-top:18px;display:flex;gap:14px;font-size:13px}
+.advice small{color:var(--blue);font-weight:700;letter-spacing:.16em;font-size:10px;display:block;margin-bottom:2px}
+.side{background:#f7f8fb;border-radius:10px;padding:16px;font-size:12.5px}
+.side b.t{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+.find{border:1px solid var(--line);border-left:4px solid var(--poor);border-radius:8px;padding:12px 14px;display:flex;gap:10px}
+.find.imp{border-left-color:#f59e0b}
+.find .fi{width:26px;height:26px;border-radius:6px;background:var(--poorbg);flex:none;display:flex;align-items:center;justify-content:center;color:var(--poor);font-weight:800;font-size:13px}
+.find.imp .fi{background:var(--weakbg);color:var(--weak)}
+.find b{display:block;font-size:12.5px;margin-bottom:2px}.find span{color:var(--muted);font-size:11.5px}
+.bars .row{display:grid;grid-template-columns:150px 1fr 34px;gap:8px;align-items:center;margin:9px 0;font-size:12px}
+.bars .track{position:relative;height:12px}
+.bars .fill{background:var(--blue);height:12px;border-radius:3px}
+.bars .target{position:absolute;top:-6px;bottom:-6px;border-left:2px dashed var(--poor)}
+.note{font-size:11.5px;color:var(--muted)}
+.serp{border:1px solid var(--line);border-radius:10px;padding:14px;font-family:Arial,sans-serif}
+.serp .u{font-size:12px;color:#4d5156}.serp .h{color:#1a0dab;font-size:18px;margin:4px 0}.serp .d{font-size:12.5px;color:#4d5156}
+.kw{border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kw .hd{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px;font-size:13px}
+.kw .rows{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px}
+.kw .rows small{display:block;font-size:9.5px;letter-spacing:.14em;color:var(--muted);font-weight:600}
+.kw .also{font-size:11.5px;color:var(--muted);margin-top:6px}
+.chip{display:inline-block;background:#f3f4f6;border-radius:6px;padding:3px 9px;margin:3px 4px 3px 0;font-size:12px}
+.chk{font-weight:800}.y{color:var(--good)}.x{color:var(--poor)}.w{color:#d97706}
+.contact{display:grid;grid-template-columns:210px 1fr;gap:34px;align-items:center;margin-top:20px}
+.contact img{width:210px;height:210px;border-radius:50%;object-fit:cover;border:5px solid var(--blue2)}
+.btn{display:inline-block;background:var(--blue);color:#fff!important;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:13.5px}
+.btn.ghost{background:#fff;color:var(--blue)!important;border:1px solid var(--blue)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.fab{position:fixed;right:20px;bottom:20px;z-index:9;box-shadow:0 6px 20px rgba(36,83,214,.35)}
+@media(max-width:760px){.page{padding:24px 20px 70px;min-height:0;margin:12px}.pf{left:20px;right:20px}.g4{grid-template-columns:1fr 1fr}.g2,.g3,.infos{grid-template-columns:1fr}h1{font-size:34px}.cover .body{margin-top:120px}.cover .bottom{position:static;margin-top:60px;grid-template-columns:1fr}.contact{grid-template-columns:1fr;text-align:center}.contact img{margin:auto}.btns{justify-content:center}.kw .rows{grid-template-columns:1fr}.cover{min-height:0}}
+</style>
+</head>
+<body>
+<a class="btn fab" href="#contact">Contact Arslan</a>
+
+<!-- COVER -->
+<div class="page cover">
+  <svg class="circles" viewBox="0 0 560 560"><circle cx="280" cy="280" r="270" fill="none" stroke="#eef1f7" stroke-width="1.5"/><circle cx="280" cy="280" r="200" fill="none" stroke="#eef1f7" stroke-width="1.5"/><circle cx="280" cy="280" r="130" fill="none" stroke="#eef1f7" stroke-width="1.5"/><circle cx="250" cy="300" r="56" fill="#e3e9fb"/></svg>
+  <div class="ph" style="border:0"><span>City Plumbers London</span><span></span></div>
+  <div class="body">
+    <div class="eyebrow">SEO Audit · Website · Keywords · Google Business Profile</div>
+    <h1>SEO Audit &amp;<br>Full Breakdown</h1>
+    <p class="client">City Plumbers London</p>
+    <p class="lead">Where your website and Google presence stand today, what's holding your rankings back, and the keywords to win for every service across central London.</p>
+    <div class="infos">
+      <div class="info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><b>Address</b>27 Old Gloucester St<br>London WC1N 3AX</div></div>
+      <div class="info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><div><b>Phone</b>020 3916 6168<br>Open 24/7</div></div>
+      <div class="info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><div><b>Website</b>cityplumberslondon.co.uk<br>contact@cityplumberslondon.co.uk</div></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div><small>Prepared for</small>City Plumbers London</div>
+    <div><small>Prepared by</small>Arslan Tariq · Search Engine Xperts</div>
+    <div><small>Date</small>9 November 2026</div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="page">
+  <div class="ph"><span>SEO Audit · City Plumbers London</span><span>Summary</span></div>
+  <div class="eyebrow">Summary</div>
+  <h2>Customers give you 5 stars — Google isn't showing you to enough of them yet</h2>
+  <p class="lead">Your directory listings show a perfect 5.0 rating, with reviews praising your engineers by name. But the whole website is one short page, so Google has very little to rank. Our scores below are out of 100.</p>
+
+  <div class="grid g4" style="margin-top:22px">
+    <div class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#eceef3" stroke-width="2.6"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#c0262d" stroke-width="2.6" stroke-dasharray="20 100" transform="rotate(-90 18 18)"/><text x="18" y="19.5" text-anchor="middle" font-size="9" font-weight="800" fill="#111827">20</text><text x="18" y="25" text-anchor="middle" font-size="2.8" fill="#5b6474">/ 100</text></svg><b>Website SEO</b><span>On-page &amp; content</span></div>
+    <div class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#eceef3" stroke-width="2.6"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#c0262d" stroke-width="2.6" stroke-dasharray="25 100" transform="rotate(-90 18 18)"/><text x="18" y="19.5" text-anchor="middle" font-size="9" font-weight="800" fill="#111827">25</text><text x="18" y="25" text-anchor="middle" font-size="2.8" fill="#5b6474">/ 100</text></svg><b>Local signals</b><span>Areas, address, map</span></div>
+    <div class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#eceef3" stroke-width="2.6"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#d9480f" stroke-width="2.6" stroke-dasharray="35 100" transform="rotate(-90 18 18)"/><text x="18" y="19.5" text-anchor="middle" font-size="9" font-weight="800" fill="#111827">35</text><text x="18" y="25" text-anchor="middle" font-size="2.8" fill="#5b6474">/ 100</text></svg><b>Trust signals</b><span>Proof on the website</span></div>
+    <div class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#eceef3" stroke-width="2.6"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#15803d" stroke-width="2.6" stroke-dasharray="80 100" transform="rotate(-90 18 18)"/><text x="18" y="19.5" text-anchor="middle" font-size="9" font-weight="800" fill="#111827">80</text><text x="18" y="25" text-anchor="middle" font-size="2.8" fill="#5b6474">/ 100</text></svg><b>Reputation</b><span>Ratings on listings</span></div>
+  </div>
+
+  <div class="grid g4" style="margin-top:18px">
+    <div class="card stat"><b>5.0 ★</b><span>Rating on directory listings</span></div>
+    <div class="card stat"><b class="red">~316</b><span>Words on the whole website</span></div>
+    <div class="card stat"><b class="red">0 / 5</b><span>Services with their own page</span></div>
+    <div class="card stat"><b class="red">0</b><span>Pages for areas you cover</span></div>
+  </div>
+
+  <h3>The 5 changes that matter most</h3>
+  <ul class="changes">
+    <li><span class="n">1</span><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2.4"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 16.5 5.5 21l2-7.5L2 9h7z"/></svg></span><div class="t"><b>Fix the reviews section</b><span>One testimonial shows 3 times, and the name runs into the postcode: "L. CrawfordW8"</span></div><span class="pill dark">Critical</span></li>
+    <li><span class="n">2</span><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2.4"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/></svg></span><div class="t"><b>Protect the Google profile</b><span>27 Old Gloucester St is a widely used virtual-office address. Set the profile up as a service-area business.</span></div><span class="pill dark">Critical</span></li>
+    <li><span class="n">3</span><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2.4"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div class="t"><b>Build a page for each service</b><span>Emergency, boilers, bathrooms, central heating and drains each get only 13–17 words today</span></div><span class="pill dark">Critical</span></li>
+    <li><span class="n">4</span><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2.4"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></span><div class="t"><b>Add pages for the areas you serve</b><span>Holborn, Bloomsbury, City of London, Camden, Islington, Clerkenwell</span></div><span class="pill dark">Important</span></li>
+    <li><span class="n">5</span><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2.4"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div class="t"><b>Show your proof</b><span>Gas Safe number, real reviews, photos of jobs, prices "from £…"</span></div><span class="pill dark">Important</span></li>
+  </ul>
+
+  <div class="advice"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><div><small>OUR ADVICE</small><b>Win the searches closest to WC1 first, then grow outwards.</b> Fix the reviews and Google profile, give every service its own page, then add central London area pages.</div></div>
+  <div class="pf"><span>SEO Audit · City Plumbers London</span><b>02</b></div>
+</div>
+
+<!-- WEBSITE AUDIT -->
+<div class="page">
+  <div class="ph"><span>SEO Audit · City Plumbers London</span><span>01 · Website Audit</span></div>
+  <div class="eyebrow">Section 01</div>
+  <h2>Website Audit</h2>
+  <p class="lead">We reviewed the website as it appears online (9 Nov 2026). It is clean and easy to use, but it is a single page, so Google can't tell what you offer or where.</p>
+
+  <div class="grid g2" style="margin-top:20px">
+    <div class="card">
+      <b style="font-size:13px">Words for each service</b>
+      <p class="note" style="margin:2px 0 8px">Ranking local service pages typically run 600+ words</p>
+      <div class="bars">
+        <div class="row"><span>Emergency Plumbing</span><div class="track"><div class="fill" style="width:6%"></div><div class="target" style="left:96%"></div></div><b>17</b></div>
+        <div class="row"><span>Central Heating</span><div class="track"><div class="fill" style="width:5.6%"></div><div class="target" style="left:96%"></div></div><b>16</b></div>
+        <div class="row"><span>Bathroom Installation</span><div class="track"><div class="fill" style="width:5.3%"></div><div class="target" style="left:96%"></div></div><b>15</b></div>
+        <div class="row"><span>Boiler Install &amp; Repair</span><div class="track"><div class="fill" style="width:4.6%"></div><div class="target" style="left:96%"></div></div><b>13</b></div>
+        <div class="row"><span>Drainage &amp; Unblocking</span><div class="track"><div class="fill" style="width:4.6%"></div><div class="target" style="left:96%"></div></div><b>13</b></div>
+      </div>
+      <p class="note" style="text-align:right;color:var(--poor);margin:0">Target 600+</p>
+    </div>
+    <div class="card">
+      <b style="font-size:13px">Website health check</b>
+      <table style="margin-top:6px">
+        <tr><th>Area</th><th>Result</th></tr>
+        <tr><td>Clean, mobile-friendly layout</td><td><span class="pill good">Good</span></td></tr>
+        <tr><td>Phone number visible</td><td><span class="pill good">Good</span></td></tr>
+        <tr><td>Separate service pages</td><td><span class="pill poor">Poor</span></td></tr>
+        <tr><td>Content depth</td><td><span class="pill poor">Poor</span></td></tr>
+        <tr><td>Local signals (areas)</td><td><span class="pill poor">Poor</span></td></tr>
+        <tr><td>Reviews &amp; trust proof</td><td><span class="pill poor">Poor</span></td></tr>
+        <tr><td>Contact options</td><td><span class="pill weak">Weak</span></td></tr>
+        <tr><td>Titles, schema, speed</td><td><span class="pill info-p">To confirm</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>What we found</h3>
+  <div class="grid g2">
+    <div class="find"><span class="fi">!</span><div><b>Everything is on one page</b><span>No links to other pages. One page has to rank for every service and every area.</span></div></div>
+    <div class="find"><span class="fi">!</span><div><b>Very thin content</b><span>About 316 words in total. One sentence per service — no prices, process or FAQs.</span></div></div>
+    <div class="find"><span class="fi">!</span><div><b>Repeated testimonial</b><span>The same review shows 3 times; your strong directory reviews aren't used.</span></div></div>
+    <div class="find"><span class="fi">!</span><div><b>No areas named</b><span>Only "across London" and "WC1N" — no Holborn, Bloomsbury, Camden or City of London.</span></div></div>
+    <div class="find imp"><span class="fi">!</span><div><b>No Gas Safe mention</b><span>You fit and repair boilers, but no Gas Safe registration is shown anywhere.</span></div></div>
+    <div class="find imp"><span class="fi">!</span><div><b>Email promised, not shown</b><span>"Call, email, or visit" — but no email, no contact form and no map on the page.</span></div></div>
+    <div class="find imp"><span class="fi">!</span><div><b>No opening hours</b><span>Listings say open 24/7; the site only mentions it inside one service line.</span></div></div>
+    <div class="find imp"><span class="fi">!</span><div><b>No photos of real work</b><span>No job, team or van photos, and no before/afters.</span></div></div>
+  </div>
+  <p class="note" style="margin-top:14px"><span class="pill poor">Critical</span> fix first &nbsp; <span class="pill weak">Important</span> fix next. Page titles, meta descriptions, structured data and speed are confirmed once we have site access.</p>
+  <div class="pf"><span>SEO Audit · City Plumbers London</span><b>03</b></div>
+</div>
+
+<!-- GBP AUDIT -->
+<div class="page">
+  <div class="ph"><span>SEO Audit · City Plumbers London</span><span>02 · Google Business Profile Audit</span></div>
+  <div class="eyebrow">Section 02</div>
+  <h2>Google Business Profile Audit</h2>
+  <p class="lead">For a plumber, the Google Map box brings most of the calls. Your reputation is strong — the address setup and the website are what's holding the profile back.</p>
+
+  <div class="grid g2" style="margin-top:20px">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px">City Plumbers London</b><span class="pill weak">Needs work</span></div>
+      <div class="grid g3" style="margin-top:12px">
+        <div class="card stat" style="padding:10px"><b>5.0★</b><span>Listing rating</span></div>
+        <div class="card stat" style="padding:10px"><b>24/7</b><span>Hours shown</span></div>
+        <div class="card stat" style="padding:10px"><b class="red">1</b><span>Page to link to</span></div>
+      </div>
+      <p class="note" style="margin:14px 0 4px;letter-spacing:.14em;font-weight:600">ADDRESS ON LISTINGS</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px"><span>27 Old Gloucester St, WC1N 3AX</span><span class="pill poor">Virtual office · risk</span></div>
+      <p class="note" style="margin:14px 0 4px;letter-spacing:.14em;font-weight:600">WHAT CUSTOMERS SAY</p>
+      <p style="font-size:12.5px;margin:0">Reviews mention named engineers, same-day help with urgent jobs, tidy work and quotes that are kept.</p>
+    </div>
+    <div class="side">
+      <b class="t"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0262d" stroke-width="2.4"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 17h.01"/></svg>Virtual-office address</b>
+      27 Old Gloucester St is a widely used mail-forwarding address shared by many businesses. Google's rules don't allow a virtual office as a shown address, and profiles that use one can be suspended — taking every review with them.<br><br>
+      <b>The safe setup:</b> a service-area business with the address hidden and your real areas listed (Holborn, Bloomsbury, City of London, Camden, Islington…).<br><br>
+      <b class="t"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.4"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 17h.01"/></svg>One page for everything</b>
+      Your profile can only link to the homepage, which says one line about each service. Google compares the two to decide what you're relevant for.
+    </div>
+  </div>
+
+  <h3>Profile checklist</h3>
+  <table>
+    <tr><th>Item</th><th>Status</th><th>What to do</th></tr>
+    <tr><td>Business name, no added keywords</td><td><span class="chk y">✓</span></td><td>Keep "City Plumbers London" exactly</td></tr>
+    <tr><td>Address setting</td><td><span class="chk x">✕</span></td><td>Service-area business, address hidden</td></tr>
+    <tr><td>Hours (24/7)</td><td><span class="chk y">✓</span></td><td>Keep, and add holiday hours</td></tr>
+    <tr><td>Primary &amp; secondary categories</td><td><span class="chk w">?</span></td><td>Plumber, plus Heating contractor and Drainage service where true</td></tr>
+    <tr><td>Services with descriptions</td><td><span class="chk w">?</span></td><td>All 5 services plus leaks, burst pipes, boiler servicing</td></tr>
+    <tr><td>Real photos (jobs, team, van)</td><td><span class="chk x">✕</span></td><td>Upload real work photos every week</td></tr>
+    <tr><td>Weekly posts</td><td><span class="chk w">?</span></td><td>One short post a week</td></tr>
+    <tr><td>Links to a matching service/area page</td><td><span class="chk x">✕</span></td><td>Needs the new pages first</td></tr>
+  </table>
+  <p class="note"><span class="chk y">✓</span> in place &nbsp; <span class="chk x">✕</span> missing or at risk &nbsp; <span class="chk w">?</span> to confirm with profile access</p>
+  <div class="pf"><span>SEO Audit · City Plumbers London</span><b>04</b></div>
+</div>
+
+<!-- COMPETITORS + KEYWORDS -->
+<div class="page">
+  <div class="ph"><span>SEO Audit · City Plumbers London</span><span>03 · Competitors</span></div>
+  <div class="eyebrow">Section 03</div>
+  <h2>Competitor Analysis</h2>
+  <p class="lead">Central London is one of the most competitive plumbing markets in the UK. The businesses that win have more pages, more proof and more reviews.</p>
+
+  <div class="grid g2" style="margin-top:20px">
+    <div class="card">
+      <b style="font-size:13px">City of London · Checkatrade reviews</b>
+      <p class="note" style="margin:2px 0 8px">Reviews per business. Your bar is in red.</p>
+      <div class="bars">
+        <div class="row"><span>Mayfair Plumbers</span><div class="track"><div class="fill" style="width:96%"></div></div><b>709</b></div>
+        <div class="row"><span>Keystone London Group</span><div class="track"><div class="fill" style="width:11%"></div></div><b>79</b></div>
+        <div class="row"><span>City Plumbers London</span><div class="track"><div class="fill" style="width:1%;background:var(--poor)"></div></div><b>—</b></div>
+      </div>
+      <p class="note">"—" means no Checkatrade profile was found for you.</p>
+    </div>
+    <div class="card">
+      <b style="font-size:13px">What the leaders do that you don't yet</b>
+      <ul style="padding-left:18px;font-size:12.5px;margin:8px 0 0">
+        <li>Pimlico Plumbers has a page for each London borough — 30+ in total</li>
+        <li>A separate page for every service: emergency, boilers, drains, leaks</li>
+        <li>Gas Safe numbers, hourly rates or "from" prices on show</li>
+        <li>Profiles on Checkatrade, TrustATrader and Which? Trusted Traders</li>
+      </ul>
+    </div>
+  </div>
+  <div class="advice"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 16.5 5.5 21l2-7.5L2 9h7z"/></svg><div><small>YOUR EDGE</small>Family-run, 15+ years in central London, a perfect 5.0 rating and reviews about same-day help. Big firms can't easily match that personal feel — the gap is pages, proof on the website and review volume.</div></div>
+
+  <h3 style="margin-top:30px">Section 04 · Keywords — every service by area</h3>
+  <p class="note" style="margin-top:-4px">Each service targets a main keyword plus area versions, which are faster to win. Search volumes are added once Search Console and a keyword tool are connected.</p>
+  <div class="grid g2">
+    <div class="kw"><div class="hd"><b>Emergency plumbing</b><span class="pill poor">High competition</span></div><div class="rows"><div><small>MAIN</small>emergency plumber london</div><div><small>HOLBORN</small>emergency plumber holborn</div><div><small>POSTCODE</small>emergency plumber wc1</div></div><div class="also">Also: 24 hour plumber london · burst pipe repair</div></div>
+    <div class="kw"><div class="hd"><b>Boilers</b><span class="pill poor">High competition</span></div><div class="rows"><div><small>MAIN</small>boiler repair london</div><div><small>CAMDEN</small>boiler service camden</div><div><small>CENTRAL</small>boiler installation central london</div></div><div class="also">Also: no hot water plumber · combi boiler replacement</div></div>
+    <div class="kw"><div class="hd"><b>Bathrooms</b><span class="pill weak">Medium competition</span></div><div class="rows"><div><small>MAIN</small>bathroom fitters london</div><div><small>ISLINGTON</small>bathroom installation islington</div><div><small>CAMDEN</small>bathroom refurbishment camden</div></div><div class="also">Also: shower installation london</div></div>
+    <div class="kw"><div class="hd"><b>Central heating</b><span class="pill weak">Medium competition</span></div><div class="rows"><div><small>MAIN</small>heating engineer london</div><div><small>BLOOMSBURY</small>heating repair bloomsbury</div><div><small>SERVICE</small>power flush london</div></div><div class="also">Also: radiator repair london</div></div>
+    <div class="kw"><div class="hd"><b>Drains</b><span class="pill weak">Medium competition</span></div><div class="rows"><div><small>MAIN</small>blocked drain london</div><div><small>HOLBORN</small>drain unblocking holborn</div><div><small>SERVICE</small>cctv drain survey london</div></div><div class="also">Also: blocked toilet plumber</div></div>
+    <div class="kw"><div class="hd"><b>Area searches</b><span class="pill good">Lower competition</span></div><div class="rows"><div><small>WC1</small>plumber holborn</div><div><small>WC1</small>plumber bloomsbury</div><div><small>EC</small>plumber city of london</div></div><div class="also">Also: plumber camden · islington · clerkenwell</div></div>
+  </div>
+  <div class="pf"><span>SEO Audit · City Plumbers London</span><b>05</b></div>
+</div>
+
+<!-- ON-PAGE + TECHNICAL -->
+<div class="page">
+  <div class="ph"><span>SEO Audit · City Plumbers London</span><span>05 · On-Page &amp; Technical SEO</span></div>
+  <div class="eyebrow">Section 05</div>
+  <h2>On-Page SEO</h2>
+  <p class="lead">On-page SEO is everything Google reads on the page itself. Here is how a boiler search looks for you today, and how it could look with a proper boiler page.</p>
+
+  <div class="grid g2" style="margin-top:18px">
+    <div><p class="note"><b style="color:var(--poor)">TODAY</b> · one homepage for every search</p>
+      <div class="serp"><div class="u">cityplumberslondon.co.uk</div><div class="h">City Plumbers London</div><div class="d">Fast, reliable plumbing &amp; heating services across London. Emergency call-outs, fixed pricing, and local expertise you can count on…</div></div></div>
+    <div><p class="note"><b style="color:var(--good)">AFTER</b> · keyword + area + proof</p>
+      <div class="serp"><div class="u">cityplumberslondon.co.uk › boiler-repair</div><div class="h">Boiler Repair &amp; Installation Central London | Gas Safe</div><div class="d">Same-day boiler repairs in Holborn, Camden &amp; the City. Gas Safe engineers, fixed quotes, rated 5.0★ by local customers.</div></div></div>
+  </div>
+  <p class="note">"Today" shows the homepage text Google is likely to use; the exact snippet varies.</p>
+
+  <h3>Recommended titles and main headings</h3>
+  <table>
+    <tr><th>Page</th><th>Page title (blue link in Google)</th><th>Main heading (H1)</th></tr>
+    <tr><td>Homepage</td><td>Plumber in Central London | 24/7 Emergency &amp; Boilers</td><td>Your Local Central London Plumbers, 24/7</td></tr>
+    <tr><td>Emergency <span class="pill info-p">new</span></td><td>24 Hour Emergency Plumber Central London</td><td>Emergency Plumber in Central London</td></tr>
+    <tr><td>Boilers <span class="pill info-p">new</span></td><td>Boiler Repair &amp; Installation Central London | Gas Safe</td><td>Boiler Repair, Servicing &amp; New Boilers</td></tr>
+    <tr><td>Drains <span class="pill info-p">new</span></td><td>Blocked Drains &amp; CCTV Drain Surveys | Central London</td><td>Drain Unblocking &amp; Repairs</td></tr>
+    <tr><td>Holborn <span class="pill info-p">new</span></td><td>Plumber in Holborn WC1 | City Plumbers London</td><td>Your Local Plumber in Holborn</td></tr>
+  </table>
+
+  <h2 style="margin-top:34px;font-size:24px">Technical SEO</h2>
+  <table>
+    <tr><th>What we found</th><th>What it needs</th><th>Priority</th></tr>
+    <tr><td>Single page, no internal links</td><td>Menu with Services, Areas, Reviews, About, Contact</td><td><span class="pill poor">Critical</span></td></tr>
+    <tr><td>No structured data seen</td><td>Plumber (LocalBusiness), Service and FAQ schema</td><td><span class="pill poor">Critical</span></td></tr>
+    <tr><td>No contact form or email</td><td>Quote form, email and click-to-call on every page</td><td><span class="pill weak">Important</span></td></tr>
+    <tr><td>No map of areas served</td><td>Service-area map on Contact and area pages</td><td><span class="pill weak">Important</span></td></tr>
+    <tr><td>No images of real work</td><td>Job photos in WebP with descriptive alt text</td><td><span class="pill weak">Important</span></td></tr>
+    <tr><td>Titles, descriptions, speed, tracking</td><td>Confirm with site access, Google PageSpeed and Search Console</td><td><span class="pill info-p">To confirm</span></td></tr>
+  </table>
+  <div class="pf"><span>SEO Audit · City Plumbers London</span><b>06</b></div>
+</div>
+
+<!-- OFF-PAGE + CONTACT -->
+<div class="page">
+  <div class="ph"><span>SEO Audit · City Plumbers London</span><span>06 · Off-Page SEO</span></div>
+  <div class="eyebrow">Section 06</div>
+  <h2>Off-Page SEO</h2>
+  <p class="lead">Off-page SEO is what the rest of the internet says about you. For a local plumber, accurate listings, steady reviews and a few trusted trade links beat hundreds of random links.</p>
+  <table style="margin-top:16px">
+    <tr><th>Where</th><th>Status</th><th>What to do</th></tr>
+    <tr><td>Leadstal, Poyst</td><td><span class="pill good">Found</span></td><td>Keep name, phone and website identical</td></tr>
+    <tr><td>Checkatrade</td><td><span class="pill poor">Not found</span></td><td>Create and get vetted</td></tr>
+    <tr><td>TrustATrader, Which? Trusted Traders</td><td><span class="pill poor">Not found</span></td><td>Create</td></tr>
+    <tr><td>Gas Safe Register</td><td><span class="pill info-p">Check</span></td><td>Make sure the listing links to your website</td></tr>
+    <tr><td>Bing Places, Apple Business Connect, Yell</td><td><span class="pill info-p">Check</span></td><td>Claim and copy details from Google</td></tr>
+  </table>
+  <div class="advice"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2453d6" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg><div><small>THE GOLDEN RULE</small>Keep one master sheet with the exact name, phone, website and hours, and copy every listing from it. <b>Never buy reviews or offer rewards for them</b> — it breaks Google's rules and can wipe all reviews from a profile.</div></div>
+
+  <div id="contact" style="margin-top:44px;border-top:2px solid var(--ink);padding-top:26px">
+    <div class="eyebrow">Contact us</div>
+    <div class="contact">
+      <img src="/share/arslan-tariq.jpg" alt="Arslan Tariq">
+      <div>
+        <h2 style="margin:0">Arslan Tariq</h2>
+        <p style="color:var(--blue);font-weight:600;margin:2px 0 10px">SEO Consultant · Search Engine Xperts</p>
+        <p class="lead">I help local trades get found on Google and win more calls. Happy to walk you through this audit on a short call — no obligation.</p>
+        <div class="btns">
+          <a class="btn" href="https://www.linkedin.com/in/seo-expert-arslan-tariq/" target="_blank" rel="noopener">Contact me on LinkedIn</a>
+          <a class="btn ghost" href="https://searchenginexperts.com/" target="_blank" rel="noopener">Search Engine Xperts</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note" style="margin-top:30px">Sources: City Plumbers London website and directory listings (Leadstal, Poyst), Checkatrade and Pimlico Plumbers public pages, checked 9 Nov 2026. Scores are our assessment out of 100.</p>
+  <div class="pf"><span>SEO Audit · City Plumbers London</span><b>07</b></div>
+</div>
+
+</body>
+</html>
