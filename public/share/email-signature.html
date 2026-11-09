@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Email signature · Arslan Tariq</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f3f4f6;margin:0;padding:40px 16px;color:#111827}
+.box{max-width:620px;margin:auto;background:#fff;border-radius:12px;padding:28px}
+.help{font-size:14px;color:#4b5563;line-height:1.6}
+.sig-wrap{border:2px dashed #cbd5e1;border-radius:10px;padding:20px;margin:18px 0}
+button{background:#2453d6;color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:bold;cursor:pointer}
+#ok{color:#15803d;font-size:14px;margin-left:10px}
+</style>
+</head>
+<body>
+<div class="box">
+  <h2 style="margin-top:0">Your email signature</h2>
+  <p class="help">Click <b>Copy signature</b>, then paste it into Gmail: Settings → See all settings → General → Signature → Create new → paste → Save changes at the bottom.</p>
+
+  <div class="sig-wrap">
+    <div id="sig">
+      <table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,sans-serif;font-size:14px;color:#111827;line-height:1.45">
+        <tr><td style="padding-bottom:10px">Best regards,</td></tr>
+        <tr><td style="font-size:16px;font-weight:bold;color:#111827">Arslan Tariq</td></tr>
+        <tr><td style="color:#4b5563">SEO Consultant | Founder, Search Engine Xperts</td></tr>
+        <tr><td style="padding-top:8px">
+          <a href="https://searchenginexperts.com" style="color:#2453d6;text-decoration:none">searchenginexperts.com</a>
+        </td></tr>
+        <tr><td style="padding-top:8px">
+          <a href="https://www.linkedin.com/in/seo-expert-arslan-tariq/" style="text-decoration:none"><img src="https://searchenginexperts.com/images/linkedin-icon.png" width="22" height="22" alt="LinkedIn" style="display:block;border:0"></a>
+        </td></tr>
+      </table>
+    </div>
+  </div>
+
+  <button id="copy" type="button">Copy signature</button><span id="ok"></span>
+  <p class="help" style="margin-top:18px">If the button doesn't work, select everything inside the dashed box with your mouse, copy it (Ctrl+C), and paste it into Gmail.</p>
+</div>
+<script>
+document.getElementById('copy').addEventListener('click', async () => {
+  const el = document.getElementById('sig');
+  const ok = document.getElementById('ok');
+  try {
+    const html = new Blob([el.innerHTML], {type: 'text/html'});
+    const text = new Blob([el.innerText], {type: 'text/plain'});
+    await navigator.clipboard.write([new ClipboardItem({'text/html': html, 'text/plain': text})]);
+    ok.textContent = 'Copied! Now paste it into Gmail.';
+  } catch (e) {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    ok.textContent = 'Selected. Press Ctrl+C to copy.';
+  }
+});
+</script>
+</body>
+</html>
