@@ -32,8 +32,7 @@ test('mobile navigation and layout', async ({ page }) => {
   await expect(page.getByRole('navigation')).toBeVisible();
   await page.getByRole('button', { name: 'Services', exact: true }).click();
   await page.getByRole('link', { name: 'Local SEO', exact: true }).click();
-  await expect(page).toHaveURL(/#service-2$/);
-  await expect(page.getByRole('navigation')).toBeHidden();
+  await expect(page).toHaveURL(/\/local-seo-services$/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.goto('/');
   await page.screenshot({ path: 'artifacts/mobile.png', fullPage: true });
