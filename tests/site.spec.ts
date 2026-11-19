@@ -67,3 +67,58 @@ test('Ask AI answers from the article without any external service', async ({ pa
   await page.keyboard.press('Enter');
   await expect(page.locator('.ask-msg.assistant').last()).toContainText("couldn't find that");
 });
+
+const guideSlugs = ['local-seo', 'ecommerce-seo', 'mobile-seo', 'shopify-seo', 'technical-seo', 'advanced-seo-strategies', 'link-building', 'ai-seo'];
+const toolSlugs = ['keyword-research-tool', 'technical-seo-checker', 'on-page-seo-checker', 'seo-audit-tool'];
+
+test('Learn SEO hub and every guide render with schema and menu links', async ({ page }) => {
+  await page.goto('/learn-seo');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Free SEO guides');
+  await expect(page.locator('.index-grid .index-card')).toHaveCount(guideSlugs.length);
+  await page.getByRole('button', { name: 'Learn SEO' }).click();
+  await expect(page.locator('#menu-learn-seo a[href="/learn-seo/shopify-seo"]')).toBeVisible();
+  await expect(page.locator('#menu-learn-seo a[href="#"]')).toHaveCount(0);
+  for (const slug of guideSlugs) {
+    await page.goto(`/learn-seo/${slug}`);
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://searchenginexperts.com/learn-seo/${slug}`);
+    const types = await page.locator('script[type="application/ld+json"]').evaluateAll(s => s.flatMap(el => JSON.parse(el.textContent!)['@graph'].map((n: { '@type': string }) => n['@type'])));
+    expect(types).toEqual(expect.arrayContaining(['Article', 'BreadcrumbList', 'FAQPage']));
+    // every table-of-contents entry points at a real section
+    const missing = await page.locator('.post-side .toc ol a').evaluateAll(links => links.map(a => a.getAttribute('href')!.slice(1)).filter(id => !document.getElementById(id)));
+    expect(missing, slug).toEqual([]);
+  }
+});
+
+test('SEO tool pages render and the page fetcher refuses private addresses', async ({ page, request }) => {
+  await page.goto('/seo-tools');
+  await expect(page.locator('.tool-card')).toHaveCount(toolSlugs.length);
+  for (const slug of toolSlugs) {
+    const res = await page.goto(`/seo-tools/${slug}`);
+    expect(res?.status()).toBe(200);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Free');
+  }
+  for (const url of ['http://127.0.0.1/', 'http://169.254.169.254/latest/meta-data/', 'http://localhost:3100/', 'http://[::1]/', 'ftp://example.com']) {
+    const r = await request.get(`/api/fetch-page?url=${encodeURIComponent(url)}`);
+    expect(r.status(), url).toBeGreaterThanOrEqual(400);
+    expect((await r.json()).error).toBeTruthy();
+  }
+  const robots = await (await request.get('/robots.txt')).text();
+  expect(robots).toContain('Disallow: /api/');
+  const sitemap = await (await request.get('/sitemap.xml')).text();
+  for (const s of guideSlugs) expect(sitemap).toContain(`/learn-seo/${s}`);
+  for (const s of toolSlugs) expect(sitemap).toContain(`/seo-tools/${s}`);
+});
+
+test('keyword tool generates ideas and groups them in the browser', async ({ page }) => {
+  await page.goto('/seo-tools/keyword-research-tool');
+  await page.getByLabel('Seed keyword').fill('roof repair');
+  await page.getByRole('button', { name: 'Find ideas' }).click();
+  await expect(page.getByRole('rowheader', { name: 'how much does roof repair cost' })).toBeVisible();
+  await page.getByRole('button', { name: /^Transactional/ }).click();
+  await expect(page.getByRole('rowheader', { name: 'roof repair price' })).toBeVisible();
+  await page.getByRole('tab', { name: 'Group keywords' }).click();
+  await page.getByLabel(/Keywords/).fill('roof repair cost\nroof repair price\nflat roof repair\nemergency roof repair\n24 hour emergency roof repair\nroof repair near me');
+  await page.getByRole('button', { name: 'Group keywords' }).last().click();
+  await expect(page.locator('.kw-groups .panel').filter({ hasText: 'roof repair price' }).filter({ hasText: 'roof repair cost' })).toHaveCount(1);
+});
