@@ -4,6 +4,7 @@ import './fonts.css';
 import './globals.css';
 import './refinements.css';
 import './footer.css';
+import './theme.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://searchenginexperts.com'),

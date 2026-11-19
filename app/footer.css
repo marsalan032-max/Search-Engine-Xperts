@@ -12,14 +12,14 @@
 .sf-contact svg{flex:none;color:#7e97f0}
 .sf-contact a:hover{color:#fff;text-decoration:underline}
 .sf-social{display:flex;align-items:center;gap:14px;margin-top:22px;flex-wrap:wrap}
-.sf-social a{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#16275c;color:#fff;transition:background .2s}
+.sf-social a{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#262F7A;color:#fff;transition:background .2s}
 .sf-social a:hover{background:var(--blue)}
 .sf-rating{font-size:13px;color:#d7e0ff}
 .sf-col h2{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:6px 0 18px}
 .sf-col ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
 .sf-col a{font-size:14px;line-height:1.4}
 .sf-col a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.sf-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:56px;padding:24px 0;border-top:1px solid #1f2f66;font-size:13px}
+.sf-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:56px;padding:24px 0;border-top:1px solid #2C3684;font-size:13px}
 .sf-bottom nav{display:flex;flex-wrap:wrap;gap:22px}
 .sf-bottom a:hover{color:#fff;text-decoration:underline}
 @media(max-width:1020px){.sf-grid{grid-template-columns:repeat(3,1fr)}.sf-brand{grid-column:1/-1}.sf-blurb{max-width:560px}}

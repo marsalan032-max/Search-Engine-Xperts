@@ -792,20 +792,79 @@ footer .flinks a:hover{color:#fff;}
 .sf-contact svg{flex:none;color:#7e97f0}
 .sf-contact a:hover{color:#fff;text-decoration:underline}
 .sf-social{display:flex;align-items:center;gap:14px;margin-top:22px;flex-wrap:wrap}
-.sf-social a{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#16275c;color:#fff;transition:background .2s}
+.sf-social a{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#262F7A;color:#fff;transition:background .2s}
 .sf-social a:hover{background:var(--blue)}
 .sf-rating{font-size:13px;color:#d7e0ff}
 .sf-col h2{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:6px 0 18px}
 .sf-col ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
 .sf-col a{font-size:14px;line-height:1.4}
 .sf-col a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.sf-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:56px;padding:24px 0;border-top:1px solid #1f2f66;font-size:13px}
+.sf-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:56px;padding:24px 0;border-top:1px solid #2C3684;font-size:13px}
 .sf-bottom nav{display:flex;flex-wrap:wrap;gap:22px}
 .sf-bottom a:hover{color:#fff;text-decoration:underline}
 @media(max-width:1020px){.sf-grid{grid-template-columns:repeat(3,1fr)}.sf-brand{grid-column:1/-1}.sf-blurb{max-width:560px}}
 @media(max-width:640px){.site-footer{padding-top:52px}.sf-grid{grid-template-columns:1fr 1fr;gap:34px 20px}.sf-bottom{flex-direction:column;align-items:flex-start;margin-top:40px}}
 @media(prefers-reduced-motion:reduce){.sf-social a{transition:none}}
 /* SITE-FOOTER:END */
+/* SITE-THEME:START (from app/theme.css) */
+/* Palette A — "blue + orange energy". Loaded last so it overrides the base styles.
+   60% warm white/cream, 30% indigo/blue for structure and trust, 10% accent:
+   - orange is reserved for actions (buttons) so calls to action stand out
+   - the blue→violet gradient marks "AI" and highlight words
+   - green stays for results. Also injected into the static service pages by scripts/service_pages/build.py. */
+:root{
+  --blue:#3B5BFD; --blue-d:#2B45D6; --blue-l:#5B77FF; --violet:#7C3AED;
+  --orange:#FF7A1A;            /* decorative accents: stars, icons, glows */
+  --cta:#CF4A0C; --cta-hover:#B53F09; /* button fill: white text passes 4.5:1 */
+  --navy:#1A2366; --navy2:#232E80; --navy-deep:#141A52;
+  --ink:#22264A; --slate:#5D6280;
+  --tint:#FFF7EF; --cream:#FFFBF6; --line:#EFE6DD;
+  --ai-grad:linear-gradient(110deg,#3B5BFD 0%,#7C3AED 100%);
+  --dots:radial-gradient(circle,#F0DCCB 1.3px,transparent 1.6px);
+}
+
+/* actions */
+html .btn-primary,html .nav-cta{background:var(--cta)!important;color:#fff!important;box-shadow:0 14px 30px -14px rgba(255,122,26,.7)!important;border:0}
+html .btn-primary:hover,html .nav-cta:hover{background:var(--cta-hover)!important;box-shadow:0 20px 40px -14px rgba(255,122,26,.8)!important}
+html .btn-primary:focus-visible,html .nav-cta:focus-visible{outline:3px solid #FFB27A;outline-offset:2px}
+
+/* highlight words */
+html h1 .hl,html .h-hero h1 span,html .post-header h1 em{background:var(--ai-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* home hero: warm cream with a soft violet and orange glow */
+html .h-hero{background:radial-gradient(ellipse at 88% 28%,rgba(124,58,237,.12),transparent 55%),radial-gradient(ellipse at 6% 96%,rgba(255,122,26,.10),transparent 50%),linear-gradient(#FFF8F1,#fff)}
+html .h-pill{border-color:#F3DCC8}
+html .h-proof b svg{color:var(--orange)}
+html .h-board{border-color:#EDE3FB;box-shadow:0 30px 70px -32px rgba(124,58,237,.35)}
+html .h-feature{background:linear-gradient(135deg,#F4F0FF,#FFF8F1)}
+html .h-bar span{background:var(--ai-grad)}
+
+/* section backgrounds */
+html .h-tint{background:var(--tint)}
+html .h-results{background:var(--cream)}
+html .h-rcard a{background:var(--blue)}
+html .h-rcard-name{background:var(--ai-grad)}
+html .h-svc-ic,html .tool-card-icon{background:#FFF0E3;color:var(--cta)}
+html .h-svc:hover,html .h-tool:hover,html .tool-card:hover,html .index-card:hover{border-color:#F6CBA8}
+html .h-tags a{background:#F1EDFF;color:#5B34C9}
+html .h-tags a:hover{background:#E6DEFF}
+
+/* dark sections: deep indigo with a violet glow */
+html .h-process,html .h-contact,html .site-footer{background:radial-gradient(ellipse at 85% 0%,rgba(124,58,237,.35),transparent 55%),radial-gradient(ellipse at 0% 100%,rgba(255,122,26,.12),transparent 45%),var(--navy-deep)!important}
+html .h-steps li{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+html .h-steps li span{background:var(--ai-grad)}
+html .h-contact li{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14)}
+html .h-contact .btn-light{background:#fff;color:var(--cta)}
+html .sf-social a{background:rgba(255,255,255,.08)}
+html .sf-social a:hover{background:var(--cta)}
+html .sf-bottom{border-color:rgba(255,255,255,.12)}
+
+/* blog, guides and tools */
+html .post-cta,html .x-cta,html .cta{background:radial-gradient(ellipse at 90% 0%,rgba(124,58,237,.4),transparent 55%),var(--navy-deep)}
+html .post-cta .btn,html .x-cta .btn,html .cta .btn{background:var(--cta);color:#fff}
+html .takeaways{background:var(--tint);border-color:#F3DCC8}
+html .ring-good .ring-value{stroke:#15A06A}
+/* SITE-THEME:END */
 </style>
 </head>
 <body>

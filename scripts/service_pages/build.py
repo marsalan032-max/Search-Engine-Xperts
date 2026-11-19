@@ -194,6 +194,7 @@ def services_dropdown(current):
 
 FOOTER_DATA = ROOT / 'components' / 'footer.json'
 FOOTER_CSS = ROOT / 'app' / 'footer.css'
+THEME_CSS = ROOT / 'app' / 'theme.css'
 ICONS = {
     'phone': 'M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02z',
     'mail': 'M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1zm8 7.2L4.8 7v10h14.4V7z',
@@ -229,14 +230,18 @@ def with_footer(src):
     """Swap in the shared footer markup and refresh the shared footer CSS inside the page's <style>."""
     src = FOOTER_RE.sub(lambda _: site_footer(), src, count=1)
     css = f'/* SITE-FOOTER:START (from app/footer.css) */\n{FOOTER_CSS.read_text().strip()}\n/* SITE-FOOTER:END */'
-    if 'SITE-FOOTER:START' in src:
-        return FOOTER_CSS_RE.sub(lambda _: css, src, count=1)
-    return src.replace('</style>', css + '\n</style>', 1)
+    src = FOOTER_CSS_RE.sub(lambda _: css, src, count=1) if 'SITE-FOOTER:START' in src else src.replace('</style>', css + '\n</style>', 1)
+    # The colour theme goes last so it overrides the page's own palette, exactly as on the React pages.
+    theme = f'/* SITE-THEME:START (from app/theme.css) */\n{THEME_CSS.read_text().strip()}\n/* SITE-THEME:END */'
+    if 'SITE-THEME:START' in src:
+        return THEME_CSS_RE.sub(lambda _: theme, src, count=1)
+    return src.replace('</style>', theme + '\n</style>', 1)
 
 
 DROPDOWN_RE = re.compile(r'<div id="menu-services" class="dropdown">.*?</div>', re.S)
 FOOTER_RE = re.compile(r'<footer[^>]*>.*?</footer>', re.S)
 FOOTER_CSS_RE = re.compile(r'/\* SITE-FOOTER:START.*?SITE-FOOTER:END \*/', re.S)
+THEME_CSS_RE = re.compile(r'/\* SITE-THEME:START.*?SITE-THEME:END \*/', re.S)
 
 
 def reorder_cases(cases, order, subject):
