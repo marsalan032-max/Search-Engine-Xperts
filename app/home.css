@@ -49,20 +49,31 @@
 .h-board-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:600;color:var(--blue)}
 .h-board-link:hover{text-decoration:underline}
 
-/* ---------- clients strip ---------- */
-.h-clients{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
-.h-clients-row{display:flex;align-items:center;gap:32px;padding-top:22px;padding-bottom:22px}
-.h-clients p{flex:none;font-size:12px;font-weight:600;color:var(--slate);text-transform:uppercase;letter-spacing:.12em}
-.h-clients ul{list-style:none;flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.h-clients li{display:flex;flex-direction:column}
-.h-clients li b{font-size:16px;color:var(--navy);letter-spacing:-.01em}
-.h-clients li span{font-size:11.5px;color:var(--slate)}
+/* ---------- results cards (right after the hero) ---------- */
+.h-results{padding:72px 0 88px;background:#fff;border-top:1px solid var(--line)}
+.h-results-head{text-align:center;max-width:860px;margin:0 auto}
+.h-results-head h2{font-size:clamp(26px,2.7vw,36px);line-height:1.2;letter-spacing:-.03em;color:var(--navy);font-weight:600}
+.h-results-head h2 span{background:linear-gradient(90deg,#f59e0b,#ec4899 35%,#8b5cf6 65%,#345df7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.h-results-head p{font-size:17px;color:#15803d;font-weight:500;margin-top:10px}
+.h-rcards{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:40px}
+.h-rcard a{display:flex;flex-direction:column;height:100%;border-radius:16px;overflow:hidden;background:var(--blue);box-shadow:0 22px 44px -30px rgba(11,20,55,.55);transition:transform .2s,box-shadow .2s}
+.h-rcard a:hover{transform:translateY(-4px);box-shadow:0 30px 56px -30px rgba(11,20,55,.6)}
+.h-rcard-img{position:relative;display:block;aspect-ratio:4/3.3;overflow:hidden;background:var(--navy)}
+.h-rcard-img img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .4s}
+.h-rcard a:hover .h-rcard-img img{transform:scale(1.04)}
+.h-rcard-img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,20,55,.15) 0%,rgba(11,20,55,.55) 45%,rgba(11,20,55,.92) 100%)}
+.h-rcard-stat{position:absolute;left:0;right:0;bottom:22px;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 14px;color:#fff}
+.h-rcard-stat b{font-size:clamp(34px,3.2vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.05;text-shadow:0 4px 18px rgba(0,0,0,.35)}
+.h-rcard-stat span{font-size:14px;font-weight:600;margin-top:6px;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.h-rcard-name{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:20px 16px 22px;text-align:center;background:linear-gradient(135deg,#4a6cff,#2a48c8);color:#fff}
+.h-rcard-name>span{font-size:17px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+.h-rcard-name small{font-size:12px;color:#d7e0ff}
 
 /* ---------- shared section ---------- */
 .h-section{padding:96px 0}
 .h-tint{background:var(--tint)}
 .h-head{max-width:720px}
-.h-head h2,.h-why h2,.h-founder h2,.h-contact h2{font-size:clamp(28px,3vw,40px);line-height:1.15;letter-spacing:-.035em;color:var(--navy);font-weight:600;margin-top:12px}
+.h-head h2,.h-why h2,.h-contact h2{font-size:clamp(28px,3vw,40px);line-height:1.15;letter-spacing:-.035em;color:var(--navy);font-weight:600;margin-top:12px}
 .h-head p:not(.eyebrow){font-size:16px;line-height:1.75;color:var(--slate);margin-top:14px}
 .h-center{margin:0 auto;text-align:center}
 .h-split{max-width:none;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end}
@@ -151,16 +162,6 @@
 .h-quote figcaption small{font-size:12px;color:var(--slate)}
 .h-av{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--tint);color:var(--blue);font-weight:700;font-size:14px}
 
-/* ---------- founder ---------- */
-.h-founder{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:center;max-width:1040px}
-.h-founder-photo{position:relative}
-.h-founder-photo img{width:100%;height:auto;border-radius:20px;background:var(--tint)}
-.h-founder-badge{position:absolute;right:-14px;bottom:22px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--navy);box-shadow:0 14px 30px -18px rgba(11,20,55,.5)}
-.h-creds{display:flex;gap:40px;margin-top:26px}
-.h-creds div{display:flex;flex-direction:column-reverse}
-.h-creds dd{font-size:30px;font-weight:700;color:var(--blue);letter-spacing:-.03em}
-.h-creds dt{font-size:12.5px;color:var(--slate)}
-
 /* ---------- tools ---------- */
 .h-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
 .h-tool{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .2s,box-shadow .2s}
@@ -198,8 +199,7 @@
   .h-why-photo{max-width:640px}
   .h-split{grid-template-columns:1fr;gap:16px}
   .h-ratings{justify-content:flex-start}
-  .h-clients-row{flex-direction:column;align-items:flex-start;gap:14px}
-  .h-clients ul{width:100%}
+  .h-rcards{grid-template-columns:1fr 1fr}
   .h-contact{grid-template-columns:1fr;padding:40px}
 }
 @media(max-width:720px){
@@ -216,7 +216,10 @@
   .h-bars{height:130px;grid-template-columns:56px 56px 1fr}
   .h-feature-side b{font-size:18px}
   .h-minis b{font-size:16px}
-  .h-clients ul{grid-template-columns:1fr 1fr}
+  .h-results{padding:56px 0 64px}
+  .h-results-head p{font-size:15px}
+  .h-rcards{gap:16px;margin-top:28px}
+  .h-rcard-img{aspect-ratio:16/10}
   .h-section{padding:64px 0}
   .h-services,.h-quotes,.h-tools,.h-reasons{grid-template-columns:1fr}
   .h-svc{padding:22px}
@@ -227,14 +230,11 @@
   .h-project-body{padding:20px}
   .h-shot{padding:14px 14px 0}
   .h-steps{grid-template-columns:1fr}
-  .h-founder{grid-template-columns:1fr;gap:32px}
-  .h-founder-photo{max-width:280px}
-  .h-creds{gap:24px}
-  .h-creds dd{font-size:24px}
   .h-why-badge{left:12px;bottom:12px}
   .h-contact{padding:30px 22px;border-radius:18px}
 }
 @media(max-width:380px){
   .h-proof{grid-template-columns:1fr 1fr;row-gap:12px}
 }
-@media(prefers-reduced-motion:reduce){.h-svc,.h-tool{transition:none}}
+@media(max-width:520px){.h-rcards{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.h-svc,.h-tool,.h-rcard a,.h-rcard-img img{transition:none}}
