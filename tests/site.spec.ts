@@ -45,7 +45,7 @@ test('mobile navigation and layout', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/');
   await page.getByRole('button', { name: 'Open navigation' }).click();
-  await expect(page.getByRole('navigation')).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Main navigation' })).toBeVisible();
   await page.getByRole('button', { name: 'Services', exact: true }).click();
   await page.locator('header').getByRole('link', { name: 'Local SEO', exact: true }).click();
   await expect(page).toHaveURL(/\/local-seo-services$/);
