@@ -2,11 +2,12 @@ import { Header, AuditForm, FAQ } from '../interactive';
 import { BrandDefinitions, Footer } from '../site';
 import { services } from '../services';
 import { projects } from './projects';
+import { badges, reviewPlatforms, reviewerInitials } from './recognition';
 import { tools } from '../tools/tool-list';
 import questions from '../faq-data.json';
 
 // Home page (/). Sections, top to bottom:
-// hero → results cards → services (with sub-services) → portfolio → why us → process
+// hero (with review strip) → recognized by → results cards → services (with sub-services) → portfolio → why us → process
 // → reviews → free tools & guides → FAQ → contact.
 // Anchor ids (#results, #services, #work, #process, #reviews, #faq, #contact) are used by the header menu
 // and by links on other pages; keep them stable.
@@ -17,7 +18,6 @@ const phone = '+923478724400';
 
 const Check = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6" /></svg>;
 const Arrow = () => <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
-const Star = () => <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z" /></svg>;
 
 function Schema() {
   const schema = {
@@ -57,10 +57,10 @@ function Hero() {
         <h1 id="hero-title">Get found on Google &amp; AI search. <span>Get more customers.</span></h1>
         <p className="h-lead">We help local businesses, online stores and growing brands rank higher, win the map pack and get cited in AI answers — with results you can verify.</p>
         <AuditForm />
-        <ul className="h-proof" aria-label="Ratings and results">
-          <li><b><Star /> 4.9</b><span>Trustpilot</span></li>
-          <li><b><Star /> 5.0</b><span>Clutch</span></li>
+        <ul className="h-proof" aria-label="Results">
           <li><b>840+</b><span>top-3 keywords</span></li>
+          <li><b>16K+</b><span>monthly clicks</span></li>
+          <li><b>+1,994%</b><span>best traffic lift</span></li>
           <li><b>7+ yrs</b><span>in SEO</span></li>
         </ul>
       </div>
@@ -90,6 +90,39 @@ function Hero() {
         </ul>
         <a href="#work" className="h-board-link">See all client results <Arrow /></a>
       </div>
+    </div>
+    <div className="wrap">
+      <div className="h-revstrip" aria-label="Client review ratings">
+        {reviewPlatforms.map(p => <a key={p.name} className="h-rev" href={p.href ?? '#reviews'} {...(p.href ? { target: '_blank', rel: 'noopener' } : {})}>
+          <span className="h-rev-name">{p.name}</span>
+          <span className="h-rev-num">
+            <b>{p.count ?? p.rating}</b>
+            <span className="h-rev-meta"><span className="h-rev-stars" aria-label={`${p.rating} out of 5 stars`}>★★★★★</span><small>{p.count ? `Reviews · ${p.rating}` : 'Rating'}</small></span>
+          </span>
+        </a>)}
+        <a className="h-rev h-rev-people" href="#reviews">
+          <span className="h-avs" aria-hidden="true">{reviewerInitials.map(i => <i key={i}>{i}</i>)}</span>
+          <span className="h-rev-link">Read our client reviews <span aria-hidden="true">↗</span></span>
+          <span className="h-rev-stars h-rev-stars-lg" aria-label="5 out of 5 stars">★★★★★</span>
+        </a>
+      </div>
+    </div>
+  </section>;
+}
+
+function Recognition() {
+  if (!badges.length) return null;
+  return <section className="h-recog" aria-labelledby="recog-title">
+    <div className="wrap">
+      <h2 id="recog-title">Recognized by</h2>
+      <ul>
+        {badges.map(b => {
+          const inner = b.image
+            ? <img src={b.image} alt={`${b.name}${b.detail ? ` — ${b.detail}` : ''}`} width={b.width ?? 160} height={b.height ?? 120} loading="lazy" decoding="async" />
+            : <span className="h-recog-tile"><b>{b.name}</b>{b.detail && <small>{b.detail}</small>}</span>;
+          return <li key={b.name}>{b.href ? <a href={b.href} target="_blank" rel="noopener" aria-label={`${b.name}: view profile`}>{inner}</a> : inner}</li>;
+        })}
+      </ul>
     </div>
   </section>;
 }
@@ -334,7 +367,7 @@ export default function HomePage() {
     <Schema />
     <Header />
     <main id="main" className="home">
-      <Hero /><Results /><Services /><Portfolio /><WhyUs /><Process /><Reviews /><Resources /><Questions /><Contact />
+      <Hero /><Recognition /><Results /><Services /><Portfolio /><WhyUs /><Process /><Reviews /><Resources /><Questions /><Contact />
     </main>
     <Footer />
   </>;
