@@ -3,6 +3,7 @@ import { preload } from 'react-dom';
 import './fonts.css';
 import './globals.css';
 import './refinements.css';
+import './footer.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://searchenginexperts.com'),

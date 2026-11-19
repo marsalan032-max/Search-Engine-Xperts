@@ -15,7 +15,7 @@ export const author = {
   photo: '/images/arslan-tariq.png',
   bio: 'Arslan Tariq has 7+ years of SEO experience, helping local businesses grow their online visibility and generate more qualified leads. He also works with eCommerce brands to drive organic traffic, improve search rankings, and increase sales through data-driven SEO strategies.',
   // Add real profile URLs (LinkedIn, YouTube, X…) here; they render as icons and feed the schema `sameAs`.
-  profiles: [] as { label: string; href: string }[],
+  profiles: [{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/seo-expert-arslan-tariq/' }] as { label: string; href: string }[],
 };
 
 export const formatDate = (iso: string) =>

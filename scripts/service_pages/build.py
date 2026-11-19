@@ -14,6 +14,7 @@ import html
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -191,13 +192,51 @@ def services_dropdown(current):
     return f'<div id="menu-services" class="dropdown">{links}</div>'
 
 
-def footer_links():
-    links = '<a href="/">Home</a>' + ''.join(f'<a href="{href}">{label}</a>' for label, href, _ in MENU)
-    return f'<div class="flinks">\n    {links}<a href="/#work">Projects</a><a href="/#contact">Contact</a>\n  </div>'
+FOOTER_DATA = ROOT / 'components' / 'footer.json'
+FOOTER_CSS = ROOT / 'app' / 'footer.css'
+ICONS = {
+    'phone': 'M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02z',
+    'mail': 'M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1zm8 7.2L4.8 7v10h14.4V7z',
+    'linkedin': 'M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45z',
+}
+
+
+def site_footer():
+    """The same footer the React pages render (components/site.tsx), built from components/footer.json."""
+    f = json.loads(FOOTER_DATA.read_text())
+    e = html.escape
+    icon = lambda name, size=16: f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{ICONS[name]}"/></svg>'
+    social = ''.join(f'<a href="{e(s["href"])}" target="_blank" rel="noopener noreferrer me" aria-label="{e(s["title"])}" title="{e(s["title"])}">{icon("linkedin", 18)}</a>' for s in f['social'])
+    cols = ''.join(
+        f'<nav class="sf-col" aria-label="{e(c["title"])}"><h2>{e(c["title"])}</h2><ul>'
+        + ''.join(f'<li><a href="{e(h)}">{e(l)}</a></li>' for l, h in c['links']) + '</ul></nav>'
+        for c in f['columns'])
+    return f'''<footer class="site-footer"><div class="wrap">
+  <div class="sf-grid">
+    <div class="sf-brand">
+      <a href="/" class="logo"><svg class="mk" aria-hidden="true"><use href="#mark"/></svg><div><b>Search Engine</b><b class="x">Xperts</b></div></a>
+      <p class="sf-blurb">{e(f["blurb"])}</p>
+      <ul class="sf-contact"><li>{icon("phone")}<a href="{f["phone"]["href"]}">{e(f["phone"]["label"])}</a></li><li>{icon("mail")}<a href="{f["email"]["href"]}">{e(f["email"]["label"])}</a></li></ul>
+      <div class="sf-social">{social}<span class="sf-rating">{e(f["ratings"])}</span></div>
+    </div>
+    {cols}
+  </div>
+  <div class="sf-bottom"><p>© {date.today().year} Search Engine Xperts. All rights reserved.</p><nav aria-label="Footer"><a href="/sitemap.xml">Sitemap</a><a href="/#contact">Contact</a><a href="#top">Back to top ↑</a></nav></div>
+</div></footer>'''
+
+
+def with_footer(src):
+    """Swap in the shared footer markup and refresh the shared footer CSS inside the page's <style>."""
+    src = FOOTER_RE.sub(lambda _: site_footer(), src, count=1)
+    css = f'/* SITE-FOOTER:START (from app/footer.css) */\n{FOOTER_CSS.read_text().strip()}\n/* SITE-FOOTER:END */'
+    if 'SITE-FOOTER:START' in src:
+        return FOOTER_CSS_RE.sub(lambda _: css, src, count=1)
+    return src.replace('</style>', css + '\n</style>', 1)
 
 
 DROPDOWN_RE = re.compile(r'<div id="menu-services" class="dropdown">.*?</div>', re.S)
-FLINKS_RE = re.compile(r'<div class="flinks">.*?</div>', re.S)
+FOOTER_RE = re.compile(r'<footer[^>]*>.*?</footer>', re.S)
+FOOTER_CSS_RE = re.compile(r'/\* SITE-FOOTER:START.*?SITE-FOOTER:END \*/', re.S)
 
 
 def reorder_cases(cases, order, subject):
@@ -248,7 +287,7 @@ def build_page(page, parts):
     title, desc = page['title'], page['description']
     style = parts['style'].replace('</style>', EXTRA_CSS + '</style>')
     header = DROPDOWN_RE.sub(services_dropdown('/' + page['slug']), parts['header'])
-    footer = FLINKS_RE.sub(footer_links(), parts['footer'])
+    footer = parts['footer']
     cases = reorder_cases(parts['cases'], page['cases_order'], page['case_subject'])
     script = parts['script'].replace("'Free AI SEO audit request'", repr(page['audit']['mail_subject'])) \
         .replace('I would like a free AI SEO audit for', f"I would like a {page['audit']['mail_label']} for")
@@ -327,7 +366,7 @@ def main():
     src = MASTER.read_text()
     # Keep the master page's own menu and footer in step with the generated pages.
     src = DROPDOWN_RE.sub(services_dropdown('/ai-seo-services'), src, count=1)
-    src = FLINKS_RE.sub(footer_links(), src, count=1)
+    src = with_footer(src)
     MASTER.write_text(src)
 
     parts = {
@@ -335,7 +374,7 @@ def main():
         'defs': extract(src, '<svg width="0" height="0"', '</svg>'),
         'header': extract(src, '<header>', '</header>'),
         'cases': extract(src, '<section class="cases"', '</div></section>'),
-        'footer': extract(src, '<footer>', '</footer>'),
+        'footer': FOOTER_RE.search(src).group(0),
         'script': extract(src, '<script>\n', '</script>'),
     }
     # The cases section ends with nested "</div></section>"; take everything up to the next section comment.

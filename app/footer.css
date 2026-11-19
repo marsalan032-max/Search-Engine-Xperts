@@ -1,0 +1,27 @@
+/* Site footer. Shared by the React pages and, via scripts/service_pages/build.py, the static service pages. */
+.site-footer{background:var(--navy);color:#aab6dd;padding:72px 0 0;font-family:'Poppins',sans-serif}
+.site-footer a{color:inherit;text-decoration:none}
+.sf-grid{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:40px}
+.sf-brand .logo{display:inline-flex;align-items:center;gap:11px}
+.sf-brand .logo .mk{width:42px;height:42px}
+.sf-brand .logo b{display:block;color:#fff;font-size:16px;font-weight:700;line-height:1.12}
+.sf-brand .logo b.x{color:#9fb4ff}
+.sf-blurb{font-size:14px;line-height:1.75;margin:18px 0 22px;max-width:330px}
+.sf-contact{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sf-contact li{display:flex;align-items:center;gap:10px;font-size:14px}
+.sf-contact svg{flex:none;color:#7e97f0}
+.sf-contact a:hover{color:#fff;text-decoration:underline}
+.sf-social{display:flex;align-items:center;gap:14px;margin-top:22px;flex-wrap:wrap}
+.sf-social a{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#16275c;color:#fff;transition:background .2s}
+.sf-social a:hover{background:var(--blue)}
+.sf-rating{font-size:13px;color:#d7e0ff}
+.sf-col h2{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:6px 0 18px}
+.sf-col ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.sf-col a{font-size:14px;line-height:1.4}
+.sf-col a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.sf-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:56px;padding:24px 0;border-top:1px solid #1f2f66;font-size:13px}
+.sf-bottom nav{display:flex;flex-wrap:wrap;gap:22px}
+.sf-bottom a:hover{color:#fff;text-decoration:underline}
+@media(max-width:1020px){.sf-grid{grid-template-columns:repeat(3,1fr)}.sf-brand{grid-column:1/-1}.sf-blurb{max-width:560px}}
+@media(max-width:640px){.site-footer{padding-top:52px}.sf-grid{grid-template-columns:1fr 1fr;gap:34px 20px}.sf-bottom{flex-direction:column;align-items:flex-start;margin-top:40px}}
+@media(prefers-reduced-motion:reduce){.sf-social a{transition:none}}
