@@ -3,6 +3,7 @@ import { BrandDefinitions, Footer } from '../site';
 import { services } from '../services';
 import { projects } from './projects';
 import { badges, reviewPlatforms, reviewerInitials } from './recognition';
+import { Doodle, Note, SketchDefs, Underline } from './hand';
 import { tools } from '../tools/tool-list';
 import questions from '../faq-data.json';
 
@@ -54,8 +55,8 @@ function Hero() {
     <div className="wrap h-hero-grid">
       <div className="h-hero-copy">
         <p className="h-pill"><span className="h-live" aria-hidden="true" />Search Engine Xperts · SEO &amp; AI Search Agency</p>
-        <h1 id="hero-title">Get found on Google &amp; AI search. <span>Get more customers.</span></h1>
-        <p className="h-lead">We help local businesses, online stores and growing brands rank higher, win the map pack and get cited in AI answers — with results you can verify.</p>
+        <h1 id="hero-title">We help businesses get <Underline>found</Underline> on Google and in AI search.</h1>
+        <p className="h-lead">We fix what’s holding your website back, write pages your customers actually want to read, and send you a short report every month so you can see exactly what changed.</p>
         <AuditForm />
         <ul className="h-proof" aria-label="Results">
           <li><b>840+</b><span>top-3 keywords</span></li>
@@ -66,6 +67,7 @@ function Hero() {
       </div>
 
       <div className="h-board" aria-label="Recent client results">
+        <Note arrow="down-left" className="h-note-hero">page 6 → page 1<br />for Roller Skate USA</Note>
         <div className="h-board-bar"><span className="h-dots" aria-hidden="true"><i /><i /><i /></span><span>Client results · Google Search Console</span></div>
         <div className="h-feature">
           <div className="h-feature-head">
@@ -140,8 +142,8 @@ function Results() {
   return <section className="h-results" id="results" aria-labelledby="results-title">
     <div className="wrap">
       <div className="h-results-head">
-        <h2 id="results-title">The SEO Agency That Puts Businesses on Top of <span>Google &amp; AI Search</span></h2>
-        <p>Helping businesses rank higher, get cited and grow from organic search</p>
+        <h2 id="results-title">A few of the businesses <Underline>we’ve helped</Underline></h2>
+        <p>Real numbers from real client projects. Tap a card to see what we did.</p>
       </div>
       <ul className="h-rcards">
         {projects.map(p => {
@@ -166,9 +168,9 @@ function Services() {
   return <section className="h-section h-tint" id="services" aria-labelledby="services-title">
     <div className="wrap">
       <div className="h-head h-center">
-        <p className="eyebrow">Our SEO services</p>
-        <h2 id="services-title">Every service you need to rank, get cited and grow</h2>
-        <p>Six core services, each covering the specialist work behind it — from technical fixes and content to links, local listings and AI search.</p>
+        <p className="eyebrow">what we do</p>
+        <h2 id="services-title">How we can help</h2>
+        <p>Most clients start with one of these. Not sure which one you need? Send us your website and we’ll tell you honestly.</p>
       </div>
       <div className="h-services">
         {services.map(s => <article className="h-svc" id={s.id} key={s.id}>
@@ -178,7 +180,7 @@ function Services() {
           <a className="h-more" href={s.href ?? '#contact'}>Explore {s.name} services <Arrow /></a>
         </article>)}
       </div>
-      <p className="h-services-note">Not sure where to start? <a href="/seo-tools/seo-audit-tool">Run our free SEO audit tool</a> or <a href="#contact">book a free consultation</a>.</p>
+      <p className="h-services-note">Want to check your site yourself first? <a href="/seo-tools/seo-audit-tool">Try our free SEO audit tool</a>, or <a href="#contact">just ask us</a>.</p>
     </div>
   </section>;
 }
@@ -189,10 +191,10 @@ function Portfolio() {
     <div className="wrap">
       <div className="h-head h-split">
         <div>
-          <p className="eyebrow">Portfolio</p>
-          <h2 id="work-title">Real projects. Real rankings. Real growth.</h2>
+          <p className="eyebrow">our work</p>
+          <h2 id="work-title">Recent projects</h2>
         </div>
-        <p>Four clients across e-commerce, professional services, local service and transportation. Full data is available on request.</p>
+        <p>Four very different businesses: an online store, a Dubai consultancy, a Dallas turf installer and a driver service. Here’s what was going wrong and what we changed.</p>
       </div>
       <div className="h-projects">
         {projects.map(p => <article className="h-project" id={slug(p.name)} key={p.name}>
@@ -223,10 +225,10 @@ function Portfolio() {
 
 /* ---------- why us ---------- */
 const reasons = [
-  { t: 'Senior, hands-on work', d: 'Your account is run by an experienced SEO lead — not handed to a junior team or a reseller.' },
-  { t: 'Strategy tied to revenue', d: 'We prioritize the keywords, pages and fixes that bring leads and sales, not vanity rankings.' },
-  { t: 'Built for Google and AI search', d: 'Every page is structured to rank in classic results and to be cited in AI Overviews and ChatGPT.' },
-  { t: 'Results you can verify', d: 'Plain-English reporting from Search Console and analytics — every ranking, click and lead.' },
+  { t: 'You talk to the person doing the work', d: 'No account managers passing messages along. Your questions go to the person working on your site.' },
+  { t: 'We care about enquiries, not just rankings', d: 'A ranking is nice. A phone call or an order is better, so that’s what we track and report on.' },
+  { t: 'Ready for AI search too', d: 'We write and structure pages so Google, ChatGPT and other AI tools can understand them and quote them.' },
+  { t: 'Reports you’ll actually read', d: 'One short monthly report: what we did, what moved and what’s next. The numbers come straight from your Search Console.' },
 ];
 
 function WhyUs() {
@@ -237,9 +239,9 @@ function WhyUs() {
         <div className="h-why-badge"><b>16K+</b><span>monthly clicks for featured clients</span></div>
       </div>
       <div>
-        <p className="eyebrow">Why Search Engine Xperts</p>
-        <h2 id="why-title">Good rankings are just the beginning.</h2>
-        <p className="h-sub">More visibility, better leads and a stronger business. We connect every part of your search strategy to the results that actually matter.</p>
+        <p className="eyebrow">why clients stay</p>
+        <h2 id="why-title">Good SEO should be easy to understand</h2>
+        <p className="h-sub">You shouldn’t need to be an expert to know whether your SEO is working. Here’s how we keep it simple.</p>
         <ul className="h-reasons">{reasons.map(r => <li key={r.t}><span className="h-tick"><Check /></span><div><b>{r.t}</b><p>{r.d}</p></div></li>)}</ul>
         <a href="#contact" className="btn btn-primary">Book a free strategy call <Arrow /></a>
       </div>
@@ -249,22 +251,22 @@ function WhyUs() {
 
 /* ---------- process ---------- */
 const steps = [
-  { t: 'Discovery & audit', d: 'Technical, content and backlink audit to find what’s holding you back.' },
-  { t: 'Keyword & strategy', d: 'High-intent keywords mapped to a prioritized roadmap aimed at revenue.' },
-  { t: 'On-page & content', d: 'Pages optimized and content published that ranks, reads well and converts.' },
-  { t: 'Authority & links', d: 'Quality backlinks and digital PR that build the trust Google rewards.' },
-  { t: 'Track & scale', d: 'Transparent reporting, then doubling down on what works.' },
+  { t: 'Audit', d: 'We go through your site, your competitors and your backlinks to find what’s holding you back.', i: 'audit' },
+  { t: 'Plan', d: 'We pick the keywords worth going after and put the fixes in order, biggest impact first.', i: 'plan' },
+  { t: 'Fix and write', d: 'We sort out the technical problems and improve or write the pages that matter most.', i: 'write' },
+  { t: 'Build trust', d: 'We earn links and mentions from websites your customers already read.', i: 'links' },
+  { t: 'Report and repeat', d: 'Each month you see what moved, and we put more effort into what’s working.', i: 'grow' },
 ];
 
 function Process() {
   return <section className="h-section h-process" id="process" aria-labelledby="process-title">
     <div className="wrap">
       <div className="h-head h-center">
-        <p className="eyebrow">How it works</p>
-        <h2 id="process-title">A proven SEO process, built to compound</h2>
-        <p>One repeatable, data-backed system. Every step builds on the last, so growth keeps stacking month after month.</p>
+        <p className="eyebrow">how we work</p>
+        <h2 id="process-title">Five steps, nothing complicated</h2>
+        <p>You’ll always know which step we’re on and why.</p>
       </div>
-      <ol className="h-steps">{steps.map((s, i) => <li key={s.t}><span>{String(i + 1).padStart(2, '0')}</span><h3>{s.t}</h3><p>{s.d}</p></li>)}</ol>
+      <ol className="h-steps">{steps.map((s, i) => <li key={s.t}><Doodle name={s.i} /><span className="h-step-no">{i + 1}</span><h3>{s.t}</h3><p>{s.d}</p></li>)}</ol>
     </div>
   </section>;
 }
@@ -286,8 +288,8 @@ function Reviews() {
     <div className="wrap">
       <div className="h-head h-split">
         <div>
-          <p className="eyebrow">Client reviews</p>
-          <h2 id="reviews-title">Rated excellent by the businesses we work with</h2>
+          <p className="eyebrow">kind words</p>
+          <h2 id="reviews-title">What our clients say</h2>
         </div>
         <div className="h-ratings">
           <div className="h-rating"><b>4.9</b><div><span className="h-stars tp" aria-label="4.9 out of 5 stars">★★★★★</span><small>Trustpilot · 120+ reviews</small></div></div>
@@ -315,10 +317,10 @@ function Resources() {
     <div className="wrap">
       <div className="h-head h-split">
         <div>
-          <p className="eyebrow">Free SEO tools &amp; guides</p>
-          <h2 id="resources-title">Check your site and learn SEO — free</h2>
+          <p className="eyebrow">free stuff</p>
+          <h2 id="resources-title">Free tools and guides</h2>
         </div>
-        <p>The same checks we run at the start of every project, plus practical guides from fundamentals to AI search. No sign-up.</p>
+        <p>Want to look at your own site first? These are the same checks we run at the start of every project. No sign-up needed.</p>
       </div>
       <div className="h-tools">
         {tools.map(t => <a key={t.slug} href={`/seo-tools/${t.slug}`} className="h-tool"><span className="h-kicker">Free tool</span><b>{t.name.replace('Free ', '')}</b><span>{t.short}</span><i>Open the tool <Arrow /></i></a>)}
@@ -332,9 +334,9 @@ function Questions() {
   return <section className="h-section" id="faq" aria-labelledby="faq-title">
     <div className="wrap">
       <div className="h-head h-center">
-        <p className="eyebrow">FAQ</p>
-        <h2 id="faq-title">Questions, answered</h2>
-        <p>What business owners ask most before we start working together.</p>
+        <p className="eyebrow">good questions</p>
+        <h2 id="faq-title">Questions people ask us</h2>
+        <p>If yours isn’t here, just send us a message.</p>
       </div>
       <FAQ />
     </div>
@@ -346,10 +348,11 @@ function Contact() {
     <div className="wrap">
       <div className="h-contact">
         <div>
-          <p className="eyebrow">Free consultation</p>
-          <h2 id="contact-title">Let’s grow your traffic, leads and sales</h2>
-          <p>Tell us about your business and we’ll send a free audit with the first fixes that will move the needle. No commitment.</p>
-          <a href={`mailto:${email}?subject=${encodeURIComponent('Free SEO consultation')}`} className="btn btn-light">Book a free consultation <Arrow /></a>
+          <p className="eyebrow">say hello</p>
+          <h2 id="contact-title">Tell us about your business</h2>
+          <p>Send us your website and what you’d like to improve. We’ll reply with a free audit and the first few things we’d fix. No pressure to sign up.</p>
+          <a href={`mailto:${email}?subject=${encodeURIComponent('Free SEO consultation')}`} className="btn btn-light">Email us <Arrow /></a>
+          <a href="https://wa.me/923478724400" className="btn h-wa" target="_blank" rel="noopener">Chat on WhatsApp</a>
         </div>
         <ul>
           <li><span>Phone / WhatsApp</span><a href={`tel:${phone}`}>+92 347 8724400</a></li>
@@ -364,6 +367,7 @@ export default function HomePage() {
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
     <BrandDefinitions />
+    <SketchDefs />
     <Schema />
     <Header />
     <main id="main" className="home">

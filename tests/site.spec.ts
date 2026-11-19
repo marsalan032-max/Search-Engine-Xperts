@@ -4,7 +4,7 @@ test('desktop page, assets, audit request and FAQ work', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Get more customers.');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('found on Google');
   await page.getByRole('button', { name: 'Get free audit' }).click();
   await expect(page.locator('#audit-error')).toContainText('valid website');
   await page.getByRole('textbox', { name: 'Your website URL' }).fill('example.com');

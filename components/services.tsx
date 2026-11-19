@@ -26,7 +26,7 @@ export const services: Service[] = [
     sub: ["AI Overview Optimization", "Answer Engine Optimization (AEO)", "Generative Engine Optimization (GEO)", "Entity & Brand Optimization", "AI Citation & Mention Strategy", "Structured Data & Technical SEO"],
     name: 'AI SEO',
     href: '/ai-seo-services',
-    description: "Optimize for AI Overviews, ChatGPT and answer engines — so you're cited where buyers now search.",
+    description: "Make your business the one ChatGPT and Google’s AI answers mention when people ask about what you do.",
     icon: svg(<><path d="M12 3l1.8 4.4L18 9.2l-4.2 1.8L12 15l-1.8-4L6 9.2l4.2-1.8z" /><path d="M18.5 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" /></>),
   },
   {
@@ -34,7 +34,7 @@ export const services: Service[] = [
     sub: ["Local SEO Audit & Strategy", "Location & Service-Area Pages", "Citation Building & NAP Cleanup", "Review Strategy", "Local Link Building", "Multi-Location SEO"],
     name: 'Local SEO',
     href: '/local-seo-services',
-    description: 'Win the map pack and “near me” searches with location pages, citations and reviews that convert.',
+    description: 'Show up in the map and in “near me” searches in the areas you actually serve.',
     icon: svg(<><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z" /><circle cx="12" cy="10" r="2.5" /></>),
   },
   {
@@ -42,7 +42,7 @@ export const services: Service[] = [
     sub: ["Profile Audit & Optimization", "Category & Service Optimization", "Setup & Verification", "Google Posts Management", "Review Management", "Spam & Suspension Support"],
     name: 'GMB Optimization',
     href: '/gmb-optimization-services',
-    description: 'A fully optimized Google Business Profile — categories, posts, photos and reviews that earn the top spot.',
+    description: 'Get your Google Business Profile set up properly, then keep it active with posts, photos and reviews.',
     icon: svg(<><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M8 15l3-4 2.5 3L17 9" /><circle cx="8" cy="8.5" r="1.2" /></>),
   },
   {
@@ -50,7 +50,7 @@ export const services: Service[] = [
     sub: ["Category Page Optimization", "Product Page Optimization", "Technical Ecommerce SEO", "Product Schema & Rich Results", "Shopify & WooCommerce SEO", "Merchant Center Feed Optimization"],
     name: 'Ecommerce SEO',
     href: '/ecommerce-seo-services',
-    description: 'Product, category and technical SEO that turns high-intent searches into sales — at scale.',
+    description: 'Category and product pages that rank for what shoppers type, so the visits turn into orders.',
     icon: svg(<><path d="M5 7h15l-1.5 9h-12z" /><path d="M5 7L4 3H2" /><circle cx="9" cy="20" r="1.4" /><circle cx="17" cy="20" r="1.4" /></>),
   },
   {
@@ -58,7 +58,7 @@ export const services: Service[] = [
     sub: ["Digital PR Campaigns", "Editorial Link Building", "Backlink Audit & Risk Review", "Competitor Link Gap Analysis", "Linkable Asset Creation", "Unlinked Mentions & Link Reclamation"],
     name: 'Backlinks & Digital PR',
     href: '/backlinks-digital-pr-services',
-    description: 'Earn high-authority links and press mentions through real outreach — the trust signals Google rewards.',
+    description: 'Links from real websites in your industry, earned through outreach. No link farms, no paid networks.',
     icon: svg(<><path d="M10 13a4 4 0 005.6 0l2.4-2.4a4 4 0 00-5.6-5.6L11 6.5" /><path d="M14 11a4 4 0 00-5.6 0L6 13.4a4 4 0 005.6 5.6L13 17.5" /></>),
   },
   {
@@ -66,7 +66,7 @@ export const services: Service[] = [
     sub: ["Content Strategy & Topic Clusters", "Blog Posts & Articles", "Service & Landing Page Copy", "Product & Category Descriptions", "Content Audits & Refreshes", "Answer-Ready Content"],
     name: 'SEO Content Writing',
     href: '/seo-content-writing-services',
-    description: 'Search-optimized articles and pages that rank, read well and turn visitors into customers.',
+    description: 'Articles and pages written for your customers first, and structured so Google understands them.',
     icon: svg(<><path d="M5 4h14v16H5z" /><path d="M8 8h8M8 12h8M8 16h5" /></>),
   },
 ];
