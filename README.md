@@ -35,6 +35,28 @@ Business claims, client names, case-study numbers and reviews come from the supp
 
 Analytics photograph: [Unsplash data analysis collection](https://unsplash.com/s/photos/data-analysis), asset `photo-1599658880436-c61792e70672`, downloaded into `public/images/analytics-workspace.jpg`. Arslan's portrait was extracted from the original embedded image.
 
+## Learn SEO guides (/learn-seo)
+
+- `components/learn/guides/*.tsx`: one file per guide (copy, takeaways, table of contents, FAQs, Ask AI suggestions, closing call to action and "Keep exploring" cards). Same `Post` shape as blog posts.
+- `components/learn/guides.ts`: the list of guides; its order is the order on the hub. Each guide is published at `/learn-seo/<slug>` and added to the sitemap automatically.
+- `app/learn-seo/page.tsx`: the hub (CollectionPage + ItemList schema, learning path, tools).
+- Blog posts and guides share one article template: `components/article/article-page.tsx` (Article/BlogPosting, Breadcrumb and FAQ schema). A post can override the closing CTA with `cta` and the bottom cards with `next`.
+- Guides target informational searches ("what is local SEO"); the service pages target commercial ones ("local SEO services"). Each guide links to its service page so they support rather than compete with each other.
+- Cover images: `python3 scripts/covers/build_covers.py` writes the 1600×900 PNGs in `public/images/learn/` (needs Pillow and the Poppins font). Edit titles in the script's `COVERS` list.
+
+## Free SEO tools (/seo-tools)
+
+- Keyword Research, Technical SEO checker, On-Page checker and SEO Audit, each at `/seo-tools/<slug>`. Page copy, FAQs and related links live in `components/tools/tool-list.ts`; the page frame and WebApplication schema in `components/tools/tool-page.tsx`.
+- `app/api/fetch-page/route.ts` fetches a page (with its redirect chain, robots.txt and sitemap) on the server, because browsers can't fetch other sites directly. It only allows public http(s) URLs on ports 80/443, re-checks every redirect hop against private and internal addresses, times out after 10 s, caps responses at 2 MB and rate-limits each IP to 20 checks a minute. Nothing is stored. It needs a Node server (`npm start` or a Node host such as Vercel), not a static export.
+- `components/tools/analyze.ts` runs all checks in the browser and scores them (weights 1–3). Add or change checks there.
+- `components/tools/keyword-tool.tsx` runs entirely in the browser (no API, no search volumes; it links each idea to Google Trends).
+- Local testing of the URL tools against `localhost`: start the server with `SEO_TOOLS_ALLOW_PRIVATE=1 npm start`. Never set this in production.
+- `/api/` is disallowed in robots.txt.
+
+## Menu
+
+`components/menu.ts`: SEO Tools and Learn SEO now link to their pages (plus an "All…" link to each hub). News and Resources (except Blogs) still use `#` placeholders.
+
 ## Ask AI on blog posts
 
 Each post can show an "Ask about this article" panel (`components/blog/ask-ai.tsx`). It runs entirely in the browser, with no AI service, API key or cost:

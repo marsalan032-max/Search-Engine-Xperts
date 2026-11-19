@@ -18,5 +18,8 @@ export type Post = {
   // "Ask AI" panel: suggested questions with pre-written answers (plain text; "- " lines become bullets,
   // **bold** works). `section` is the id of the part of the article the answer comes from.
   askSuggestions?: { question: string; answer: string; section?: string }[];
+  // Optional overrides for the closing call to action and the "Keep exploring" cards.
+  cta?: { eyebrow: string; heading: string; text: string; label: string; href: string };
+  next?: { kicker: string; title: string; text: string; href: string; label: string }[];
   Body: ComponentType;
 };
