@@ -10,6 +10,7 @@ export type Service = {
   name: string;        // card title and dropdown label
   description: string; // card copy
   href?: string;       // dedicated service page, once one is published
+  sub: string[];       // sub-services shown on the home page card (the service page lists all of them under #services)
   icon: ReactNode;
 };
 
@@ -22,6 +23,7 @@ const svg = (children: ReactNode) => (
 export const services: Service[] = [
   {
     id: 'service-1',
+    sub: ["AI Overview Optimization", "Answer Engine Optimization (AEO)", "Generative Engine Optimization (GEO)", "Entity & Brand Optimization", "AI Citation & Mention Strategy", "Structured Data & Technical SEO"],
     name: 'AI SEO',
     href: '/ai-seo-services',
     description: "Optimize for AI Overviews, ChatGPT and answer engines — so you're cited where buyers now search.",
@@ -29,6 +31,7 @@ export const services: Service[] = [
   },
   {
     id: 'service-2',
+    sub: ["Local SEO Audit & Strategy", "Location & Service-Area Pages", "Citation Building & NAP Cleanup", "Review Strategy", "Local Link Building", "Multi-Location SEO"],
     name: 'Local SEO',
     href: '/local-seo-services',
     description: 'Win the map pack and “near me” searches with location pages, citations and reviews that convert.',
@@ -36,13 +39,15 @@ export const services: Service[] = [
   },
   {
     id: 'service-3',
+    sub: ["Profile Audit & Optimization", "Category & Service Optimization", "Setup & Verification", "Google Posts Management", "Review Management", "Spam & Suspension Support"],
     name: 'GMB Optimization',
     href: '/gmb-optimization-services',
-    description: 'A fully optimized Google Business Profile — posts, photos, Q&A and reviews that earn the top spot.',
+    description: 'A fully optimized Google Business Profile — categories, posts, photos and reviews that earn the top spot.',
     icon: svg(<><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M8 15l3-4 2.5 3L17 9" /><circle cx="8" cy="8.5" r="1.2" /></>),
   },
   {
     id: 'service-4',
+    sub: ["Category Page Optimization", "Product Page Optimization", "Technical Ecommerce SEO", "Product Schema & Rich Results", "Shopify & WooCommerce SEO", "Merchant Center Feed Optimization"],
     name: 'Ecommerce SEO',
     href: '/ecommerce-seo-services',
     description: 'Product, category and technical SEO that turns high-intent searches into sales — at scale.',
@@ -50,6 +55,7 @@ export const services: Service[] = [
   },
   {
     id: 'service-5',
+    sub: ["Digital PR Campaigns", "Editorial Link Building", "Backlink Audit & Risk Review", "Competitor Link Gap Analysis", "Linkable Asset Creation", "Unlinked Mentions & Link Reclamation"],
     name: 'Backlinks & Digital PR',
     href: '/backlinks-digital-pr-services',
     description: 'Earn high-authority links and press mentions through real outreach — the trust signals Google rewards.',
@@ -57,6 +63,7 @@ export const services: Service[] = [
   },
   {
     id: 'service-6',
+    sub: ["Content Strategy & Topic Clusters", "Blog Posts & Articles", "Service & Landing Page Copy", "Product & Category Descriptions", "Content Audits & Refreshes", "Answer-Ready Content"],
     name: 'SEO Content Writing',
     href: '/seo-content-writing-services',
     description: 'Search-optimized articles and pages that rank, read well and turn visitors into customers.',

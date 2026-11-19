@@ -4,25 +4,41 @@ test('desktop page, assets, audit request and FAQ work', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Keep growing.');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Get more customers.');
   await page.getByRole('button', { name: 'Get free audit' }).click();
   await expect(page.locator('#audit-error')).toContainText('valid website');
   await page.getByRole('textbox', { name: 'Your website URL' }).fill('example.com');
   await page.getByRole('button', { name: 'Get free audit' }).click();
   await expect(page.getByRole('link', { name: 'Email my audit request' })).toHaveAttribute('href', /mailto:arslantariq082@gmail.com.*example.com/);
-  await page.getByRole('button', { name: '7D', exact: true }).click();
-  await expect(page.getByText('6.2K', { exact: true })).toBeVisible();
+  await expect(page.locator('.h-project')).toHaveCount(4);
+  await expect(page.locator('#service-2 a[href="/local-seo-services#services"]').first()).toBeVisible();
+  const types = await page.locator('script[type="application/ld+json"]').evaluateAll(s => s.flatMap(el => JSON.parse(el.textContent!)['@graph'].map((n: { '@type': string }) => n['@type'])));
+  expect(types).toEqual(expect.arrayContaining(['Organization', 'WebSite', 'FAQPage']));
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /^https:\/\/searchenginexperts\.com\/?$/);
   const question = page.getByRole('button', { name: "What's included in the free audit?" });
   await question.click();
   await expect(question).toHaveAttribute('aria-expanded', 'true');
   await expect(page.locator('#answer-2')).toBeVisible();
   await expect(page.locator('#answer-0')).toBeHidden();
-  await page.locator('#about').scrollIntoViewIfNeeded();
+  // scroll through the page so every lazy image loads, then check none are broken
+  await page.evaluate(() => scrollTo(0, 0));
+  for (let y = 0; y < await page.evaluate(() => document.body.scrollHeight); y += 600) { await page.mouse.wheel(0, 600); await page.waitForTimeout(40); }
   await expect.poll(() => page.locator('img').evaluateAll(imgs => imgs.every(img => (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0))).toBe(true);
   expect(errors).toEqual([]);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/');
   await page.screenshot({ path: 'artifacts/desktop.png', fullPage: true });
+});
+
+test('hero headline, audit form and proof row fit above the fold', async ({ page }) => {
+  for (const [width, height] of [[1366, 768], [1440, 900], [1280, 720], [390, 844], [375, 667]]) {
+    await page.setViewportSize({ width, height });
+    await page.goto('/');
+    for (const sel of ['.h-hero h1', '.h-hero .audit', '.h-proof']) {
+      const box = await page.locator(sel).boundingBox();
+      expect(box && box.y + box.height, `${sel} at ${width}x${height}`).toBeLessThanOrEqual(height);
+    }
+  }
 });
 
 test('mobile navigation and layout', async ({ page }) => {
@@ -31,7 +47,7 @@ test('mobile navigation and layout', async ({ page }) => {
   await page.getByRole('button', { name: 'Open navigation' }).click();
   await expect(page.getByRole('navigation')).toBeVisible();
   await page.getByRole('button', { name: 'Services', exact: true }).click();
-  await page.getByRole('link', { name: 'Local SEO', exact: true }).click();
+  await page.locator('header').getByRole('link', { name: 'Local SEO', exact: true }).click();
   await expect(page).toHaveURL(/\/local-seo-services$/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.goto('/');

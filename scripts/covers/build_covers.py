@@ -189,6 +189,7 @@ COVERS = [
     ('ai-seo', 'AI SEO', 'Get Cited in AI Overviews & ChatGPT', m_ai),
     ('learn-seo', 'Learn SEO', 'Free SEO Guides, from Fundamentals to AI', m_hub),
     ('seo-tools', 'Free SEO Tools', 'Free SEO Tools: Audit, Check & Research', m_tools),
+    ('home', 'SEO & AI Search Agency', 'Get Found on Google & AI Search', m_ai),
 ]
 
 
