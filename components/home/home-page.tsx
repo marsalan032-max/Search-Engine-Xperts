@@ -6,9 +6,9 @@ import { tools } from '../tools/tool-list';
 import questions from '../faq-data.json';
 
 // Home page (/). Sections, top to bottom:
-// hero → client strip → services (with sub-services) → portfolio → why us → process
-// → reviews → founder → free tools & guides → FAQ → contact.
-// Anchor ids (#services, #work, #process, #reviews, #about, #faq, #contact) are used by the header menu
+// hero → results cards → services (with sub-services) → portfolio → why us → process
+// → reviews → free tools & guides → FAQ → contact.
+// Anchor ids (#results, #services, #work, #process, #reviews, #faq, #contact) are used by the header menu
 // and by links on other pages; keep them stable.
 
 const site = 'https://searchenginexperts.com';
@@ -94,11 +94,36 @@ function Hero() {
   </section>;
 }
 
-function Clients() {
-  return <section className="h-clients" aria-label="Clients">
-    <div className="wrap h-clients-row">
-      <p>Results for businesses like</p>
-      <ul>{projects.map(p => <li key={p.name}><b>{p.name}</b><span>{p.industry.split(' · ')[0]}</span></li>)}</ul>
+// Headline result for each client, shown as image cards right after the hero.
+const highlights: Record<string, { value: string; label: string }> = {
+  'Roller Skate USA': { value: '+1,994%', label: 'Organic clicks from Google' },
+  'Shuraa': { value: '465', label: 'Keywords in Google’s top 3' },
+  'DFW Turf Solutions': { value: '76', label: 'Local keywords in the top 3' },
+  'Personal Drivers': { value: 'Cited', label: 'Source in Google AI Overviews' },
+};
+const slug = (name: string) => `project-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+
+function Results() {
+  return <section className="h-results" id="results" aria-labelledby="results-title">
+    <div className="wrap">
+      <div className="h-results-head">
+        <h2 id="results-title">The SEO Agency That Puts Businesses on Top of <span>Google &amp; AI Search</span></h2>
+        <p>Helping businesses rank higher, get cited and grow from organic search</p>
+      </div>
+      <ul className="h-rcards">
+        {projects.map(p => {
+          const h = highlights[p.name];
+          return <li key={p.name} className="h-rcard">
+            <a href={`#${slug(p.name)}`} aria-label={`${p.name}: ${h.value} ${h.label}. See the project`}>
+              <span className="h-rcard-img">
+                <img src={p.image.src.replace('.webp', '-700.webp')} alt="" width="700" height={Math.round(p.image.height * 700 / p.image.width)} loading="lazy" decoding="async" />
+                <span className="h-rcard-stat"><b>{h.value}</b><span>{h.label}</span></span>
+              </span>
+              <span className="h-rcard-name"><span>{p.name}</span><small>{p.industry.split(' · ')[0]}</small></span>
+            </a>
+          </li>;
+        })}
+      </ul>
     </div>
   </section>;
 }
@@ -137,7 +162,7 @@ function Portfolio() {
         <p>Four clients across e-commerce, professional services, local service and transportation. Full data is available on request.</p>
       </div>
       <div className="h-projects">
-        {projects.map(p => <article className="h-project" key={p.name}>
+        {projects.map(p => <article className="h-project" id={slug(p.name)} key={p.name}>
           <div className="h-shot">
             <div className="h-shot-bar"><span className="h-dots" aria-hidden="true"><i /><i /><i /></span><span>{p.url.replace('https://', '')}</span></div>
             <img src={p.image.src} srcSet={`${p.image.src.replace('.webp', '-700.webp')} 700w, ${p.image.src} 1400w`} sizes="(max-width: 1020px) calc(100vw - 72px), 540px" alt={p.image.alt} width={p.image.width} height={p.image.height} loading="lazy" decoding="async" />
@@ -251,29 +276,6 @@ function Reviews() {
   </section>;
 }
 
-/* ---------- founder ---------- */
-function Founder() {
-  return <section className="h-section" id="about" aria-labelledby="about-title">
-    <div className="wrap h-founder">
-      <div className="h-founder-photo">
-        <img src="/images/arslan-tariq.png" alt="Arslan Tariq, founder of Search Engine Xperts" width="300" height="300" loading="lazy" decoding="async" />
-        <span className="h-founder-badge">★ 7+ years in SEO</span>
-      </div>
-      <div>
-        <p className="eyebrow">Who’s behind the work</p>
-        <h2 id="about-title">Led by Arslan Tariq, founder of Search Engine Xperts</h2>
-        <p className="h-sub">Search Engine Xperts was founded by Arslan Tariq, an SEO specialist with 7+ years of hands-on experience ranking websites in transportation, e-commerce, finance and local services.</p>
-        <p className="h-sub">The approach is simple: solid technical foundations, keywords that convert, content people trust, and every decision backed by data you can check.</p>
-        <dl className="h-creds">
-          <div><dt>years of experience</dt><dd>7+</dd></div>
-          <div><dt>industries served</dt><dd>4</dd></div>
-          <div><dt>top-3 keywords for clients</dt><dd>840+</dd></div>
-        </dl>
-      </div>
-    </div>
-  </section>;
-}
-
 /* ---------- free tools & guides ---------- */
 function Resources() {
   return <section className="h-section h-tint" id="resources" aria-labelledby="resources-title">
@@ -332,7 +334,7 @@ export default function HomePage() {
     <Schema />
     <Header />
     <main id="main" className="home">
-      <Hero /><Clients /><Services /><Portfolio /><WhyUs /><Process /><Reviews /><Founder /><Resources /><Questions /><Contact />
+      <Hero /><Results /><Services /><Portfolio /><WhyUs /><Process /><Reviews /><Resources /><Questions /><Contact />
     </main>
     <Footer />
   </>;

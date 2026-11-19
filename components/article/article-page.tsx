@@ -24,7 +24,7 @@ export function articleMetadata(section: ArticleSection, post: Post): Metadata {
     title: brandTitle(post.metaTitle),
     description: post.description,
     alternates: { canonical: url },
-    authors: [{ name: author.name, url: `${siteUrl}/#about` }],
+    authors: [{ name: author.name, url: `${siteUrl}/` }],
     robots: { index: true, follow: true, 'max-image-preview': 'large' },
     openGraph: {
       type: 'article', url, siteName: 'Search Engine Xperts',
@@ -89,7 +89,7 @@ export function ArticlePage({ post, section }: { post: Post; section: ArticleSec
         '@id': `${siteUrl}/#arslan-tariq`,
         name: author.name,
         jobTitle: author.jobTitle,
-        url: `${siteUrl}/#about`,
+        url: `${siteUrl}/`,
         image: `${siteUrl}${author.photo}`,
         worksFor: { '@id': `${siteUrl}/#organization` },
         ...(author.profiles.length ? { sameAs: author.profiles.map(p => p.href) } : {}),
@@ -197,7 +197,6 @@ export function ArticlePage({ post, section }: { post: Post; section: ArticleSec
           <p className="role">{author.jobTitle} at Search Engine Xperts</p>
           <p>{author.bio}</p>
           <div className="author-links">
-            <a href="/#about" className="btn btn-primary">Read full bio <span aria-hidden="true">→</span></a>
             {author.profiles.map(p => <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer me" className="btn btn-ghost">{p.label}</a>)}
           </div>
         </div>
