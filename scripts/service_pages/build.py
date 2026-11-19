@@ -298,7 +298,7 @@ def build_page(page, parts):
 
 <!-- BREADCRUMB -->
 <nav class="crumb" aria-label="Breadcrumb"><div class="wrap"><ol>
-  <li><a href="/">Home</a></li><li class="sep">/</li>
+  <li><a href="/" class="crumb-home" aria-label="Home" title="Home"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg></a></li><li class="sep">/</li>
   <li><a href="/#services">SEO Services</a></li><li class="sep">/</li>
   <li aria-current="page">{page['crumb']}</li>
 </ol></div></nav>

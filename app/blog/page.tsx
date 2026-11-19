@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { formatDate, posts, siteUrl } from '../../components/blog/posts';
+import { HomeCrumb } from '../../components/home-crumb';
 
 export const metadata: Metadata = {
   title: 'SEO Blog: Strategy, Pricing & AI Search Guides | Search Engine Xperts',
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function BlogIndex() {
   return <section className="wrap blog-index">
-    <nav aria-label="Breadcrumb" className="crumbs"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">SEO Blog</span></nav>
+    <nav aria-label="Breadcrumb" className="crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">SEO Blog</span></nav>
     <p className="eyebrow">SEO blog</p>
     <h1>Guides for smarter search decisions</h1>
     <p className="dek">Practical, no-fluff articles on SEO strategy, pricing, technical SEO and AI search.</p>

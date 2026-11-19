@@ -3,6 +3,7 @@ import { siteUrl } from '../../components/blog/posts';
 import { tools } from '../../components/tools/tool-list';
 import { guides } from '../../components/learn/guides';
 import { brandTitle } from '../../components/seo-title';
+import { HomeCrumb } from '../../components/home-crumb';
 
 const url = `${siteUrl}/seo-tools`;
 const title = 'Free SEO Tools: Audit, On-Page, Technical & Keywords';
@@ -48,7 +49,7 @@ export default function SeoToolsHub() {
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
     <section className="wrap hub">
-      <nav aria-label="Breadcrumb" className="crumbs"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">SEO Tools</span></nav>
+      <nav aria-label="Breadcrumb" className="crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">SEO Tools</span></nav>
       <div className="hub-head">
         <p className="eyebrow">Free SEO tools</p>
         <h1>Free SEO tools to audit, check and research</h1>

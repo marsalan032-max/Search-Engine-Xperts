@@ -5,6 +5,7 @@ import { TableOfContents } from '../blog/toc';
 import { AskAI, AskAIButton } from '../blog/ask-ai';
 import { articleChunks } from '../blog/chunks';
 import { brandTitle } from '../seo-title';
+import { HomeCrumb } from '../home-crumb';
 
 // Shared article template for blog posts (/blog/<slug>) and Learn SEO guides (/learn-seo/<slug>).
 // `section` decides the breadcrumb, the canonical path and the schema type.
@@ -118,7 +119,7 @@ export function ArticlePage({ post, section }: { post: Post; section: ArticleSec
         <div className="post-main">
           <div className="post-header">
             <nav aria-label="Breadcrumb" className="crumbs">
-              <a href="/">Home</a><span aria-hidden="true">/</span>
+              <HomeCrumb /><span aria-hidden="true">/</span>
               <a href={section.path}>{section.name}</a><span aria-hidden="true">/</span>
               <span aria-current="page">{post.category}</span>
             </nav>
