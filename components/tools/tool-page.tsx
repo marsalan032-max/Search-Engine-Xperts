@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { siteUrl } from '../blog/posts';
 import { getTool, tools, type ToolInfo } from './tool-list';
 import { brandTitle } from '../seo-title';
+import { HomeCrumb } from '../home-crumb';
 
 // Shared page frame for each /seo-tools/<slug> page: heading, the interactive tool,
 // then explanatory content, FAQs and related links, with WebApplication + FAQ + breadcrumb schema.
@@ -48,7 +49,7 @@ export function ToolPage({ tool, children }: { tool: ToolInfo; children: ReactNo
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
     <section className="wrap tool-page">
-      <nav aria-label="Breadcrumb" className="crumbs"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/seo-tools">SEO Tools</a><span aria-hidden="true">/</span><span aria-current="page">{tool.menuLabel}</span></nav>
+      <nav aria-label="Breadcrumb" className="crumbs"><HomeCrumb /><span aria-hidden="true">/</span><a href="/seo-tools">SEO Tools</a><span aria-hidden="true">/</span><span aria-current="page">{tool.menuLabel}</span></nav>
       <div className="hub-head">
         <p className="eyebrow">Free SEO tool</p>
         <h1>{tool.name}</h1>

@@ -3,6 +3,7 @@ import { guides } from '../../components/learn/guides';
 import { siteUrl } from '../../components/blog/posts';
 import { tools } from '../../components/tools/tool-list';
 import { brandTitle } from '../../components/seo-title';
+import { HomeCrumb } from '../../components/home-crumb';
 
 const url = `${siteUrl}/learn-seo`;
 const title = 'Learn SEO: Free Guides from Fundamentals to AI Search';
@@ -52,7 +53,7 @@ export default function LearnSeoHub() {
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
     <section className="wrap hub">
-      <nav aria-label="Breadcrumb" className="crumbs"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Learn SEO</span></nav>
+      <nav aria-label="Breadcrumb" className="crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">Learn SEO</span></nav>
       <div className="hub-head">
         <p className="eyebrow">Learn SEO</p>
         <h1>Free SEO guides, from fundamentals to AI search</h1>
