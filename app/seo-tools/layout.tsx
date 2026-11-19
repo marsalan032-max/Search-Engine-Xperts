@@ -10,6 +10,6 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
     <BrandDefinitions />
     <Header base="/" />
     <main id="main" className="blog">{children}</main>
-    <Footer home="/" />
+    <Footer />
   </>;
 }

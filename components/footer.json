@@ -1,0 +1,44 @@
+{
+  "_comment": "Site footer content, used by the React pages (components/site.tsx) and by the static service pages (scripts/service_pages/build.py). Edit here, then run `python3 scripts/service_pages/build.py` so the service pages pick it up.",
+  "blurb": "SEO and AI search agency helping local businesses, online stores and growing brands rank on Google, win the map pack and get cited in AI answers.",
+  "phone": { "label": "+92 347 8724400", "href": "tel:+923478724400" },
+  "email": { "label": "arslantariq082@gmail.com", "href": "mailto:arslantariq082@gmail.com" },
+  "social": [
+    { "label": "LinkedIn", "title": "Arslan Tariq, founder, on LinkedIn", "href": "https://www.linkedin.com/in/seo-expert-arslan-tariq/" }
+  ],
+  "ratings": "★ 4.9 Trustpilot · ★ 5.0 Clutch",
+  "columns": [
+    { "title": "Services", "links": [
+      ["AI SEO", "/ai-seo-services"],
+      ["Local SEO", "/local-seo-services"],
+      ["GMB Optimization", "/gmb-optimization-services"],
+      ["Ecommerce SEO", "/ecommerce-seo-services"],
+      ["Backlinks & Digital PR", "/backlinks-digital-pr-services"],
+      ["SEO Content Writing", "/seo-content-writing-services"]
+    ] },
+    { "title": "Free SEO Tools", "links": [
+      ["SEO Audit Tool", "/seo-tools/seo-audit-tool"],
+      ["On-Page SEO Checker", "/seo-tools/on-page-seo-checker"],
+      ["Technical SEO Checker", "/seo-tools/technical-seo-checker"],
+      ["Keyword Research Tool", "/seo-tools/keyword-research-tool"],
+      ["All free tools", "/seo-tools"]
+    ] },
+    { "title": "Learn SEO", "links": [
+      ["Local SEO Guide", "/learn-seo/local-seo"],
+      ["Ecommerce SEO Guide", "/learn-seo/ecommerce-seo"],
+      ["Shopify SEO Guide", "/learn-seo/shopify-seo"],
+      ["Technical SEO Checklist", "/learn-seo/technical-seo"],
+      ["Link Building Guide", "/learn-seo/link-building"],
+      ["AI SEO Guide", "/learn-seo/ai-seo"],
+      ["All SEO guides", "/learn-seo"]
+    ] },
+    { "title": "Company", "links": [
+      ["Projects", "/#work"],
+      ["Our process", "/#process"],
+      ["Client reviews", "/#reviews"],
+      ["SEO Blog", "/blog"],
+      ["FAQ", "/#faq"],
+      ["Free consultation", "/#contact"]
+    ] }
+  ]
+}

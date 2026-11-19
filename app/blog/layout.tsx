@@ -10,6 +10,6 @@ export default function BlogLayout({ children }: Readonly<{ children: React.Reac
     <BrandDefinitions />
     <Header base="/" />
     <main id="main" className="blog">{children}</main>
-    <Footer home="/" />
+    <Footer />
   </>;
 }
