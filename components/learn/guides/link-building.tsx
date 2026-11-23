@@ -137,6 +137,7 @@ export const guide: Post = {
   dek: 'The links that move rankings are the hardest to get. Here is how to earn them, and what to stay away from.',
   eyebrow: 'Learn SEO · Links',
   category: 'Link Building',
+  author: 'saboor',
   published: '2026-11-19',
   modified: '2026-11-19',
   readTime: '11 min read',

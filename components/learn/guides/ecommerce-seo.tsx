@@ -158,6 +158,7 @@ export const guide: Post = {
   dek: 'How online stores turn high-intent searches into sales, from keyword research and category structure to filters, schema and links.',
   eyebrow: 'Learn SEO · Ecommerce',
   category: 'Ecommerce SEO',
+  author: 'saboor',
   published: '2026-11-19',
   modified: '2026-11-19',
   readTime: '13 min read',
