@@ -24,7 +24,7 @@ export function articleMetadata(section: ArticleSection, post: Post): Metadata {
     title: brandTitle(post.metaTitle),
     description: post.description,
     alternates: { canonical: url },
-    authors: [{ name: author.name, url: `${siteUrl}/` }],
+    authors: [{ name: author.name, url: `${siteUrl}${author.url}` }],
     robots: { index: true, follow: true, 'max-image-preview': 'large' },
     openGraph: {
       type: 'article', url, siteName: 'Search Engine Xperts',
@@ -89,7 +89,7 @@ export function ArticlePage({ post, section }: { post: Post; section: ArticleSec
         '@id': `${siteUrl}/#arslan-tariq`,
         name: author.name,
         jobTitle: author.jobTitle,
-        url: `${siteUrl}/`,
+        url: `${siteUrl}${author.url}`,
         image: `${siteUrl}${author.photo}`,
         worksFor: { '@id': `${siteUrl}/#organization` },
         ...(author.profiles.length ? { sameAs: author.profiles.map(p => p.href) } : {}),
@@ -193,7 +193,7 @@ export function ArticlePage({ post, section }: { post: Post; section: ArticleSec
         <img src={author.photo} alt={`${author.name}, ${author.jobTitle}`} width="128" height="128" loading="lazy" />
         <div>
           <p className="eyebrow">About the author</p>
-          <h2 id="author-title">{author.name}</h2>
+          <h2 id="author-title"><a href={author.url}>{author.name}</a></h2>
           <p className="role">{author.jobTitle} at Search Engine Xperts</p>
           <p>{author.bio}</p>
           <div className="author-links">

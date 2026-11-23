@@ -112,6 +112,7 @@
 .post-author .wrap{display:grid;grid-template-columns:128px minmax(0,1fr);gap:30px;align-items:center;max-width:1000px}
 .post-author img{width:128px;height:128px;border-radius:50%;object-fit:cover;object-position:top;border:4px solid #fff;box-shadow:0 20px 40px -24px rgba(11,20,55,.5)}
 .post-author h2{font-size:28px;color:var(--navy);margin-top:6px;letter-spacing:-.02em}
+.post-author h2 a:hover{color:var(--blue)}
 .post-author .role{font-size:14px;font-weight:600;color:var(--blue);margin-top:2px}
 .post-author p:not(.eyebrow):not(.role){font-size:15.5px;line-height:1.8;color:var(--ink);margin-top:12px}
 .author-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
