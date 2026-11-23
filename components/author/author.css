@@ -1,4 +1,4 @@
-/* Author page (/arslan-tariq). Brand tokens come from globals.css (:root). */
+/* Author pages (/arslan-tariq, /saboor-nasir). Brand tokens come from globals.css (:root). */
 
 /* ---------- author band ---------- */
 .pf-band{position:relative;overflow:hidden;color:#fff;padding:56px 0;background:
@@ -56,3 +56,9 @@
   .pf-articles{padding:52px 20px 72px}
 }
 @media(prefers-reduced-motion:reduce){.pf *{transition:none!important}}
+
+/* ---------- no articles yet ---------- */
+.pf-empty{display:flex;flex-direction:column;align-items:center;gap:8px;max-width:560px;margin:36px auto 0;padding:40px 28px;border-radius:16px;background:var(--tint);text-align:center}
+.pf-empty p{font-size:18px;font-weight:600;color:var(--navy)}
+.pf-empty span{font-size:14px;color:var(--slate)}
+.pf-empty .btn{margin-top:14px}

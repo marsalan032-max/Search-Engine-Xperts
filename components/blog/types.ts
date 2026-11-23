@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import type { AuthorKey } from './authors';
 
 export type Post = {
   slug: string;          // URL: /blog/<slug>
@@ -8,6 +9,7 @@ export type Post = {
   dek: string;           // standfirst under the H1
   eyebrow: string;
   category: string;      // breadcrumb label and blog-index tag
+  author?: AuthorKey;    // who wrote it; defaults to Arslan (see ./authors)
   published: string;     // YYYY-MM-DD
   modified: string;      // YYYY-MM-DD — update when the article changes
   readTime: string;

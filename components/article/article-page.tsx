@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { Post } from '../blog/types';
-import { author, formatDate, siteUrl } from '../blog/posts';
+import { formatDate, getAuthor, siteUrl } from '../blog/posts';
 import { TableOfContents } from '../blog/toc';
 import { AskAI, AskAIButton } from '../blog/ask-ai';
 import { articleChunks } from '../blog/chunks';
@@ -20,6 +20,7 @@ export const articleUrl = (section: ArticleSection, post: Post) => `${siteUrl}${
 
 export function articleMetadata(section: ArticleSection, post: Post): Metadata {
   const url = articleUrl(section, post);
+  const author = getAuthor(post.author);
   return {
     title: brandTitle(post.metaTitle),
     description: post.description,
@@ -65,6 +66,7 @@ const defaultNext = [
 
 export function ArticlePage({ post, section }: { post: Post; section: ArticleSection }) {
   const url = articleUrl(section, post);
+  const author = getAuthor(post.author);
   const { Body } = post;
   const cta = post.cta ?? defaultCta;
   const next = post.next ?? defaultNext;
@@ -81,12 +83,12 @@ export function ArticlePage({ post, section }: { post: Post; section: ArticleSec
         datePublished: post.published,
         dateModified: post.modified,
         mainEntityOfPage: url,
-        author: { '@id': `${siteUrl}/#arslan-tariq` },
+        author: { '@id': `${siteUrl}/#${author.id}` },
         publisher: { '@id': `${siteUrl}/#organization` },
       },
       {
         '@type': 'Person',
-        '@id': `${siteUrl}/#arslan-tariq`,
+        '@id': `${siteUrl}/#${author.id}`,
         name: author.name,
         jobTitle: author.jobTitle,
         url: `${siteUrl}${author.url}`,

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './blog-index.css';
-import { author, formatDate, posts, siteUrl } from '../../components/blog/posts';
+import { authors, formatDate, getAuthor, posts, siteUrl } from '../../components/blog/posts';
+import { articlesBy } from '../../components/author/author-page';
+import type { AuthorKey } from '../../components/blog/authors';
 import { guides } from '../../components/learn/guides';
 import { HomeCrumb } from '../../components/home-crumb';
 
@@ -27,8 +29,6 @@ const pills = [
     .map(pick).filter((a): a is Item => !!a).map(a => ({ label: a.category, href: a.href })),
 ];
 
-const role = 'AI SEO Specialist & Founder of Search Engine Xperts';
-
 export const metadata: Metadata = {
   title: 'SEO Blog: Local SEO, Ecommerce & AI Search Guides | Search Engine Xperts',
   description: 'Practical SEO articles and guides by Arslan Tariq on local SEO, ecommerce SEO, technical SEO, link building, SEO pricing and AI search visibility.',
@@ -40,14 +40,14 @@ const Calendar = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="non
 const Clock = () => <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>;
 
 // "Arslan Tariq in Local SEO" line used on the featured story and the side picks.
-const ByLine = ({ a }: { a: Item }) => <span className="bx-byline"><b>{author.name}</b> in {a.category}</span>;
+const ByLine = ({ a }: { a: Item }) => <span className="bx-byline"><b>{getAuthor(a.author).name}</b> in {a.category}</span>;
 
 // Author row at the foot of every card: photo, name, role, calendar and date.
-const AuthorRow = ({ a }: { a: Item }) => <div className="bx-author">
-  <img src={author.photo} alt="" width="44" height="44" loading="lazy" />
-  <span className="bx-author-name"><b>{author.name}</b>{role}</span>
+const AuthorRow = ({ a }: { a: Item }) => { const w = getAuthor(a.author); return <div className="bx-author">
+  <img src={w.photo} alt="" width="44" height="44" loading="lazy" />
+  <span className="bx-author-name"><b>{w.name}</b>{w.headline}</span>
   <span className="bx-date"><Calendar /><time dateTime={a.published}>{formatDate(a.published)}</time></span>
-</div>;
+</div>; };
 
 function Schema() {
   const schema = {
@@ -144,6 +144,23 @@ export default function BlogIndex() {
         </a>)}
       </div>
       <a className="bx-more" href="/learn-seo">See all guides</a>
+    </section>
+
+    {/* ---------- authors ---------- */}
+    <section className="wrap bx-authors" aria-labelledby="authors-title">
+      <h2 id="authors-title" className="bx-title">Meet Our Authors</h2>
+      <p className="bx-sub">The specialists behind every article on this blog.</p>
+      <div className="bx-people">
+        {(Object.keys(authors) as AuthorKey[]).map(k => { const w = getAuthor(k); const n = articlesBy(k).length; return <a key={w.id} href={w.url} className="bx-person">
+          <img src={w.photo} alt={w.name} width="88" height="88" loading="lazy" />
+          <div>
+            <h3>{w.name}</h3>
+            <span className="bx-person-role">{w.shortTitle}</span>
+            <p>{w.intro}</p>
+            <span className="bx-person-foot"><span>{n ? `${n} article${n > 1 ? 's' : ''}` : 'Articles coming soon'}</span><i>View profile →</i></span>
+          </div>
+        </a>; })}
+      </div>
     </section>
   </div>;
 }
