@@ -135,6 +135,7 @@ export const guide: Post = {
   dek: 'Google indexes the mobile version of your site. Here is how to make sure that version has everything that should rank, loads fast and converts.',
   eyebrow: 'Learn SEO · Mobile',
   category: 'Mobile SEO',
+  author: 'saboor',
   published: '2026-11-19',
   modified: '2026-11-19',
   readTime: '10 min read',

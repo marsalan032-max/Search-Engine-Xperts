@@ -137,6 +137,7 @@ export const guide: Post = {
   dek: 'Shopify gets the basics right. These are the collection, product, speed and URL fixes that separate stores that rank from stores that don’t.',
   eyebrow: 'Learn SEO · Shopify',
   category: 'Shopify SEO',
+  author: 'saboor',
   published: '2026-11-19',
   modified: '2026-11-19',
   readTime: '11 min read',
