@@ -108,15 +108,18 @@
 .toc-mobile .toc-head{display:none}
 
 /* ---------- author + next steps ---------- */
-.post-author{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:64px 0}
-.post-author .wrap{display:grid;grid-template-columns:128px minmax(0,1fr);gap:30px;align-items:center;max-width:1000px}
-.post-author img{width:128px;height:128px;border-radius:50%;object-fit:cover;object-position:top;border:4px solid #fff;box-shadow:0 20px 40px -24px rgba(11,20,55,.5)}
-.post-author h2{font-size:28px;color:var(--navy);margin-top:6px;letter-spacing:-.02em}
+.post-author{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:60px 0}
+.post-author .wrap{display:grid;grid-template-columns:168px minmax(0,1fr);gap:40px;align-items:center;max-width:920px}
+.post-author-photo{display:block;border-radius:50%}
+.post-author img{width:168px;height:168px;border-radius:50%;object-fit:cover;object-position:top;box-shadow:0 0 0 8px var(--tint),0 24px 44px -26px rgba(11,20,55,.55)}
+.post-author h2{font-size:34px;font-weight:700;color:var(--navy);letter-spacing:-.03em;line-height:1.1}
 .post-author h2 a:hover{color:var(--blue)}
-.post-author .role{font-size:14px;font-weight:600;color:var(--blue);margin-top:2px}
-.post-author p:not(.eyebrow):not(.role){font-size:15.5px;line-height:1.8;color:var(--ink);margin-top:12px}
-.author-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.author-links .btn{padding:11px 18px;font-size:13px}
+.post-author .role{font-size:14.5px;font-weight:600;color:var(--blue);margin-top:8px}
+.post-author .post-author-text{font-size:15.5px;line-height:1.7;color:var(--slate);margin-top:12px;max-width:620px}
+.author-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.author-links .btn{padding:13px 22px;font-size:14px;border-radius:10px}
+.author-links .btn-outline{border:1.5px solid var(--blue);color:var(--blue);background:#fff;font-weight:600}
+.author-links .btn-outline:hover{background:var(--blue);color:#fff}
 
 .post-next{padding:72px 0 84px}
 .post-next h2{font-size:32px;color:var(--navy);letter-spacing:-.03em;margin-top:8px}
@@ -152,7 +155,8 @@
   .post-body h2{font-size:25px}.post-body h3{font-size:18px}.post-body p{font-size:16px}.post-body p.post-intro{font-size:17px}.dek{font-size:16px}
   .post-cards,.index-grid,.next-grid{grid-template-columns:1fr}
   .post-cta{flex-direction:column;align-items:flex-start;padding:26px 22px}.post-cta .btn{width:100%;justify-content:center}
-  .post-author .wrap{grid-template-columns:1fr;text-align:left}.post-author img{width:96px;height:96px}
+  .post-author .wrap{grid-template-columns:1fr;gap:22px;text-align:left}.post-author img{width:112px;height:112px}.post-author h2{font-size:28px}
+  .author-links .btn{flex:1 1 auto;justify-content:center}
   .post-next h2{font-size:26px}
 }
 

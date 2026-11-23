@@ -67,6 +67,7 @@ const defaultNext = [
 export function ArticlePage({ post, section }: { post: Post; section: ArticleSection }) {
   const url = articleUrl(section, post);
   const author = getAuthor(post.author);
+  const linkedin = author.profiles.find(p => p.label === 'LinkedIn');
   const { Body } = post;
   const cta = post.cta ?? defaultCta;
   const next = post.next ?? defaultNext;
@@ -192,14 +193,20 @@ export function ArticlePage({ post, section }: { post: Post; section: ArticleSec
 
     <section id="author" aria-labelledby="author-title" className="post-author">
       <div className="wrap">
-        <img src={author.photo} alt={`${author.name}, ${author.jobTitle}`} width="128" height="128" loading="lazy" />
+        <a href={author.url} className="post-author-photo" tabIndex={-1} aria-hidden="true">
+          <img src={author.photo} alt="" width="168" height="168" loading="lazy" />
+        </a>
         <div>
-          <p className="eyebrow">About the author</p>
           <h2 id="author-title"><a href={author.url}>{author.name}</a></h2>
-          <p className="role">{author.jobTitle} at Search Engine Xperts</p>
-          <p>{author.bio}</p>
+          <p className="role">{author.shortTitle} · Search Engine Xperts</p>
+          <p className="post-author-text">{author.intro} Happy to talk through your site on a short call, no obligation.</p>
           <div className="author-links">
-            {author.profiles.map(p => <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer me" className="btn btn-ghost">{p.label}</a>)}
+            {linkedin
+              ? <a href={linkedin.href} target="_blank" rel="noopener noreferrer me" className="btn btn-primary">Contact me on LinkedIn</a>
+              : author.email
+                ? <a href={`mailto:${author.email}`} className="btn btn-primary">Email me</a>
+                : <a href={author.url} className="btn btn-primary">View my profile</a>}
+            <a href="/" className="btn btn-outline">Search Engine Xperts</a>
           </div>
         </div>
       </div>
