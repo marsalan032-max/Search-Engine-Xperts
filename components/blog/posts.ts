@@ -13,6 +13,7 @@ export const author = {
   name: 'Arslan Tariq',
   jobTitle: 'SEO Manager & Content Strategist',
   photo: '/images/arslan-tariq-2026.jpg',
+  url: '/arslan-tariq', // profile page
   bio: 'Arslan Tariq has 7+ years of SEO experience, helping local businesses grow their online visibility and generate more qualified leads. He also works with eCommerce brands to drive organic traffic, improve search rankings, and increase sales through data-driven SEO strategies.',
   // Add real profile URLs (LinkedIn, YouTube, X…) here; they render as icons and feed the schema `sameAs`.
   profiles: [{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/seo-expert-arslan-tariq/' }] as { label: string; href: string }[],

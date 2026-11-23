@@ -33,7 +33,7 @@ function Schema() {
         description: 'SEO and AI search agency helping local businesses, online stores and growing brands rank on Google, win the map pack and get cited in AI answers.',
         email,
         telephone: phone,
-        founder: { '@type': 'Person', '@id': `${site}/#arslan-tariq`, name: 'Arslan Tariq', jobTitle: 'Founder & SEO Lead', image: `${site}/images/arslan-tariq-2026.jpg`, sameAs: ['https://www.linkedin.com/in/seo-expert-arslan-tariq/'] },
+        founder: { '@type': 'Person', '@id': `${site}/#arslan-tariq`, name: 'Arslan Tariq', jobTitle: 'Founder & SEO Lead', url: `${site}/arslan-tariq`, image: `${site}/images/arslan-tariq-2026.jpg`, sameAs: ['https://www.linkedin.com/in/seo-expert-arslan-tariq/'] },
         knowsAbout: ['Search engine optimization', 'Local SEO', 'Ecommerce SEO', 'AI search optimization', 'Link building', 'Content marketing'],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',

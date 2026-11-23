@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       'backlinks-digital-pr-services',
       'seo-content-writing-services',
     ].map(slug => ({ url: `${base}/${slug}`, changeFrequency: 'monthly' as const, priority: 0.9 })),
+    { url: `${base}/arslan-tariq`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/learn-seo`, changeFrequency: 'monthly', priority: 0.8 },
     ...guides.map(g => ({ url: `${base}/learn-seo/${g.slug}`, lastModified: g.modified, changeFrequency: 'monthly' as const, priority: 0.8 })),
     { url: `${base}/seo-tools`, changeFrequency: 'monthly', priority: 0.8 },
