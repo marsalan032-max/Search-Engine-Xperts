@@ -22,7 +22,7 @@
 .bx-hero{display:flex;flex-direction:column;gap:12px}
 .bx-hero img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px;box-shadow:0 30px 60px -36px rgba(11,20,55,.5);transition:transform .25s}
 .bx-hero:hover img{transform:scale(1.01)}
-.bx-hero h2{margin-top:12px;font-size:clamp(28px,3vw,40px);line-height:1.12;letter-spacing:-.035em;font-weight:600;color:var(--navy);text-wrap:balance}
+.bx-hero h2{margin-top:10px;font-size:clamp(22px,2.1vw,28px);line-height:1.28;letter-spacing:-.02em;font-weight:500;color:var(--navy);text-wrap:balance}
 .bx-hero:hover h2{color:var(--blue)}
 .bx-hero p{font-size:15px;line-height:1.7;color:var(--ink);max-width:640px}
 .bx-side{list-style:none;display:flex;flex-direction:column}
