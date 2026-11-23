@@ -8,7 +8,7 @@ import { guides } from '../../components/learn/guides';
 
 const url = `${siteUrl}/arslan-tariq`;
 const email = 'arslantariq082@gmail.com';
-const linkedin = author.profiles.find(p => p.label === 'LinkedIn')?.href ?? 'https://www.linkedin.com/in/seo-expert-arslan-tariq/';
+const linkedin = 'https://www.linkedin.com/in/seo-expert-arslan-tariq/';
 const tagline = 'AI SEO Specialist | Helping Local Businesses Get 10x More Leads from Google, Maps & AI Search with My Proven AEO & GEO Strategy';
 
 const articles = [
@@ -85,10 +85,8 @@ export default function ArslanTariqPage() {
           <p className="pf-hi">Hi, I’m</p>
           <h1 id="pf-title">Arslan Tariq</h1>
           <p className="pf-role">AI SEO Specialist &amp; Founder of <a href="/">Search Engine Xperts</a></p>
-          <p className="pf-bio">I help local businesses get 10x more leads from Google, Maps &amp; AI search with my proven AEO &amp; GEO strategy. With 7+ years in SEO, I also help eCommerce brands grow organic traffic, rankings and sales through data-driven SEO.</p>
+          <p className="pf-bio">I help local businesses get 10x more leads from Google, Maps &amp; AI search with my proven AEO &amp; GEO strategy. I also help eCommerce brands grow organic traffic, rankings and sales through data-driven SEO.</p>
           <div className="pf-foot">
-            <div className="pf-count"><b>{articles.length}</b><span>Total<br />articles</span></div>
-            <div className="pf-count"><b>7+</b><span>Years<br />in SEO</span></div>
             <div className="pf-follow">
               <span>Follow the expert:</span>
               <a href={linkedin} target="_blank" rel="noopener noreferrer me" aria-label="Arslan Tariq on LinkedIn"><LinkedInIcon /></a>

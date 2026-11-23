@@ -18,11 +18,8 @@
 .pf-role a:hover{color:#9fb3ff}
 .pf-bio{margin-top:16px;max-width:680px;font-size:14.5px;line-height:1.85;color:#b9c3e6}
 .pf-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 16px;margin-top:28px}
-.pf-count{display:flex;align-items:center;gap:14px;padding:12px 18px 12px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
-.pf-count b{display:grid;place-items:center;min-width:64px;height:48px;padding:0 10px;border-radius:9px;background:linear-gradient(135deg,var(--blue-l),var(--blue-d));font-size:20px;font-weight:700;box-shadow:0 10px 22px -10px rgba(52,93,247,.8)}
-.pf-count span{font-size:13px;font-weight:500;line-height:1.35;color:#dfe5ff}
-.pf-follow{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:15px;font-weight:300;color:#9aa6cf}
-.pf-follow a{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;transition:transform .15s,background .15s}
+.pf-follow{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:300;color:#9aa6cf}
+.pf-follow a{display:grid;place-items:center;width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;transition:transform .15s,background .15s}
 .pf-follow a:hover{transform:translateY(-2px);background:var(--blue)}
 
 /* ---------- articles ---------- */
@@ -50,7 +47,6 @@
 @media(max-width:1000px){
   .pf-band-grid{grid-template-columns:260px 1fr;gap:40px}
   .pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .pf-follow{margin-left:0}
 }
 @media(max-width:720px){
   .pf-band{padding:36px 0 40px}
