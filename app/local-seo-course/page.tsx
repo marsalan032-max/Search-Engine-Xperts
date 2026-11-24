@@ -12,7 +12,7 @@ import { HomeCrumb } from '../../components/home-crumb';
 // client reviews, a call-to-action banner and the FAQ. Module content lives in components/course.
 
 const url = `${siteUrl}/local-seo-course`;
-const title = 'Free Local SEO Course to Get Found on Google';
+const title = 'Free Local SEO Course to Rank on Google';
 const description = 'A free local SEO course in nine practical modules: Google Business Profile, local website SEO, content, citations, reviews, technical SEO and reporting, with a checklist for each step.';
 
 export const metadata: Metadata = {
@@ -121,8 +121,8 @@ export default function LocalSeoCourse() {
       <div className="wrap lc-top-grid">
         <div>
           <nav aria-label="Breadcrumb" className="lc-crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">Free Local SEO Course</span></nav>
-          <h1 id="lc-title">Free Local SEO Course to Get Found on Google</h1>
-          <p className="lc-intro">Learn how to turn more local searches into customers. Nine short, practical modules take you from your Google Business Profile to reviews, local content and reporting, with a checklist for every step.</p>
+          <h1 id="lc-title">{title}</h1>
+          <p className="lc-intro">Rank higher on Google Search and Maps with nine practical modules, from your Business Profile and reviews to local content and reporting, each with a step-by-step checklist.</p>
           <div className="lc-ctas">
             <a className="lc-btn" href={`/local-seo-course/${modules[0].slug}`}>Start the free course</a>
             <a className="lc-link" href="#modules">See all 9 modules</a>
