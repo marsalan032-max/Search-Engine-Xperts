@@ -29,7 +29,7 @@ export const menu: MenuItem[] = [
     label: 'Learn SEO',
     href: '/learn-seo',
     children: [
-      { label: 'Local SEO', href: '/learn-seo/local-seo' },
+      { label: 'Local SEO', href: '/local-seo-course' }, // the free Local SEO Course; the guide stays at /learn-seo/local-seo
       { label: 'Ecommerce SEO', href: '/learn-seo/ecommerce-seo' },
       { label: 'Mobile SEO', href: '/learn-seo/mobile-seo' },
       { label: 'Shopify SEO', href: '/learn-seo/shopify-seo' },
