@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { posts } from '../components/blog/posts';
 import { guides } from '../components/learn/guides';
 import { tools } from '../components/tools/tool-list';
+import { isReleased, modules } from '../components/course/local-seo-modules';
 
 const base = 'https://searchenginexperts.com';
 
@@ -18,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ].map(slug => ({ url: `${base}/${slug}`, changeFrequency: 'monthly' as const, priority: 0.9 })),
     { url: `${base}/arslan-tariq`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/saboor-nasir`, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${base}/local-seo-course`, changeFrequency: 'monthly', priority: 0.8 },
+    ...modules.filter((_, i) => isReleased(i)).map(m => ({ url: `${base}/local-seo-course/${m.slug}`, changeFrequency: 'monthly' as const, priority: 0.6 })),
     { url: `${base}/learn-seo`, changeFrequency: 'monthly', priority: 0.8 },
     ...guides.map(g => ({ url: `${base}/learn-seo/${g.slug}`, lastModified: g.modified, changeFrequency: 'monthly' as const, priority: 0.8 })),
     { url: `${base}/seo-tools`, changeFrequency: 'monthly', priority: 0.8 },

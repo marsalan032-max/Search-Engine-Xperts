@@ -4,6 +4,7 @@ import { services } from '../services';
 import { projects } from './projects';
 import { tools } from '../tools/tool-list';
 import questions from '../faq-data.json';
+import { testimonials } from './testimonials';
 
 // Home page (/). Sections, top to bottom:
 // hero → results cards → services (with sub-services) → portfolio → why us → process
@@ -237,11 +238,6 @@ function Process() {
 }
 
 /* ---------- reviews ---------- */
-const testimonials = [
-  { q: 'We went from nowhere to the first page in three months. The leads haven’t stopped since.', n: 'James Miller', r: 'Founder · Personal Drivers', i: 'JM' },
-  { q: 'Clear reporting, real rankings. Arslan explains everything and delivers on every promise.', n: 'Sara Khan', r: 'Marketing Lead · Shuraa', i: 'SK' },
-  { q: 'Our phone rings off the hook now. The map-pack ranking alone paid for itself.', n: 'David Turner', r: 'Owner · DFW Turf', i: 'DT' },
-];
 const platformReviews = [
   { q: 'Best SEO decision we made. Traffic up, leads up, and the communication is first-class.', n: 'Michael R.', via: 'Trustpilot' },
   { q: 'Strategic, transparent and genuinely results-driven. Ranked us in a tough niche.', n: 'Aisha N.', via: 'Clutch' },
