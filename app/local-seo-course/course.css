@@ -71,6 +71,11 @@
 .lc-cards h3{margin-top:4px;font-size:17px;font-weight:600;line-height:1.35;letter-spacing:-.015em}
 .lc-cards a:hover h3{color:var(--blue)}
 .lc-cards p{font-size:13.5px;line-height:1.6;color:var(--slate)}
+.lc-locked{position:relative;display:flex;flex-direction:column;height:100%;border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 1px 2px rgba(11,20,55,.05),0 16px 34px -24px rgba(11,20,55,.25);cursor:default}
+.lc-locked .lc-card-art{filter:saturate(.55);opacity:.7}
+.lc-locked h3{color:var(--slate)!important}
+.lc-soon{display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:8px;font-size:13px;font-weight:600;color:var(--slate)}
+.lc-soon svg{width:14px}
 .lc-cards i{margin-top:auto;padding-top:8px;font-style:normal;font-size:13px;font-weight:600;color:var(--blue)}
 
 /* ---------- module page ---------- */
@@ -94,6 +99,9 @@
 .lc-toc a{display:flex;gap:10px;align-items:flex-start;padding:8px;border-radius:9px;font-size:13px;line-height:1.4;color:var(--ink);transition:background .15s,color .15s}
 .lc-toc a span{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--tint);color:var(--blue-d);font-size:11px;font-weight:700}
 .lc-toc a:hover{background:var(--tint);color:var(--blue)}
+.lc-toc-soon{display:flex;gap:10px;align-items:flex-start;padding:8px;font-size:13px;line-height:1.4;color:#9aa3c2}
+.lc-toc-soon>span{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#f4f6fc;color:#9aa3c2;font-size:11px;font-weight:700}
+.lc-toc-soon small{flex:none;margin-left:auto;padding:2px 7px;border-radius:999px;background:#f4f6fc;font-size:10px;font-weight:600}
 .lc-toc a[aria-current]{background:var(--tint);color:var(--navy);font-weight:600}
 .lc-toc a[aria-current] span{background:var(--blue);color:#fff}
 .lm-body{min-width:0;max-width:760px}
@@ -119,6 +127,9 @@
 .lm-pager small{font-size:12px;font-weight:600;color:var(--blue)}
 .lm-pager b{font-size:15px;font-weight:600;color:var(--navy);line-height:1.4}
 .lm-next{text-align:right;background:var(--tint);border-color:transparent!important}
+.lm-soon{display:flex;flex-direction:column;gap:4px;padding:18px 20px;border-radius:14px;border:1px dashed var(--line)!important;background:#fff}
+.lm-soon small{color:var(--slate)!important}
+.lm-soon b{color:var(--slate)!important}
 
 /* ---------- call-to-action banner ---------- */
 .lc-cta{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:24px;overflow:hidden;margin:72px 0 88px;padding:52px 0 52px 56px;border-radius:28px;color:#fff;background:

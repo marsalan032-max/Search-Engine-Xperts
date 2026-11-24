@@ -14,6 +14,11 @@ export type Module = {
   further?: { label: string; href: string };
 };
 
+// How many modules are released. Modules after this show as "Coming soon" on the course page, have no page yet,
+// and stay out of the sitemap. Raise it to release the next module.
+export const releasedModules = 1;
+export const isReleased = (index: number) => index < releasedModules;
+
 export const modules: Module[] = [
   {
     id: 'module-1',

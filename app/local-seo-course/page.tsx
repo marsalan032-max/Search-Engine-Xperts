@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { author, siteUrl } from '../../components/blog/posts';
-import { modules } from '../../components/course/local-seo-modules';
+import { isReleased, modules, releasedModules } from '../../components/course/local-seo-modules';
 import { ModuleArt } from '../../components/course/module-art';
 import { CourseCta } from '../../components/course/course-cta';
 import { CertificateArt } from '../../components/course/certificate-art';
@@ -28,7 +28,7 @@ const certMail = `mailto:${author.email}?subject=${encodeURIComponent('Local SEO
 const outcomes = ['Win more local clients as a freelancer or agency', 'Grow calls and leads for your own business', 'Stand out to employers hiring for local SEO'];
 
 const faqs = [
-  { q: 'Is the course really free?', a: 'Yes. All nine modules are free to read, with no sign-up and no payment.' },
+  { q: 'Is the course really free?', a: 'Yes. Every module is free to read, with no sign-up and no payment. Module 1 is open now and the remaining modules are released one by one.' },
   { q: 'Who is this course for?', a: 'Business owners, marketers, freelancers and agency teams who want to win more customers from Google Search and Google Maps in a specific town or area.' },
   { q: 'Do I need technical skills?', a: 'No. Most modules only need access to your Google Business Profile and your website. Module 7 explains the technical basics in plain English and what to hand to a developer.' },
   { q: 'How long does it take?', a: 'Each module takes a few minutes to read. The checklists are the real work, and most people complete the setup modules over a few weeks.' },
@@ -45,6 +45,7 @@ const Icon = {
   web: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.8 3.2 2.8 14.8 0 18M12 3c-2.8 3.2-2.8 14.8 0 18" /></svg>,
   star: <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z" /></svg>,
   check: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12l5 5L20 6" /></svg>,
+  lock: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>,
   quote: <svg viewBox="0 0 32 24" fill="currentColor"><path d="M0 24V14C0 6 4 1.6 12 0l1.4 3.4C9 4.8 7 7.6 6.8 11H12v13Zm19 0V14c0-8 4-12.4 12-14l1 3.4c-4.4 1.4-6.4 4.2-6.6 7.6H31v13Z" /></svg>,
   sparkle: <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.8 6.4 5.6 11.2 12 12-6.4.8-11.2 5.6-12 12C11.2 17.6 6.4 12.8 0 12 6.4 11.2 11.2 6.4 12 0z" /></svg>,
 };
@@ -92,7 +93,7 @@ function Schema() {
         instructor: { '@id': `${siteUrl}/#${author.id}` },
         offers: { '@type': 'Offer', category: 'Free', price: 0, priceCurrency: 'USD' },
         hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'Online' },
-        syllabusSections: modules.map(m => ({ '@type': 'Syllabus', name: m.title, description: m.summary, url: `${url}/${m.slug}` })),
+        syllabusSections: modules.map((m, i) => ({ '@type': 'Syllabus', name: m.title, description: m.summary, ...(isReleased(i) ? { url: `${url}/${m.slug}` } : {}) })),
       },
       { '@type': 'Person', '@id': `${siteUrl}/#${author.id}`, name: author.name, url: `${siteUrl}${author.url}` },
       {
@@ -137,19 +138,22 @@ export default function LocalSeoCourse() {
     <section id="modules" className="lc-overview" aria-labelledby="overview-title">
       <div className="wrap">
         <h2 id="overview-title" className="lc-h2">Course modules</h2>
-        <p className="lc-sub">Nine short modules, in the order we work through local SEO with our own clients.</p>
+        <p className="lc-sub">Nine short modules, in the order we work through local SEO with our own clients. {releasedModules < modules.length ? `Module ${releasedModules > 1 ? `1–${releasedModules}` : '1'} is open now; the rest are coming soon.` : ''}</p>
         <ol className="lc-cards">
-          {modules.map((m, i) => <li key={m.slug}>
-            <a href={`/local-seo-course/${m.slug}`}>
+          {modules.map((m, i) => {
+            const body = <>
               <ModuleArt index={i} className="lc-card-art" />
               <div className="lc-card-body">
                 <span className="lc-card-meta"><span className="lc-num">Module {i + 1}</span>{m.lessons.length} lessons · Checklist</span>
                 <h3>{m.title}</h3>
                 <p>{m.summary}</p>
-                <i>Start module →</i>
+                {isReleased(i) ? <i>Start module →</i> : <span className="lc-soon">{Icon.lock} Coming soon</span>}
               </div>
-            </a>
-          </li>)}
+            </>;
+            return <li key={m.slug}>
+              {isReleased(i) ? <a href={`/local-seo-course/${m.slug}`}>{body}</a> : <div className="lc-locked">{body}</div>}
+            </li>;
+          })}
         </ol>
       </div>
     </section>

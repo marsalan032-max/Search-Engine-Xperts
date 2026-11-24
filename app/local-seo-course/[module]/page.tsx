@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { author, siteUrl } from '../../../components/blog/posts';
-import { modules } from '../../../components/course/local-seo-modules';
+import { isReleased, modules } from '../../../components/course/local-seo-modules';
 import { ModuleArt } from '../../../components/course/module-art';
 import { CourseCta } from '../../../components/course/course-cta';
 import { HomeCrumb } from '../../../components/home-crumb';
@@ -12,10 +12,11 @@ import { HomeCrumb } from '../../../components/home-crumb';
 type Props = { params: Promise<{ module: string }> };
 
 const courseUrl = `${siteUrl}/local-seo-course`;
-const find = (slug: string) => modules.findIndex(m => m.slug === slug);
+// Index of a released module, or -1 (unknown or not released yet → 404).
+const find = (slug: string) => { const i = modules.findIndex(m => m.slug === slug); return isReleased(i) ? i : -1; };
 
 export const dynamicParams = false; // unknown modules return 404
-export const generateStaticParams = () => modules.map(m => ({ module: m.slug }));
+export const generateStaticParams = () => modules.filter((_, i) => isReleased(i)).map(m => ({ module: m.slug }));
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const i = find((await params).module);
@@ -95,7 +96,9 @@ export default async function CourseModule({ params }: Props) {
       <nav className="lc-toc" aria-label="Course modules">
         <p>Course modules</p>
         <ol>{modules.map((x, j) => <li key={x.slug}>
-          <a href={`/local-seo-course/${x.slug}`} {...(j === i ? { 'aria-current': 'page' as const } : {})}><span>{j + 1}</span>{x.title}</a>
+          {isReleased(j)
+            ? <a href={`/local-seo-course/${x.slug}`} {...(j === i ? { 'aria-current': 'page' as const } : {})}><span>{j + 1}</span>{x.title}</a>
+            : <span className="lc-toc-soon"><span>{j + 1}</span>{x.title}<small>Soon</small></span>}
         </li>)}</ol>
       </nav>
 
@@ -118,9 +121,11 @@ export default async function CourseModule({ params }: Props) {
           {prev
             ? <a href={`/local-seo-course/${prev.slug}`}><small>← Previous: Module {i}</small><b>{prev.title}</b></a>
             : <a href="/local-seo-course"><small>← Back to</small><b>All course modules</b></a>}
-          {next
+          {next && isReleased(i + 1)
             ? <a className="lm-next" href={`/local-seo-course/${next.slug}`}><small>Next: Module {i + 2} →</small><b>{next.title}</b></a>
-            : <a className="lm-next" href="/local-seo-course"><small>Course complete</small><b>Back to all modules →</b></a>}
+            : next
+              ? <div className="lm-next lm-soon"><small>Module {i + 2} · Coming soon</small><b>{next.title}</b></div>
+              : <a className="lm-next" href="/local-seo-course"><small>Course complete</small><b>Back to all modules →</b></a>}
         </nav>
       </article>
     </div>
