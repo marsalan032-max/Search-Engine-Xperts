@@ -132,6 +132,43 @@
 .lc-cta-btn:hover{transform:translateY(-2px);box-shadow:0 22px 40px -14px rgba(245,165,36,.8)}
 .lc-cta-art{position:relative;width:100%;max-width:440px;height:auto;justify-self:end;margin-bottom:-52px;align-self:end}
 
+/* ---------- certificate ---------- */
+.lc-cert{padding:88px 0 40px}
+.lc-cert-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center}
+.lc-cert-text{margin-top:16px;font-size:16.5px;line-height:1.75;color:var(--ink);max-width:540px}
+.lc-cert-text b{font-weight:600;color:var(--navy)}
+.lc-outcomes{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.lc-outcomes li{display:flex;gap:10px;align-items:center;font-size:15px;color:var(--ink)}
+.lc-outcomes span{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--up-bg);color:var(--up)}
+.lc-outcomes svg{width:12px}
+.lc-cert-art{display:block;width:100%;max-width:560px;height:auto;justify-self:end}
+
+/* ---------- reviews ---------- */
+.lc-reviews{padding:56px 0 0}
+.lc-reviews .lc-h2,.lc-reviews .lc-sub{text-align:center}
+.lc-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:36px}
+.lc-review-grid figure{display:flex;flex-direction:column;gap:16px;padding:28px;border:1px solid var(--line);border-radius:18px;background:#fff;transition:border-color .18s,box-shadow .18s}
+.lc-review-grid figure:hover{border-color:#c9d3f3;box-shadow:0 20px 40px -28px rgba(11,20,55,.35)}
+.lc-quote{display:block;width:34px;color:var(--blue)}
+.lc-quote svg{width:100%}
+.lc-review-grid blockquote{font-size:16px;line-height:1.7;color:var(--ink)}
+.lc-review-grid figcaption{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:8px;font-size:12.5px;color:var(--slate)}
+.lc-review-grid figcaption b{display:block;font-size:14.5px;font-weight:600;color:var(--navy)}
+.lc-avatar{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--blue-l),var(--blue-d));color:#fff;font-size:14px;font-weight:600;box-shadow:0 0 0 3px #fff,0 0 0 4px var(--line)}
+
+/* ---------- FAQ ---------- */
+.lc-faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;padding-bottom:96px}
+.lc-eyebrow{font-size:13px;font-weight:600;color:var(--blue)}
+.lc-faq .lc-h2{margin-top:6px}
+.lc-faq details{border-bottom:1px solid var(--line)}
+.lc-faq details:first-child{border-top:1px solid var(--line)}
+.lc-faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-size:16px;font-weight:600;color:var(--navy);cursor:pointer}
+.lc-faq summary::-webkit-details-marker{display:none}
+.lc-faq summary:after{content:"+";flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--tint);color:var(--blue);font-size:18px;font-weight:500;transition:transform .2s,background .2s,color .2s}
+.lc-faq details[open] summary:after{transform:rotate(45deg);background:var(--blue);color:#fff}
+.lc-faq summary:hover{color:var(--blue)}
+.lc-faq details p{padding:0 44px 20px 0;font-size:15px;line-height:1.7;color:var(--slate)}
+
 /* ---------- responsive ---------- */
 @media(max-width:1000px){
   .lc-top-grid{grid-template-columns:1fr;gap:40px}
@@ -143,6 +180,10 @@
   .lm-art{max-width:560px}
   .lc-cta{grid-template-columns:1fr;padding:44px 36px 0}
   .lc-cta-art{justify-self:center;margin-bottom:0;max-width:380px}
+  .lc-cert-grid{grid-template-columns:1fr;gap:40px}
+  .lc-cert-art{justify-self:center}
+  .lc-review-grid{grid-template-columns:1fr;max-width:620px;margin-inline:auto}
+  .lc-faq{grid-template-columns:1fr;gap:20px}
 }
 @media(max-width:640px){
   .lc-top{padding:32px 0 52px}
@@ -157,5 +198,9 @@
   .lc-check ul{grid-template-columns:1fr}
   .lc-cta{padding:34px 24px 0;border-radius:22px}
   .lc-cta-btn{width:100%;justify-content:center}
+  .lc-cert{padding:60px 0 24px}
+  .lc-review-grid figure{padding:22px}
+  .lc-faq{padding-bottom:64px}
+  .lc-faq details p{padding-right:0}
 }
 @media(prefers-reduced-motion:reduce){.lc *{transition:none!important;animation:none!important}}
