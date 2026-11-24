@@ -1,9 +1,11 @@
 // Content of the free Local SEO Course (/local-seo-course). One entry per module, in order.
-// Each module: a one-line summary (syllabus card), an intro, three short lessons and a checklist.
+// Each module: a one-line summary (course card), an intro, three short lessons and a checklist.
+// The course page lists the modules as cards; each module has its own page at /local-seo-course/<slug>.
 
 export type Lesson = { title: string; text: string; points?: string[] };
 export type Module = {
   id: string;
+  slug: string;          // page address: /local-seo-course/<slug>
   title: string;
   summary: string;
   intro: string;
@@ -15,6 +17,7 @@ export type Module = {
 export const modules: Module[] = [
   {
     id: 'module-1',
+    slug: 'why-google-shows-some-businesses-first',
     title: 'Why Google Shows Some Businesses First',
     summary: 'How the map pack works and the three things Google uses to rank local businesses.',
     intro: 'Before you change anything, it helps to know what Google is looking for. When someone searches for a service “near me” or in a city, Google picks a handful of businesses to show. Those spots are not random, and most of what decides them is in your control.',
@@ -46,6 +49,7 @@ export const modules: Module[] = [
   },
   {
     id: 'module-2',
+    slug: 'google-business-profile',
     title: 'Make Your Google Business Profile Irresistible',
     summary: 'Set up and optimize the profile that powers your map pack listing.',
     intro: 'Your Google Business Profile is the listing that shows in the map pack and on Google Maps. For most local businesses it brings in more calls than the website does, so it deserves the most attention.',
@@ -79,6 +83,7 @@ export const modules: Module[] = [
   },
   {
     id: 'module-3',
+    slug: 'local-website-seo',
     title: 'Make Your Website Show Up in Local Searches',
     summary: 'On-page changes that tell Google what you do and where you do it.',
     intro: 'Your website backs up your Google Business Profile. Google compares the two, and a site that clearly states your services and locations strengthens both your map pack and organic rankings.',
@@ -110,6 +115,7 @@ export const modules: Module[] = [
   },
   {
     id: 'module-4',
+    slug: 'local-content',
     title: 'Create Relevant Content That Gets You Found',
     summary: 'Location pages, project stories and answers that win local searches.',
     intro: 'Content is how you rank for more searches than the handful your service pages cover, and how you show Google and AI search that you are the local expert.',
@@ -136,6 +142,7 @@ export const modules: Module[] = [
   },
   {
     id: 'module-5',
+    slug: 'local-citations',
     title: 'Get Listed Everywhere That Matters',
     summary: 'Citations and directories that build trust in your business details.',
     intro: 'A citation is any listing of your business name, address and phone number (NAP) on another site. Consistent citations confirm to Google that your business is real and where you say it is.',
@@ -167,6 +174,7 @@ export const modules: Module[] = [
   },
   {
     id: 'module-6',
+    slug: 'customer-reviews',
     title: 'Turn Customer Reviews Into More Sales',
     summary: 'Get more reviews, respond well, and use them to win the next customer.',
     intro: 'Reviews influence both where you rank and whether people choose you. A steady flow of recent, genuine reviews beats a big batch from two years ago.',
@@ -193,6 +201,7 @@ export const modules: Module[] = [
   },
   {
     id: 'module-7',
+    slug: 'technical-local-seo',
     title: 'Handle the Technical Stuff',
     summary: 'Make sure Google can crawl, load and understand your site on mobile.',
     intro: 'You do not need to be a developer, but a few technical basics decide whether all your other work gets seen. Most local searches happen on phones, so mobile comes first.',
@@ -225,6 +234,7 @@ export const modules: Module[] = [
   },
   {
     id: 'module-8',
+    slug: 'local-seo-reporting',
     title: 'Prove Your Results With Numbers',
     summary: 'Track calls, leads and rankings so you know what is working.',
     intro: 'Local SEO should show up as more calls, more enquiries and more customers. Measuring the right things tells you what is working and where to spend your time next.',
@@ -251,6 +261,7 @@ export const modules: Module[] = [
   },
   {
     id: 'module-9',
+    slug: 'local-seo-growth-system',
     title: 'Set Up Systems That Keep You Growing',
     summary: 'A simple monthly routine so results keep building.',
     intro: 'Local SEO is not a one-off project. The businesses that stay at the top keep doing the basics every month. Turn the course into a routine you can hand to your team.',
