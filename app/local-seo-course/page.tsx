@@ -122,7 +122,7 @@ export default function LocalSeoCourse() {
         <div>
           <nav aria-label="Breadcrumb" className="lc-crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">Free Local SEO Course</span></nav>
           <h1 id="lc-title">{title}</h1>
-          <p className="lc-intro">Rank higher on Google Search and Maps with nine practical modules, from your Business Profile and reviews to local content and reporting, each with a step-by-step checklist.</p>
+          <p className="lc-intro">In this course, you will learn how to target location-specific keywords, optimize your Google Business Profile, and connect it with your website to improve local search visibility, attract more potential customers, and turn local searches into customers.</p>
           <div className="lc-ctas">
             <a className="lc-btn" href={`/local-seo-course/${modules[0].slug}`}>Start the free course</a>
             <a className="lc-link" href="#modules">See all 9 modules</a>
