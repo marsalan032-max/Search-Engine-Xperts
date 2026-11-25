@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description: 'Search Engine Xperts is an SEO and AI search agency helping businesses rank on Google, win the map pack and get cited in AI answers.',
   applicationName: 'Search Engine Xperts',
   openGraph: { siteName: 'Search Engine Xperts', type: 'website', locale: 'en_US' },
+  verification: { google: 'Xap__Njk4UScoTNQMRZdxTDiBuar0pmWCkafx6RnAic' },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
