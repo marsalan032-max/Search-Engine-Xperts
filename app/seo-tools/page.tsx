@@ -70,6 +70,13 @@ export default function SeoToolsHub() {
         </a>)}
       </div>
 
+      <a className="suite-promo" href="/seo-suite">
+        <span className="suite-promo-tag">New · All-in-one</span>
+        <b>Open the free SEO Suite</b>
+        <span>Keyword research, search trends, SERP analysis, domain overview, backlinks and site audit in one workspace.</span>
+        <i>Launch the suite →</i>
+      </a>
+
       <section className="hub-path" aria-labelledby="how-title">
         <p className="eyebrow">How they fit together</p>
         <h2 className="hub-h2" id="how-title">A simple workflow</h2>

@@ -64,3 +64,15 @@ Each post can show an "Ask about this article" panel (`components/blog/ask-ai.ts
 - Suggested questions show the pre-written answers in the post file (`askSuggestions`: question, answer, and the section it links to).
 - Typed questions are matched against the article's passages, takeaways and FAQs (`components/blog/chunks.ts` splits the article; `components/blog/answer.ts` ranks passages, with a synonym list you can extend). The reply links to the matching section. If nothing matches, it suggests the free audit.
 - Add `askSuggestions` to a new post to give it the panel.
+
+## SEO Suite (/seo-suite)
+
+A full-screen, dark "SEO platform" page (interface modelled on the MIT-licensed [OpenSEO](https://github.com/every-app/open-seo)): Keyword Research (ideas table, filters, saved keywords, CSV export, 12-month trend, live SERP), Domain Overview, Backlinks, Site Audit and Saved Keywords, followed by explainer copy, FAQs and a CTA. Linked from the SEO Tools menu, the `/seo-tools` hub and the sitemap.
+
+- `app/seo-suite/page.tsx` (page, metadata, schema, landing copy) and `suite.css` (all styles, scoped to `.ss-page`).
+- `components/seo-suite/`: `suite-app.tsx` (sidebar shell, `?view=` routing), `keyword-view.tsx`, `other-views.tsx`, `ui.tsx`, `shared.ts` (countries, types, intent rules).
+- `app/api/seo-suite/*`: `keywords`, `serp`, `domain`, `backlinks`, `status`. Helpers, caching and limits in `_lib/server.ts`.
+- **Without a data key** (default): keyword ideas come from Google Autocomplete (no volumes; intent from the wording, Trends/Google links per idea); Site Audit uses `/api/fetch-page`; Domain Overview and Backlinks show a "needs live data" panel.
+- **With live data**: set `DATAFORSEO_LOGIN` and `DATAFORSEO_PASSWORD` (DataForSEO API credentials) in Vercel → Settings → Environment Variables, then redeploy. This adds volume, CPC, competition, difficulty, intent, 12-month trend, live top 10, domain overview and backlinks. The Backlinks view needs DataForSEO's Backlinks API subscription.
+- Cost guards: results cached 12 h per server instance; each visitor gets `SEO_SUITE_HOURLY_PER_IP` paid lookups per hour (default 15); `SEO_SUITE_DAILY_LIMIT` paid calls per instance per day (default 300). Limits are in memory, so treat them as a brake, not a hard budget; set a spending cap in DataForSEO too.
+- Recent searches and saved keywords are kept in the visitor's browser (localStorage) only.

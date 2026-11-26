@@ -18,6 +18,7 @@ export const menu: MenuItem[] = [
     label: 'SEO Tools',
     href: '/seo-tools',
     children: [
+      { label: 'SEO Suite (all-in-one)', href: '/seo-suite' },
       { label: 'Keyword Research', href: '/seo-tools/keyword-research-tool' },
       { label: 'Technical SEO', href: '/seo-tools/technical-seo-checker' },
       { label: 'On-Page Analysis', href: '/seo-tools/on-page-seo-checker' },
