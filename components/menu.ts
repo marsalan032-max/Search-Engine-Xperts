@@ -30,8 +30,7 @@ export const menu: MenuItem[] = [
     href: '/learn-seo',
     children: [
       { label: 'Local SEO', href: '/local-seo-course' }, // the free Local SEO Course; the guide stays at /learn-seo/local-seo
-      { label: 'Ecommerce SEO', href: '/learn-seo/ecommerce-seo' },
-      { label: 'Ecommerce SEO Course', href: '/ecommerce-seo-course' }, // advanced course; modules open one by one
+      { label: 'Ecommerce SEO', href: '/ecommerce-seo-course' }, // the Advanced Ecommerce SEO Course; the guide stays at /learn-seo/ecommerce-seo
       { label: 'Mobile SEO', href: '/learn-seo/mobile-seo' },
       { label: 'Shopify SEO', href: '/learn-seo/shopify-seo' },
       { label: 'Technical SEO', href: '/learn-seo/technical-seo' },
