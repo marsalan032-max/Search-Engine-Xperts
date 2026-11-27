@@ -13,6 +13,7 @@ export type AlgoUpdate = {
   date: string;          // YYYY-MM-DD: rollout start (or announcement date when status is 'Announced')
   rollout?: string;      // how long the rollout took
   status?: 'Announced' | 'Rolling out' | 'Complete';
+  end?: string;          // YYYY-MM-DD: completion date, when the date worked out from `rollout` would be off
   release?: string;      // YYYY-MM: planned release month for an announced update (shown on its card)
   summary: string;
   details?: string[];    // extra paragraphs for the update's own page
@@ -91,7 +92,7 @@ export const updates: AlgoUpdate[] = [
     summary: 'Rolled out alongside the October spam update, so many sites saw both at once.' },
   { id: 'october-2023-spam-update', name: 'October 2023 spam update', type: 'Spam', date: '2023-10-04', rollout: '15 days, 12 hours', status: 'Complete',
     summary: 'Prompted by user reports of spam in several languages, it targeted cloaking, hacked sites, auto-generated and scraped content.' },
-  { id: 'september-2023-helpful-content-update', name: 'September 2023 helpful content update', type: 'Content', date: '2023-09-14', rollout: '13 days, 11 hours', status: 'Complete',
+  { id: 'september-2023-helpful-content-update', name: 'September 2023 helpful content update', type: 'Content', date: '2023-09-14', end: '2023-09-28', rollout: '13 days, 11 hours', status: 'Complete',
     summary: 'The last standalone helpful content update. Google also changed its guidance from content “written by people” to content “created for people”, softening its position on AI-assisted writing.',
     details: ['Many independent publishers reported large traffic losses after this update. In March 2024 Google folded the helpful content system into its core ranking systems, so it no longer runs as a separate update.'] },
   { id: 'august-2023-core-update', name: 'August 2023 core update', type: 'Core', date: '2023-08-22', rollout: '16 days, 3 hours', status: 'Complete',
@@ -202,7 +203,7 @@ export const updates: AlgoUpdate[] = [
 export const typeLabels: { type: UpdateType; label: string }[] = [
   { type: 'Core', label: 'Core updates' },
   { type: 'Spam', label: 'Spam updates' },
-  { type: 'Content', label: 'Helpful content & reviews' },
+  { type: 'Content', label: 'Content quality & reviews' },
   { type: 'Page experience', label: 'Page experience' },
   { type: 'Other', label: 'Other' },
 ];
@@ -214,11 +215,12 @@ export const formatUpdateDate = (iso: string) =>
 
 export const getUpdate = (id: string) => updates.find(u => u.id === id);
 export const updatePath = (u: AlgoUpdate) => `/google-algorithm-updates/${u.id}`;
-export const typeName = (t: UpdateType) => (t === 'Content' ? 'Helpful content' : t);
+export const typeName = (t: UpdateType) => (t === 'Content' ? 'Content quality' : t);
 
 // Completion date from the dashboard rollout length ("13 days, 20 hours", "19 hours, 30 minutes", "45 days"):
 // start date + whole days, plus one more day when the remainder is 12 hours or more.
 export function endDate(u: AlgoUpdate): string | undefined {
+  if (u.end) return u.end;
   if (!u.rollout || u.status !== 'Complete') return;
   const d = /(\d+) days?/.exec(u.rollout), h = /(\d+) hours?/.exec(u.rollout);
   if (!d && !h) return;
