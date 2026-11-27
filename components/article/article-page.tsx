@@ -13,7 +13,7 @@ import { HomeCrumb } from '../home-crumb';
 export type ArticleSection = {
   name: string;                         // breadcrumb label, e.g. "SEO Blog"
   path: string;                         // e.g. "/blog"
-  schemaType: 'BlogPosting' | 'Article';
+  schemaType: 'BlogPosting' | 'Article' | 'NewsArticle';
 };
 
 export const articleUrl = (section: ArticleSection, post: Post) => `${siteUrl}${section.path}/${post.slug}`;
