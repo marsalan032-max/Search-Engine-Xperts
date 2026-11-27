@@ -5,9 +5,10 @@ import { articlesBy } from '../../components/author/author-page';
 import type { AuthorKey } from '../../components/blog/authors';
 import { guides } from '../../components/learn/guides';
 import { HomeCrumb } from '../../components/home-crumb';
+import { TopicFilter } from '../../components/blog/topic-filter';
 
-// Blog collection page (/blog): topic pills, a featured story with three picks beside it, every article in a
-// "Latest" grid (each card ends with the author and the date), then the Learn SEO guides as topic tiles.
+// Blog collection page (/blog): topic pills that filter the article grid, a featured story with three picks beside it,
+// every article in a "Latest" grid (each card ends with the author and the date), then the Learn SEO guides as topic tiles.
 // Articles come from the blog posts and Learn SEO guides, so new ones appear here automatically.
 
 type Item = (typeof posts)[number] & { href: string };
@@ -23,11 +24,9 @@ const chosen = ['ai-seo', 'local-seo', 'how-much-does-seo-cost-for-an-agency', '
 const top = chosen.length === 4 ? chosen : all.slice(0, 4);
 const [featured, ...side] = top;
 
-const pills = [
-  { label: 'All articles', href: '#latest' },
-  ...['ai-seo', 'local-seo', 'ecommerce-seo', 'shopify-seo', 'technical-seo', 'link-building', 'how-much-does-seo-cost-for-an-agency']
-    .map(pick).filter((a): a is Item => !!a).map(a => ({ label: a.category, href: a.href })),
-];
+// Topic pills filter the "Latest" grid on this page (see TopicFilter). Only topics that have articles are shown.
+const topics = ['AI SEO', 'Local SEO', 'Ecommerce SEO', 'Shopify SEO', 'Technical SEO', 'Link Building']
+  .filter(t => all.some(a => a.category === t));
 
 export const metadata: Metadata = {
   title: 'SEO Blog: Local SEO, Ecommerce & AI Search Guides | Search Engine Xperts',
@@ -80,16 +79,24 @@ export default function BlogIndex() {
   return <div className="bx">
     <Schema />
 
-    {/* ---------- title + topic pills ---------- */}
-    <div className="wrap bx-head">
-      <nav aria-label="Breadcrumb" className="crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">SEO Blog</span></nav>
-      <h1>SEO Blog</h1>
-      <p className="bx-dek">Practical answers to your SEO, local search and AI visibility questions.</p>
-      <nav className="bx-pills" aria-label="Topics">
-        {pills.map(p => <a key={p.href} href={p.href}>{p.label}</a>)}
-      </nav>
-    </div>
-
+    {/* ---------- title + topic pills, featured story, then every article (filtered by the pills) ---------- */}
+    <TopicFilter
+      head={<>
+        <nav aria-label="Breadcrumb" className="crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">SEO Blog</span></nav>
+        <h1>SEO Blog</h1>
+        <p className="bx-dek">Practical answers to your SEO, local search and AI visibility questions.</p>
+      </>}
+      topics={topics}
+      cards={all.map(a => ({ key: a.href, category: a.category, node: <a href={a.href} className="bx-card">
+        <img src={a.image.src} alt="" width={a.image.width} height={a.image.height} loading="lazy" />
+        <div className="bx-card-body">
+          <span className="bx-meta"><span>{a.category}</span><span><Clock /> {a.readTime.replace(' read', '')}</span></span>
+          <h3>{a.title}</h3>
+          <p>{a.dek}</p>
+          <AuthorRow a={a} />
+        </div>
+      </a> }))}
+    >
     {/* ---------- featured story + three picks ---------- */}
     <section className="wrap bx-feature" aria-label="Featured articles">
       <a href={featured.href} className="bx-hero">
@@ -114,23 +121,7 @@ export default function BlogIndex() {
       </ul>
     </section>
 
-    {/* ---------- every article ---------- */}
-    <section id="latest" className="bx-band" aria-labelledby="latest-title">
-      <div className="wrap">
-        <h2 id="latest-title" className="bx-title">Latest</h2>
-        <div className="bx-grid">
-          {all.map(a => <a key={a.href} href={a.href} className="bx-card">
-            <img src={a.image.src} alt="" width={a.image.width} height={a.image.height} loading="lazy" />
-            <div className="bx-card-body">
-              <span className="bx-meta"><span>{a.category}</span><span><Clock /> {a.readTime.replace(' read', '')}</span></span>
-              <h3>{a.title}</h3>
-              <p>{a.dek}</p>
-              <AuthorRow a={a} />
-            </div>
-          </a>)}
-        </div>
-      </div>
-    </section>
+    </TopicFilter>
 
     {/* ---------- guides as topic tiles ---------- */}
     <section className="wrap bx-topics" aria-labelledby="topics-title">
