@@ -13,6 +13,7 @@ export type AlgoUpdate = {
   date: string;          // YYYY-MM-DD: rollout start (or announcement date when status is 'Announced')
   rollout?: string;      // how long the rollout took
   status?: 'Announced' | 'Rolling out' | 'Complete';
+  release?: string;      // YYYY-MM: planned release month for an announced update (shown on its card)
   summary: string;
 };
 
@@ -20,7 +21,7 @@ export const dashboardUrl = 'https://status.search.google.com/products/rGHU1u87F
 
 export const updates: AlgoUpdate[] = [
   // ---------- 2026 ----------
-  { id: 'december-2026-core-update', name: 'December 2026 core update', type: 'Core', date: '2026-11-24', status: 'Announced',
+  { id: 'december-2026-core-update', name: 'December 2026 core update', type: 'Core', date: '2026-11-24', status: 'Announced', release: '2026-12',
     summary: 'Google posted this on its Search Status Dashboard weeks before release, something it had not done for a core update before. Google says it will improve how Search understands and ranks results for longer, more complex queries, and refine personalized results for people who have personalization turned on. It applies to all locations and languages and is scheduled for December 2026, with no start date yet.' },
   { id: 'november-2026-core-update', name: 'November 2026 core update', type: 'Core', date: '2026-11-10', rollout: '13 days, 20 hours', status: 'Complete',
     summary: 'The third broad core update of 2026, released globally in all languages. Google called it a regular update and gave no new guidance. It finished on 24 November, just before Black Friday, so online stores should compare full weeks of data before reacting to any change.' },

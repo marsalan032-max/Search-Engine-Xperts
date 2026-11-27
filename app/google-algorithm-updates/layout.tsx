@@ -1,5 +1,6 @@
 import '../blog/blog.css';
 import '../hub.css';
+import '../blog/blog-index.css';
 import './updates.css';
 import { Header } from '../../components/interactive';
 import { BrandDefinitions, Footer } from '../../components/site';

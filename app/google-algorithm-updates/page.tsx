@@ -86,17 +86,18 @@ export default function GoogleAlgorithmUpdates() {
   return <>
     <Schema />
     <section className="wrap ga-hero">
-      <div className="ga-hero-copy">
-        <nav aria-label="Breadcrumb" className="crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">Google Algorithm Update</span></nav>
-        <p className="eyebrow">Search news · Updated {formatUpdateDate('2026-11-27')}</p>
-        <h1>Google Algorithm Update</h1>
-        <p className="dek">Every confirmed change to how Google ranks websites, from the latest core update back to Panda. Each entry has the official start date and rollout time, plus a plain-English note on what changed and who it affected.</p>
-        <div className="ga-hero-cta">
-          <a href="#updates" className="btn btn-primary">See all updates <span aria-hidden="true">↓</span></a>
-          <a href="#impact" className="btn btn-ghost">Was my site affected?</a>
+      <nav aria-label="Breadcrumb" className="crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">Google Algorithm Update</span></nav>
+      <div className="ga-banner">
+        <div className="ga-banner-copy">
+          <h1>Google Algorithm Update</h1>
+          <p className="ga-banner-dek">Every confirmed change to how Google ranks websites, from the latest core update back to Panda. Each update shows the official start date, how long it took to roll out and what it changed.</p>
+          <div className="ga-hero-cta">
+            <a href="#updates" className="btn ga-btn-light">See all updates <span aria-hidden="true">↓</span></a>
+            <a href="#impact" className="btn ga-btn-outline">Was my site affected?</a>
+          </div>
         </div>
+        <HeroArt />
       </div>
-      <HeroArt />
     </section>
 
     <section className="wrap ga-glance" aria-label="At a glance">
