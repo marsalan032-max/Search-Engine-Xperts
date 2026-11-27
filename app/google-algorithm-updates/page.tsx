@@ -4,10 +4,11 @@ import { brandTitle } from '../../components/seo-title';
 import { HomeCrumb } from '../../components/home-crumb';
 import { HeroArt } from '../../components/algo/hero-art';
 import { UpdateTimeline } from '../../components/algo/timeline';
-import { dashboardUrl, formatUpdateDate, updates } from '../../components/algo/updates';
+import { dashboardUrl, formatUpdateDate, updatePath, updates } from '../../components/algo/updates';
 
 // /google-algorithm-updates: a collection page of every confirmed Google ranking update, newest first.
-// The list lives in components/algo/updates.ts; add new updates there and this page, its schema and the sitemap follow.
+// The list lives in components/algo/updates.ts; add new updates there and this page, each update's own page
+// (./[id]/page.tsx), the schema and the sitemap follow.
 
 const url = `${siteUrl}/google-algorithm-updates`;
 const title = 'Google Algorithm Updates: Full History & 2026 Timeline';
@@ -63,7 +64,7 @@ function Schema() {
           '@type': 'ItemList',
           itemListOrder: 'https://schema.org/ItemListOrderDescending',
           numberOfItems: updates.length,
-          itemListElement: updates.map((u, i) => ({ '@type': 'ListItem', position: i + 1, name: u.name, url: `${url}#${u.id}` })),
+          itemListElement: updates.map((u, i) => ({ '@type': 'ListItem', position: i + 1, name: u.name, url: `${siteUrl}${updatePath(u)}` })),
         },
       },
       {
@@ -101,12 +102,12 @@ export default function GoogleAlgorithmUpdates() {
     </section>
 
     <section className="wrap ga-glance" aria-label="At a glance">
-      <a href={`#${latest.id}`} className="ga-stat">
+      <a href={updatePath(latest)} className="ga-stat">
         <span className="kicker">Latest update</span>
         <b>{latest.name}</b>
         <span>Rolled out {formatUpdateDate(latest.date)}, took {latest.rollout}</span>
       </a>
-      {next && <a href={`#${next.id}`} className="ga-stat is-next">
+      {next && <a href={updatePath(next)} className="ga-stat is-next">
         <span className="kicker">Coming next</span>
         <b>{next.name}</b>
         <span>Announced {formatUpdateDate(next.date)}, release in December</span>

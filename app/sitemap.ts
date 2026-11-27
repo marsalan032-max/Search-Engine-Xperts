@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { posts } from '../components/blog/posts';
 import { guides } from '../components/learn/guides';
 import { tools } from '../components/tools/tool-list';
+import { updatePath, updates } from '../components/algo/updates';
 import { isReleased, modules } from '../components/course/local-seo-modules';
 
 const base = 'https://searchenginexperts.com';
@@ -26,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/seo-tools`, changeFrequency: 'monthly', priority: 0.8 },
     ...tools.map(t => ({ url: `${base}/seo-tools/${t.slug}`, changeFrequency: 'monthly' as const, priority: 0.8 })),
     { url: `${base}/google-algorithm-updates`, lastModified: '2026-11-27', changeFrequency: 'weekly', priority: 0.8 },
+    ...updates.map(u => ({ url: `${base}${updatePath(u)}`, lastModified: '2026-11-27', changeFrequency: (u.date >= '2026-01-01' ? 'weekly' : 'yearly') as 'weekly' | 'yearly', priority: u.date >= '2025-01-01' ? 0.7 : 0.5 })),
     { url: `${base}/blog`, changeFrequency: 'weekly', priority: 0.7 },
     ...posts.map(p => ({ url: `${base}/blog/${p.slug}`, lastModified: p.modified, changeFrequency: 'monthly' as const, priority: 0.7 })),
   ];
