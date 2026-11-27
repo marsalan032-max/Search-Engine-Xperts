@@ -150,7 +150,7 @@ export const guide: Post = {
   published: '2026-11-19',
   modified: '2026-11-19',
   readTime: '12 min read',
-  image: { src: '/images/learn/ai-seo.png', alt: 'AI SEO guide cover: AI answer panel citing website sources', width: 1600, height: 900 },
+  image: { src: '/images/learn/ai-seo.png', alt: 'AI SEO guide cover: an AI Overview panel citing searchenginexperts.com as a source', width: 1600, height: 900 },
   takeaways: [
     'Most AI answers rely on a conventional search index; pages that aren’t indexed and competitive rarely get cited.',
     'Google says AI Overviews and AI Mode need no special optimization beyond SEO best practices.',

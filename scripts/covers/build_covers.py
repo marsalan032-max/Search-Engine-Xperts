@@ -186,7 +186,8 @@ COVERS = [
     ('technical-seo', 'Technical SEO', 'Technical SEO: The Complete Checklist', m_technical),
     ('advanced-seo-strategies', 'Advanced SEO', '10 Advanced SEO Strategies', m_advanced),
     ('link-building', 'Link Building', 'Link Building That Moves Rankings', m_links),
-    ('ai-seo', 'AI SEO', 'Get Cited in AI Overviews & ChatGPT', m_ai),
+    # ai-seo.png is a hand-made design now (navy redesign, Nov 2026); left out so this script doesn't overwrite it.
+    # ('ai-seo', 'AI SEO', 'Get Cited in AI Overviews & ChatGPT', m_ai),
     ('learn-seo', 'Learn SEO', 'Free SEO Guides, from Fundamentals to AI', m_hub),
     ('seo-tools', 'Free SEO Tools', 'Free SEO Tools: Audit, Check & Research', m_tools),
     ('home', 'SEO & AI Search Agency', 'Get Found on Google & AI Search', m_ai),
