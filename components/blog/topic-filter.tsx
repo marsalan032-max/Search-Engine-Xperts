@@ -6,7 +6,7 @@ import { Fragment, useRef, useState, type ReactNode } from 'react';
 
 export type TopicCard = { key: string; category: string; node: ReactNode };
 
-export function TopicFilter({ head, topics, cards, children }: { head: ReactNode; topics: string[]; cards: TopicCard[]; children: ReactNode }) {
+export function TopicFilter({ head, topics, cards, children, allLabel = 'All articles' }: { head: ReactNode; topics: string[]; cards: TopicCard[]; children: ReactNode; allLabel?: string }) {
   const [active, setActive] = useState<string | null>(null);
   const latest = useRef<HTMLElement>(null);
   const shown = active ? cards.filter(c => c.category === active) : cards;
@@ -21,7 +21,7 @@ export function TopicFilter({ head, topics, cards, children }: { head: ReactNode
     <div className="wrap bx-head">
       {head}
       <nav className="bx-pills" aria-label="Filter articles by topic">
-        <button type="button" aria-pressed={active === null} onClick={() => choose(null)}>All articles</button>
+        <button type="button" aria-pressed={active === null} onClick={() => choose(null)}>{allLabel}</button>
         {topics.map(t => <button key={t} type="button" aria-pressed={active === t} onClick={() => choose(t)}>{t}</button>)}
       </nav>
     </div>
