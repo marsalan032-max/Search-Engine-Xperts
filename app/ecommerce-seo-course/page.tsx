@@ -8,7 +8,7 @@ import { testimonials } from '../../components/home/testimonials';
 import { HomeCrumb } from '../../components/home-crumb';
 
 // Advanced Ecommerce SEO Course (/ecommerce-seo-course): hero with a product rich result and product card,
-// course at a glance, who it is for, the ten modules (all "coming soon" until releasedEcomModules is raised),
+// course at a glance, the ten modules (all "coming soon" until releasedEcomModules is raised),
 // the certificate, client reviews, a call-to-action banner and the FAQ. Same styles as the Local SEO Course.
 
 const url = `${siteUrl}/ecommerce-seo-course`;
@@ -32,17 +32,6 @@ const glance = [
   { b: 'Advanced', s: 'Built for people who know the SEO basics' },
   { b: 'Free', s: 'No sign-up, no payment' },
   { b: 'Certificate', s: 'Ecommerce SEO Expert on completion' },
-];
-
-const forYou = [
-  'In-house SEOs and marketers running stores with hundreds or thousands of products',
-  'Agency teams and freelancers who manage ecommerce clients',
-  'Store owners on Shopify, WooCommerce, Magento or a custom platform who already know the basics',
-];
-const before = [
-  { t: 'Comfortable with SEO fundamentals', s: 'Keywords, title tags, internal links and Search Console should feel familiar.' },
-  { t: 'Access to your store’s data', s: 'Search Console and GA4 at least; a crawler such as Screaming Frog helps for the audit module.' },
-  { t: 'New to ecommerce SEO?', s: 'Read our free ecommerce SEO guide first, then come back for the advanced material.', href: '/learn-seo/ecommerce-seo', link: 'Read the guide' },
 ];
 
 const outcomes = ['Win and keep ecommerce SEO clients as a freelancer or agency', 'Grow organic revenue for your own store', 'Stand out to brands hiring for ecommerce SEO'];
@@ -143,7 +132,6 @@ function Schema() {
         url,
         inLanguage: 'en',
         educationalLevel: 'Advanced',
-        coursePrerequisites: 'Familiarity with SEO fundamentals: keywords, title tags, internal linking and Google Search Console.',
         isAccessibleForFree: true,
         provider: { '@type': 'Organization', name: 'Search Engine Xperts', url: `${siteUrl}/` },
         instructor: { '@id': `${siteUrl}/#${author.id}` },
@@ -175,7 +163,6 @@ export default function EcommerceSeoCourse() {
       <div className="wrap lc-top-grid">
         <div>
           <nav aria-label="Breadcrumb" className="lc-crumbs"><HomeCrumb /><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>
-          <span className="ec-level">Advanced level · Coming soon</span>
           <h1 id="lc-title">{title}</h1>
           <p className="lc-intro">Go beyond the basics. Learn how to audit large catalogues, control faceted navigation, build category and product pages that rank, win rich results and Merchant Center listings, and prove SEO’s value in revenue.</p>
           <div className="lc-ctas">
@@ -193,23 +180,6 @@ export default function EcommerceSeoCourse() {
     {/* ---------- at a glance ---------- */}
     <section className="wrap ec-glance" aria-label="Course at a glance">
       {glance.map(g => <div key={g.b}><b>{g.b}</b><span>{g.s}</span></div>)}
-    </section>
-
-    {/* ---------- who it is for ---------- */}
-    <section className="wrap ec-fit" aria-labelledby="fit-title">
-      <div>
-        <p className="lc-eyebrow">Is this course for you?</p>
-        <h2 id="fit-title" className="lc-h2">Built for people who already know SEO and work on online stores</h2>
-        <ul className="lc-outcomes">{forYou.map(o => <li key={o}><span>{Icon.check}</span>{o}</li>)}</ul>
-      </div>
-      <div className="ec-before">
-        <p className="ec-before-h">Before you start</p>
-        {before.map(b => <div key={b.t}>
-          <b>{b.t}</b>
-          <p>{b.s}</p>
-          {b.href && <a href={b.href}>{b.link} →</a>}
-        </div>)}
-      </div>
     </section>
 
     {/* ---------- modules ---------- */}
