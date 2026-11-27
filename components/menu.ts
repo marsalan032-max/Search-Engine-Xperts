@@ -44,7 +44,7 @@ export const menu: MenuItem[] = [
     label: 'News',
     href: '#',
     children: [
-      { label: 'Google Algorithm Updates', href: '#' },
+      { label: 'Google Algorithm Updates', href: '/google-algorithm-updates' },
       { label: 'New Features', href: '#' },
       { label: 'Latest News', href: '#' },
     ],
