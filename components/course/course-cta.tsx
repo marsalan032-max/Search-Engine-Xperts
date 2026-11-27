@@ -1,13 +1,20 @@
-// Call-to-action banner at the end of the Local SEO Course pages: gradient band, headline and button on the
+// Call-to-action banner at the end of the course pages (Local SEO by default; pass `copy` for another course): gradient band, headline and button on the
 // left, a storefront with hand-drawn doodles on the right.
 
-export function CourseCta() {
+type CtaCopy = { heading: string; text: string; label: string; href?: string };
+const localCopy: CtaCopy = {
+  heading: 'Rather have your local SEO done for you?',
+  text: 'We’ll audit your Google Business Profile, website and reviews and show you the first fixes that bring in more calls, free.',
+  label: 'Get a free local SEO audit',
+};
+
+export function CourseCta({ copy = localCopy }: { copy?: CtaCopy }) {
   return <section className="wrap" aria-labelledby="lc-cta-title">
     <div className="lc-cta">
       <div className="lc-cta-copy">
-        <h2 id="lc-cta-title">Rather have your local SEO done for you?</h2>
-        <p>We’ll audit your Google Business Profile, website and reviews and show you the first fixes that bring in more calls, free.</p>
-        <a className="lc-cta-btn" href="/#contact">Get a free local SEO audit</a>
+        <h2 id="lc-cta-title">{copy.heading}</h2>
+        <p>{copy.text}</p>
+        <a className="lc-cta-btn" href={copy.href ?? '/#contact'}>{copy.label}</a>
       </div>
       <svg className="lc-cta-art" viewBox="0 0 440 300" aria-hidden="true">
         <g fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity=".9">

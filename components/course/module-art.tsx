@@ -1,7 +1,7 @@
 // Cover illustrations for the Local SEO Course modules, one per module (index 0–8), drawn in the site palette.
 // Each is a 400×240 SVG: a blue/navy gradient ground with one white "object" that stands for the module.
 
-const C = { navy: '#0B1437', navy2: '#11214F', blue: '#345DF7', blueL: '#4A6CFF', blueD: '#2A48C8', soft: '#C9D6FB', mist: '#E5EAF8', amber: '#F5A524', green: '#15A06A' };
+export const C = { navy: '#0B1437', navy2: '#11214F', blue: '#345DF7', blueL: '#4A6CFF', blueD: '#2A48C8', soft: '#C9D6FB', mist: '#E5EAF8', amber: '#F5A524', green: '#15A06A' };
 
 const grounds = [
   [C.navy2, C.blueD], [C.blueL, C.blueD], [C.navy, C.blue],
@@ -9,13 +9,13 @@ const grounds = [
   [C.navy2, C.blue], [C.blueD, C.blueL], [C.navy, C.blueD],
 ];
 
-const Star = ({ x, y, s = 1, fill = C.amber }: { x: number; y: number; s?: number; fill?: string }) =>
+export const Star = ({ x, y, s = 1, fill = C.amber }: { x: number; y: number; s?: number; fill?: string }) =>
   <path transform={`translate(${x} ${y}) scale(${s})`} d="M0-8 2.4-2.6 8.2-2.1 3.8 1.8 5.1 7.6 0 4.6-5.1 7.6-3.8 1.8-8.2-2.1-2.4-2.6Z" fill={fill} />;
-const Card = (p: React.SVGProps<SVGRectElement>) => <rect rx="12" fill="#fff" {...p} />;
-const Bar = ({ x, y, w, h = 8, fill = C.mist }: { x: number; y: number; w: number; h?: number; fill?: string }) => <rect x={x} y={y} width={w} height={h} rx={h / 2} fill={fill} />;
-const Sparkle = ({ x, y, s = 1, o = .55 }: { x: number; y: number; s?: number; o?: number }) =>
+export const Card = (p: React.SVGProps<SVGRectElement>) => <rect rx="12" fill="#fff" {...p} />;
+export const Bar = ({ x, y, w, h = 8, fill = C.mist }: { x: number; y: number; w: number; h?: number; fill?: string }) => <rect x={x} y={y} width={w} height={h} rx={h / 2} fill={fill} />;
+export const Sparkle = ({ x, y, s = 1, o = .55 }: { x: number; y: number; s?: number; o?: number }) =>
   <path transform={`translate(${x} ${y}) scale(${s})`} d="M0-10C1-3 3-1 10 0 3 1 1 3 0 10-1 3-3 1-10 0-3-1-1-3 0-10Z" fill="#fff" opacity={o} />;
-const Pin = ({ x, y, s = 1, fill = C.blue }: { x: number; y: number; s?: number; fill?: string }) =>
+export const Pin = ({ x, y, s = 1, fill = C.blue }: { x: number; y: number; s?: number; fill?: string }) =>
   <g transform={`translate(${x} ${y}) scale(${s})`}><path d="M0 26C-12 12-18 4-18-6a18 18 0 0 1 36 0c0 10-6 18-18 32Z" fill={fill} /><circle cy="-6" r="7" fill="#fff" /></g>;
 
 const scenes: React.ReactNode[] = [
@@ -138,9 +138,10 @@ const scenes: React.ReactNode[] = [
   </g>,
 ];
 
-export function ModuleArt({ index, className }: { index: number; className?: string }) {
+// `set` swaps in another course's scenes (the Ecommerce SEO Course passes its own); `prefix` keeps SVG ids unique.
+export function ModuleArt({ index, className, set = scenes, prefix = 'mart' }: { index: number; className?: string; set?: React.ReactNode[]; prefix?: string }) {
   const [a, b] = grounds[index % grounds.length];
-  const id = `mart-${index}`;
+  const id = `${prefix}-${index}`;
   return <svg className={className} viewBox="0 0 400 240" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
     <defs>
       <linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={a} /><stop offset="1" stopColor={b} /></linearGradient>
@@ -150,6 +151,6 @@ export function ModuleArt({ index, className }: { index: number; className?: str
     <rect width="400" height="240" fill={`url(#${id})`} />
     <rect width="400" height="240" fill={`url(#${id}-dots)`} />
     <rect width="400" height="240" fill={`url(#${id}-glow)`} />
-    {scenes[index % scenes.length]}
+    {set[index % set.length]}
   </svg>;
 }

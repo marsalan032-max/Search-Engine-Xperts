@@ -1,4 +1,4 @@
-// "Local SEO Expert" certificate with three skill medals, for the certificate section of /local-seo-course.
+// Course certificate with three skill medals ("Local SEO Expert" by default), for the course certificate sections.
 
 const F = 'Poppins,sans-serif';
 
@@ -19,8 +19,16 @@ function Medal({ cx, cy, r, from, to, lines, id }: { cx: number; cy: number; r: 
   </g>;
 }
 
-export function CertificateArt() {
-  return <svg className="lc-cert-art" viewBox="0 0 560 470" role="img" aria-label="Local SEO Expert certificate with Google Business Profile, Local Rankings and Reviews & Citations specialist badges">
+type Cert = { title: string; label: string; left: string[]; mid: string[]; right: string[] };
+const localCert: Cert = {
+  title: 'LOCAL SEO EXPERT',
+  label: 'Local SEO Expert certificate with Google Business Profile, Local Rankings and Reviews & Citations specialist badges',
+  left: ['Local', 'Rankings'], mid: ['Google', 'Business', 'Profile'], right: ['Reviews &', 'Citations'],
+};
+
+// Pass `cert` for another course's certificate title and medal wording.
+export function CertificateArt({ cert = localCert }: { cert?: Cert }) {
+  return <svg className="lc-cert-art" viewBox="0 0 560 470" role="img" aria-label={cert.label}>
     <defs>
       <linearGradient id="cert-top" x1="0" x2="1"><stop offset="0" stopColor="#4A6CFF" /><stop offset="1" stopColor="#2A48C8" /></linearGradient>
       <filter id="cert-shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="18" floodColor="#345DF7" floodOpacity=".22" /></filter>
@@ -41,7 +49,7 @@ export function CertificateArt() {
       <path d="M5 15l5-5 3 3 5-6" stroke="#fff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       <text x="30" y="16" fontSize="12.5" fontWeight="600" fill="#0B1437" fontFamily={F}>Search Engine <tspan fill="#345DF7">Xperts</tspan></text>
     </g>
-    <text x="280" y="122" textAnchor="middle" fontSize="30" fontWeight="700" fill="#0B1437" fontFamily={F} letterSpacing="-.01em">LOCAL SEO EXPERT</text>
+    <text x="280" y="122" textAnchor="middle" fontSize={cert.title.length > 16 ? 24 : 30} fontWeight="700" fill="#0B1437" fontFamily={F} letterSpacing="-.01em">{cert.title}</text>
     <line x1="150" y1="144" x2="212" y2="144" stroke="#C9D6FB" strokeWidth="1.5" /><circle cx="150" cy="144" r="3" fill="#C9D6FB" />
     <line x1="348" y1="144" x2="410" y2="144" stroke="#C9D6FB" strokeWidth="1.5" /><circle cx="410" cy="144" r="3" fill="#C9D6FB" />
     <text x="280" y="147" textAnchor="middle" fontSize="7.5" fontWeight="600" fill="#69739A" fontFamily={F} letterSpacing=".14em">CERTIFICATE GRANTED TO</text>
@@ -51,8 +59,8 @@ export function CertificateArt() {
     <rect x="206" y="218" width="148" height="7" rx="3.5" fill="#EEF2FD" />
 
     {/* medals */}
-    <Medal id="m-left" cx={124} cy={322} r={62} from="#2A48C8" to="#0B1437" lines={['Local', 'Rankings']} />
-    <Medal id="m-right" cx={436} cy={322} r={62} from="#11214F" to="#345DF7" lines={['Reviews &', 'Citations']} />
-    <Medal id="m-mid" cx={280} cy={334} r={80} from="#4A6CFF" to="#2A48C8" lines={['Google', 'Business', 'Profile']} />
+    <Medal id="m-left" cx={124} cy={322} r={62} from="#2A48C8" to="#0B1437" lines={cert.left} />
+    <Medal id="m-right" cx={436} cy={322} r={62} from="#11214F" to="#345DF7" lines={cert.right} />
+    <Medal id="m-mid" cx={280} cy={334} r={80} from="#4A6CFF" to="#2A48C8" lines={cert.mid} />
   </svg>;
 }

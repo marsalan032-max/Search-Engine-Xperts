@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/arslan-tariq`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/saboor-nasir`, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${base}/local-seo-course`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/ecommerce-seo-course`, changeFrequency: 'monthly', priority: 0.8 },
     ...modules.filter((_, i) => isReleased(i)).map(m => ({ url: `${base}/local-seo-course/${m.slug}`, changeFrequency: 'monthly' as const, priority: 0.6 })),
     { url: `${base}/learn-seo`, changeFrequency: 'monthly', priority: 0.8 },
     ...guides.map(g => ({ url: `${base}/learn-seo/${g.slug}`, lastModified: g.modified, changeFrequency: 'monthly' as const, priority: 0.8 })),
